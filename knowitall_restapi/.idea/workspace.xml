@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="435ed4c8-b7db-4104-985c-30a6d4d18595" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/public/media/icons/charlies-angles.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/media/logos/logo-notriangle.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/media/logos/onlytb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/home/media/65d7bc0e00b2b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/home/media/65e0ddfcd1a26.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/image_display_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/image_display_api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/artistsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/artistsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/navbarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/navbarController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/media/65ad3a9554bc4.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2YD3egFRwdJcjAleuHxj6FSMnQA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Node.js.adminscript.js.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/LOSANGLES/losangleswebsite/Webdev1_EndAssignment_IT2B_577147/app/views/admin/media",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\views\admin\media" />
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\public\media\logos" />
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\public" />
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\public\media\icons" />
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\views\home\media" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\public\media\icons" />
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\public\media\logos" />
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\views" />
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\public\media" />
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\LOSANGLES\losangleswebsite\Webdev1_EndAssignment_IT2B_577147\app\views\admin\media\placeholders" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="adminscript.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app/public/js/admin/adminscript.js" working-dir="$PROJECT_DIR$/app/public/js/admin">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.adminscript.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-b4dcf6bb9de9-com.jetbrains.php.sharedIndexes-PS-233.13135.108" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="435ed4c8-b7db-4104-985c-30a6d4d18595" name="Changes" comment="" />
+      <created>1700046419403</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700046419403</updated>
+      <workItem from="1700046420610" duration="4567000" />
+      <workItem from="1700655628803" duration="5180000" />
+      <workItem from="1701107354222" duration="929000" />
+      <workItem from="1701108307797" duration="12814000" />
+      <workItem from="1701137287432" duration="128007000" />
+      <workItem from="1701869545344" duration="31048000" />
+      <workItem from="1701991381577" duration="97102000" />
+      <workItem from="1702565029721" duration="63469000" />
+      <workItem from="1703006366247" duration="119277000" />
+      <workItem from="1703505251823" duration="29749000" />
+      <workItem from="1703608124813" duration="617000" />
+      <workItem from="1703609205165" duration="38000" />
+      <workItem from="1703609256540" duration="9000" />
+      <workItem from="1703609278262" duration="21000" />
+      <workItem from="1703609340478" duration="82000" />
+      <workItem from="1703609440278" duration="81000" />
+      <workItem from="1703609695071" duration="180000" />
+      <workItem from="1703610018447" duration="7000" />
+      <workItem from="1703610332816" duration="2300000" />
+      <workItem from="1703634191947" duration="22790000" />
+      <workItem from="1703691724733" duration="27439000" />
+      <workItem from="1703794238399" duration="14520000" />
+      <workItem from="1703850735531" duration="14205000" />
+      <workItem from="1703980102991" duration="10272000" />
+      <workItem from="1704240614135" duration="9675000" />
+      <workItem from="1704382092105" duration="21581000" />
+      <workItem from="1704463875009" duration="6717000" />
+      <workItem from="1704553195124" duration="15106000" />
+      <workItem from="1704730070111" duration="21186000" />
+      <workItem from="1704802127223" duration="31323000" />
+      <workItem from="1704888679267" duration="33961000" />
+      <workItem from="1704977912512" duration="28403000" />
+      <workItem from="1705070284610" duration="10438000" />
+      <workItem from="1705103518421" duration="16310000" />
+      <workItem from="1705227191165" duration="33648000" />
+      <workItem from="1705311589021" duration="6568000" />
+      <workItem from="1705331970206" duration="16284000" />
+      <workItem from="1705395285736" duration="25657000" />
+      <workItem from="1705477596230" duration="11541000" />
+      <workItem from="1705504963531" duration="18125000" />
+      <workItem from="1705530455682" duration="4218000" />
+      <workItem from="1705535239357" duration="95000" />
+      <workItem from="1705577656842" duration="19871000" />
+      <workItem from="1705609113972" duration="4116000" />
+      <workItem from="1705626927979" duration="6464000" />
+      <workItem from="1705674068588" duration="36473000" />
+      <workItem from="1705745026917" duration="6554000" />
+      <workItem from="1705760462769" duration="18131000" />
+      <workItem from="1705827436718" duration="40979000" />
+      <workItem from="1705944482447" duration="476000" />
+      <workItem from="1707994786249" duration="862000" />
+      <workItem from="1708171138505" duration="1681000" />
+      <workItem from="1708637099518" duration="1001000" />
+      <workItem from="1709235446281" duration="422000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
