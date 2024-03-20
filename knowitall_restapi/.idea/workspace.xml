@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="435ed4c8-b7db-4104-985c-30a6d4d18595" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/public/media/icons/charlies-angles.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/media/logos/logo-notriangle.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/media/logos/onlytb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/home/media/65d7bc0e00b2b.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/home/media/65e0ddfcd1a26.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/image_display_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/image_display_api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/artistsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/artistsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/navbarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/navbarController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/media/65ad3a9554bc4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PHP.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/PHP.Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +47,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/LOSANGLES/losangleswebsite/Webdev1_EndAssignment_IT2B_577147/app/views/admin/media",
+    "git-widget-placeholder": "project-setup",
+    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -170,6 +160,7 @@
       <workItem from="1708171138505" duration="1681000" />
       <workItem from="1708637099518" duration="1001000" />
       <workItem from="1709235446281" duration="422000" />
+      <workItem from="1710932097167" duration="957000" />
     </task>
     <servers />
   </component>
