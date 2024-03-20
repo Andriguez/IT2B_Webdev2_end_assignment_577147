@@ -1,35 +1,24 @@
 <?php
-namespace repositories;
-use DB;
-require_once __DIR__.'/../config/dbconfig.php';
+namespace Repositories;
 
-class Repository
-{
-    private DB $content_db;
-    private DB $users_db;
-    private DB $feed_db;
+use PDO;
+use PDOException;
 
-    private array $configs;
+class Repository {
 
-    function __construct(){
-        require_once __DIR__.'/../config/db.php';
-        require __DIR__.'/../config/dbconfig.php';
+    protected $connection;
 
-        $this->configs = $configs;
-        //$this->content_db = DB::getInstance($configs[0]);
-        //$this->users_db = DB::getInstance($configs[1]);
-        //$this->feed_db = DB::getInstance($configs[2]);
-    }
-    protected function getContentDB(){
-        DB::switchDatabase($this->configs[0]);
-        return $this->content_db = DB::getInstance($this->configs[0]);
-    }
-    protected function getusersDB(){
-        DB::switchDatabase($this->configs[1]);
-        return $this->users_db = DB::getInstance($this->configs[1]);
-    }
-    protected function getfeedDB(){
-        DB::switchDatabase($this->configs[2]);
-        return $this->feed_db = DB::getInstance($this->configs[2]);
-    }
+    function __construct() {
+
+        require __DIR__ . '/../dbconfig.php';
+
+        try {
+            $this->connection = new PDO("$type:host=$servername;dbname=$database", $username, $password);
+                
+            // set the PDO error mode to exception
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+          }
+    }       
 }

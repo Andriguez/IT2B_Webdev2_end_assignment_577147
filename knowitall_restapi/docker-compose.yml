@@ -1,5 +1,4 @@
 version: '3'
-
 services:
     nginx:
         image: nginx:latest
@@ -12,23 +11,26 @@ services:
         build:
             context: .
             dockerfile: PHP.Dockerfile
-        env_file: env/php.env
         volumes:
             - ./app:/app
-
     mysql:
-        image: mariadb:10.6.5
-        env_file: env/mariadb.env
+        image: mariadb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: 'secret123'
+            MYSQL_USER: 'developer'
+            MYSQL_PASSWORD: 'secret123'
+            MYSQL_DATABASE: 'developmentdb'
         volumes:
             - mysqldata:/var/lib/mysql
+            - ./sql:/docker-entrypoint-initdb.d
         ports:
             - 3306:3306
-
     phpmyadmin:
         image: phpmyadmin:latest
         ports:
             - 8080:80
         environment:
             - PMA_HOST=mysql
+        restart: unless-stopped
 volumes:
     mysqldata: {}
