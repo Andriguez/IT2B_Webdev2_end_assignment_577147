@@ -2,12 +2,120 @@
 
 namespace Repositories;
 
+use Models\UserType;
 use PDO;
 use PDOException;
 use Repositories\Repository;
+use Models\User;
+use Models\Admin;
+use Models\Player;
 
 class UserRepository extends Repository
 {
+    function getAllUsers($offset = NULL, $limit = NULL)
+    {
+        try {
+            $query = "SELECT `Id` FROM users";
+            if (isset($limit) && isset($offset)) {
+                $query .= " LIMIT :limit OFFSET :offset ";
+            }
+            $stmt = $this->connection->prepare($query);
+            if (isset($limit) && isset($offset)) {
+                $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+                $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            }
+            $stmt->execute();
+
+            $users = array();
+            while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
+                $users[] = $this->getUserById($row['Id']);
+            }
+
+            return $users;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getUserById($id){
+        $query = "SELECT `Id`, `name`, `username`, `password`, `usertype` FROM `users` WHERE Id = :id";
+
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->bindParam(':id', $id, \PDO::PARAM_INT);
+            $statement->execute();
+
+            while ($row = $statement->fetch(\PDO::FETCH_ASSOC)) {
+
+                $userType = $this->getUserTypeById($row['usertype']);
+                $userId = $row['Id'];
+
+                if($userType->getName() === 'admin'){
+                    $user = new Admin();
+                } else {
+                    $user = new Player();
+                    $playerInfo = $this->getPlayerInfo($userId);
+                    $user->setAverage($playerInfo['average']);
+                    $user->setRanking($playerInfo['ranking']);
+                    $user->setPlaytime($playerInfo['playtime']);
+                }
+
+                $user->setId($userId);
+                $user->setName($row['name']);
+                $user->setUsername($row['username']);
+                $user->setPassword($row['password']);
+                $user->setUsertype($userType);
+
+            }
+
+            return $user ?? null;
+
+        } catch (\PDOException $e){echo $e;}
+    }
+
+    public function getPlayerInfo($playerId){
+        try {
+            $query = "SELECT `average`, `ranking`, `playtime` FROM `player_info` WHERE `userId` = :id";
+
+            $stmt = $this->connection->prepare($query);
+            $stmt->bindParam(':id', $playerId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $playerInfo = array();
+            while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
+                $playerInfo['average'] = $row['average'];
+                $playerInfo['ranking'] = $row['ranking'];
+                $playerInfo['playtime'] = $row['playtime'];
+            }
+
+            return $playerInfo;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    function getUserTypeById($id){
+        try {
+            $query = "SELECT `name` FROM `user_types` WHERE  `Id` = :id";
+
+            $stmt = $this->connection->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
+                $usertype = new UserType();
+                $usertype->setId($id);
+                $usertype->setName($row['name']);
+
+            }
+
+            return $usertype;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     function checkUsernamePassword($username, $password)
     {
         try {

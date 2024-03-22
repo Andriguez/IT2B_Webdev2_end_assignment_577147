@@ -20,6 +20,12 @@ $router->post('/products', 'ProductController@create');
 $router->put('/products/(\d+)', 'ProductController@update');
 $router->delete('/products/(\d+)', 'ProductController@delete');
 
+$router->get('/users', 'UserController@getAll');
+$router->get('/users/(\d+)', 'UserController@getOne');
+$router->post('/users', 'UserController@create');
+$router->put('/users/(\d+)', 'UserController@update');
+$router->delete('/users/(\d+)', 'UserController@delete');
+
 // routes for the categories endpoint
 $router->get('/categories', 'CategoryController@getAll');
 $router->get('/categories/(\d+)', 'CategoryController@getOne');

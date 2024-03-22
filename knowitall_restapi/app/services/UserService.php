@@ -12,6 +12,9 @@ class UserService {
         $this->repository = new UserRepository();
     }
 
+    public function getAllUsers($offset = NULL, $limit = NULL) {
+        return $this->repository->getAllUsers($offset, $limit);
+    }
     public function checkUsernamePassword($username, $password) {
         return $this->repository->checkUsernamePassword($username, $password);
     }

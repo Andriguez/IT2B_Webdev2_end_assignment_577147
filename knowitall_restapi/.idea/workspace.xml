@@ -5,104 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/vendor/autoload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_real.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_static.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/installed.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Webdev1_EndAssignment_IT2B_577147.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/51cfa111-f852-4349-9f6f-ece595806c11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/51cfa111-f852-4349-9f6f-ece595806c11/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/51cfa111-f852-4349-9f6f-ece595806c11/storage_v2/_src_/schema/losangles_content.ihTD7g.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/51cfa111-f852-4349-9f6f-ece595806c11/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/51cfa111-f852-4349-9f6f-ece595806c11/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/51cfa111-f852-4349-9f6f-ece595806c11/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/abb37cc5-b258-4574-a5ed-09fb19a58ae0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/abb37cc5-b258-4574-a5ed-09fb19a58ae0/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/abb37cc5-b258-4574-a5ed-09fb19a58ae0/storage_v2/_src_/schema/losangles_feed.LWdprg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/abb37cc5-b258-4574-a5ed-09fb19a58ae0/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/abb37cc5-b258-4574-a5ed-09fb19a58ae0/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/abb37cc5-b258-4574-a5ed-09fb19a58ae0/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c6b955-f3ce-46fe-a946-bbf3f938ffa8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c6b955-f3ce-46fe-a946-bbf3f938ffa8/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c6b955-f3ce-46fe-a946-bbf3f938ffa8/storage_v2/_src_/schema/losangles_users.WT6dHw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c6b955-f3ce-46fe-a946-bbf3f938ffa8/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c6b955-f3ce-46fe-a946-bbf3f938ffa8/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e0c6b955-f3ce-46fe-a946-bbf3f938ffa8/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Admin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Answer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Favorite.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Flags.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/History.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Level.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Player.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Question.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Quiz.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/Topic.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/UserType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP.Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/PHP.Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Router.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/Route.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/db.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/dbconfig.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/image_display_api.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/UserAuth.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/aboutController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/adminController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/artistsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/connectController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/eventsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/homeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/loginController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/navbarController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/registerController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/trialController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Admin.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/AdminContent.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Artist.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/ArtistApplication.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/ArtistContent.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/ArtistDiscipline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Collaborator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/CollaboratorContent.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/ContentType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/DirectoryLog.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Event.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/EventLineup.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/EventLocation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/EventType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/FeedComment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/FeedPost.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/FeedTopic.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/MediaInfo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/NavbarElement.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Page.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/PageContent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/usercontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/usercontroller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/UserType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/ArtistApplicationRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/ArtistRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/ContentRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/EventRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/FeedRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/Repository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/Repository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/ArtistApplicationService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/ArtistService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/ContentService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/EventService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/FeedService.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mariadb.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/php.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +64,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -165,6 +86,8 @@
       <workItem from="1710872002736" duration="837000" />
       <workItem from="1710929589424" duration="7961000" />
       <workItem from="1710944855091" duration="1019000" />
+      <workItem from="1711034651442" duration="3452000" />
+      <workItem from="1711046651575" duration="7695000" />
     </task>
     <servers />
   </component>
