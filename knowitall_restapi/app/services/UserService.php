@@ -15,6 +15,15 @@ class UserService {
     public function getAllUsers($offset = NULL, $limit = NULL) {
         return $this->repository->getAllUsers($offset, $limit);
     }
+    public function getUserById($Id){
+        return $this->repository->getUserById($Id);
+    }
+    public function getAllUserTypes() {
+        return $this->repository->getAllUserTypes();
+    }
+    public function getUserTypeById($Id){
+        return $this->repository->getUserTypeById($Id);
+    }
     public function checkUsernamePassword($username, $password) {
         return $this->repository->checkUsernamePassword($username, $password);
     }

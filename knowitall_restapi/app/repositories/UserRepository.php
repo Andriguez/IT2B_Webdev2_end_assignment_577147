@@ -38,7 +38,7 @@ class UserRepository extends Repository
     }
 
     public function getUserById($id){
-        $query = "SELECT `Id`, `name`, `username`, `password`, `usertype` FROM `users` WHERE Id = :id";
+        $query = "SELECT `name`, `username`, `password`, `usertype` FROM `users` WHERE Id = :id";
 
 
         try{
@@ -49,19 +49,14 @@ class UserRepository extends Repository
             while ($row = $statement->fetch(\PDO::FETCH_ASSOC)) {
 
                 $userType = $this->getUserTypeById($row['usertype']);
-                $userId = $row['Id'];
 
                 if($userType->getName() === 'admin'){
                     $user = new Admin();
                 } else {
                     $user = new Player();
-                    $playerInfo = $this->getPlayerInfo($userId);
-                    $user->setAverage($playerInfo['average']);
-                    $user->setRanking($playerInfo['ranking']);
-                    $user->setPlaytime($playerInfo['playtime']);
                 }
 
-                $user->setId($userId);
+                $user->setId($id);
                 $user->setName($row['name']);
                 $user->setUsername($row['username']);
                 $user->setPassword($row['password']);
@@ -74,22 +69,20 @@ class UserRepository extends Repository
         } catch (\PDOException $e){echo $e;}
     }
 
-    public function getPlayerInfo($playerId){
+    function getAllUserTypes()
+    {
         try {
-            $query = "SELECT `average`, `ranking`, `playtime` FROM `player_info` WHERE `userId` = :id";
+            $query = "SELECT `Id` FROM user_types";
 
             $stmt = $this->connection->prepare($query);
-            $stmt->bindParam(':id', $playerId, PDO::PARAM_INT);
             $stmt->execute();
 
-            $playerInfo = array();
+            $userTypes = array();
             while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
-                $playerInfo['average'] = $row['average'];
-                $playerInfo['ranking'] = $row['ranking'];
-                $playerInfo['playtime'] = $row['playtime'];
+                $userTypes[] = $this->getUserTypeById($row['Id']);
             }
 
-            return $playerInfo;
+            return $userTypes;
         } catch (PDOException $e) {
             echo $e;
         }
@@ -97,7 +90,7 @@ class UserRepository extends Repository
 
     function getUserTypeById($id){
         try {
-            $query = "SELECT `name` FROM `user_types` WHERE  `Id` = :id";
+            $query = "SELECT `name` FROM `user_types` WHERE `Id` = :id";
 
             $stmt = $this->connection->prepare($query);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);

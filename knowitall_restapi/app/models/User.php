@@ -21,5 +21,13 @@ abstract class User implements \JsonSerializable {
     public function getUsertype() { return $this->usertype;  }
 
     #[\ReturnTypeWillChange]
-    public abstract function jsonSerialize();
+    public function jsonSerialize(){
+        return [
+            'Id' => $this->id,
+            'user_name' => $this->name,
+            'user_username' => $this->username,
+            'user_password' => $this->password,
+            'user_type' => $this->usertype,
+        ];
+    }
 }

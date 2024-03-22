@@ -31,4 +31,17 @@ class UserController extends Controller
 
         $this->respond($users);
     }
+
+    public function getOne($id)
+    {
+        $user = $this->service->getUserById($id);
+
+        if (!$user) {
+            $this->respondWithError(404, "User not found");
+            return;
+        }
+
+        $this->respond($user);
+    }
+
 }
