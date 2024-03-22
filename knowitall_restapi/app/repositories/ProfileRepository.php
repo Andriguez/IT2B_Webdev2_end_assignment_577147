@@ -69,10 +69,14 @@ class ProfileRepository extends Repository
             $stmt->execute();
 
             $favorites = array();
+            $quizRepo = new QuizRepository();
             while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
                 $favorite = new Favorite();
-                $favorite->setQuiz($row['quiz_Id']);
-                $favorite->setSavedAt($row['savedAt']);
+                $favorite->setQuiz($quizRepo->getQuizById($row['quiz_Id']));
+
+                $dateTime_string = $row['savedAt'];
+                $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $dateTime_string);
+                $favorite->setSavedAt($dateTime);
 
                 $favorites[] = $favorite;
             }

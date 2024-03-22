@@ -11,6 +11,6 @@ class FlagService
         $this->flagRepo = new FlagRepository();
     }
 
-    public function getAllFlags(){ return $this->flagRepo->getAllFlags(); }
+    public function getAllFlags($offset = NULL, $limit = NULL){ return $this->flagRepo->getAllFlags($offset, $limit); }
     public function getFlagById($id){ return $this->flagRepo->getFlagById($id); }
 }

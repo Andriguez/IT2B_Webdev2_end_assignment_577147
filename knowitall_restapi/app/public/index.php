@@ -8,7 +8,6 @@ ini_set("display_errors", 1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// Create Router instance
 $router = new \Bramus\Router\Router();
 
 $router->setNamespace('Controllers');
@@ -26,12 +25,19 @@ $router->post('/users', 'UserController@create');
 $router->put('/users/(\d+)', 'UserController@update');
 $router->delete('/users/(\d+)', 'UserController@delete');
 
-// routes for the categories endpoint
-$router->get('/categories', 'CategoryController@getAll');
-$router->get('/categories/(\d+)', 'CategoryController@getOne');
-$router->post('/categories', 'CategoryController@create');
-$router->put('/categories/(\d+)', 'CategoryController@update');
-$router->delete('/categories/(\d+)', 'CategoryController@delete');
+$router->get('/player/(\d+)', 'PlayerController@getOne');
 
-// Run it!
+$router->get('/quizzes', 'QuizController@getAll');
+$router->get('/quizzes/(\d+)', 'QuizController@getOne');
+$router->post('/quizzes', 'QuizController@create');
+$router->put('/quizzes/(\d+)', 'QuizController@update');
+$router->delete('/quizzes/(\d+)', 'QuizController@delete');
+
+$router->get('/flags', 'FlagController@getAll');
+$router->get('/flags/(\d+)', 'FlagController@getOne');
+$router->post('/flags', 'FlagController@create');
+$router->delete('/flags/(\d+)', 'FlagController@delete');
+
+$router->get('/trial', 'TrialController@index');
+
 $router->run();

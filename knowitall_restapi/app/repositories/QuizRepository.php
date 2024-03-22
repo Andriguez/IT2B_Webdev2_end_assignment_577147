@@ -199,7 +199,7 @@ class QuizRepository extends Repository
                 $answer = new Answer();
                 $answer->setId($Id);
                 $answer->setAnswerText($row['answer_text']);
-                $answer->setAnswerExplain($row['answer_explain']);
+                $answer->setAnswerExplain($row['answer_explain'] ?? null);
                 $answer->setIsCorrect($row['isCorrect']);
             }
 

@@ -43,5 +43,4 @@ class UserController extends Controller
 
         $this->respond($user);
     }
-
 }

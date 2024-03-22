@@ -1,8 +1,7 @@
 <?php
-
 namespace Models;
 
-class Quiz
+class Quiz implements \JsonSerializable
 {
     private int $Id, $nr_players, $avg_correct_answers;
     private string $name;
@@ -11,7 +10,7 @@ class Quiz
     private \DateTime $modification_date;
     private array $questions;
 
-    public function setId(int $id){ $this->id = $id; }
+    public function setId(int $id){ $this->Id = $id; }
     public function setName(string $name){  $this->name = $name;    }
     public function setNrPlayers(int $nrPlayers){ $this->nr_players = $nrPlayers; }
     public function setAverage(int $average){  $this->avg_correct_answers = $average;    }
@@ -38,6 +37,12 @@ class Quiz
         return [
             'Id' => $this->Id,
             'name' => $this->name,
+            'nr_players' => $this->nr_players,
+            'avg_correct_answers' => $this->avg_correct_answers,
+            'topic' => $this->topic,
+            'level' => $this->level,
+            'mod_date' => $this->modification_date->format('d/m/y H:i'),
+            'questions' => $this->questions
         ];
     }
 }

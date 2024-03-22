@@ -5,26 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/FlagController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/PlayerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/QuizController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/PlayerProfile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/repositories/FlagRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/repositories/ProfileRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/repositories/QuizRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/FlagService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/ProfileService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/QuizService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/TrialController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/viewTrial1.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/usercontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Flags.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Flag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Player.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Player.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/FlagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/FlagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/PlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/PlayerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Answer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Answer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Favorite.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Favorite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Flag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Flag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/History.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/History.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Question.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Quiz.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Quiz.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/UserService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/categoryservice.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/productservice.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/FlagRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/FlagRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/ProfileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/ProfileRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/QuizRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/QuizRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/FlagService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/FlagService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +33,13 @@
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/app/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -55,21 +61,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;project-setup&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "project-setup",
+    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -90,7 +97,7 @@
       <workItem from="1710944855091" duration="1019000" />
       <workItem from="1711034651442" duration="3452000" />
       <workItem from="1711046651575" duration="7695000" />
-      <workItem from="1711099249018" duration="13983000" />
+      <workItem from="1711099249018" duration="20092000" />
     </task>
     <servers />
   </component>

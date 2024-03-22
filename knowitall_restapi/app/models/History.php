@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class History
+class History implements \JsonSerializable
 {
     private Quiz $quiz;
     private int $nr_correct_answers;
@@ -19,4 +19,14 @@ class History
     public function getNrCorrectAnswers(){ return $this->nr_correct_answers; }
     public function getLastPlayed(){ return $this->last_played; }
     public function getPlaytime(){ return $this->playtime; }
+
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize(){
+        return [
+            'quiz' => $this->quiz->getName(),
+            'nr_correct_answers' => $this->nr_correct_answers,
+            'playtime' => $this->playtime,
+            'last_played' => $this->last_played->format('d/m/y H:i'),
+        ];
+    }
 }

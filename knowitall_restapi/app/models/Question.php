@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class Question
+class Question implements \JsonSerializable
 {
     private int $Id;
     private string $question, $timer;
@@ -18,4 +18,15 @@ class Question
     public function getQuestion(){ return $this->question; }
     public function getTimer(){ return $this->timer; }
     public function getAnswers(){ return $this->answers; }
+
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize()
+    {
+        return [
+            'Id' => $this->Id,
+            'question' => $this->question,
+            'timer' => $this->timer,
+            'answers' => $this->answers
+        ];
+    }
 }

@@ -53,7 +53,7 @@ class FlagRepository extends Repository
 
                 $dateTime_string = $row['dateTime'];
                 $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $dateTime_string);
-                $flag->setDateTime($dateTime);
+                $flag->setSentAt($dateTime);
 
             }
 

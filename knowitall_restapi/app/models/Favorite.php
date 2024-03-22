@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class Favorite
+class Favorite implements \JsonSerializable
 {
     private Quiz $quiz;
     private \DateTime $savedAt;
@@ -12,4 +12,12 @@ class Favorite
 
     public function getQuiz(){ return $this->quiz; }
     public function getSavedAt(){ return $this->savedAt; }
+
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize(){
+        return [
+            'quiz' => $this->quiz->getName(),
+            'saved_At' => $this->savedAt->format('d/m/y H:i'),
+        ];
+    }
 }
