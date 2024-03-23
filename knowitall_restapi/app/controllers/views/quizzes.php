@@ -27,7 +27,7 @@
             </a>
         </div>
         <div class="col-3 d-flex flex-nowrap justify-content-end">
-            <a class="nav-link py-3 px-2" href="#">Quiz me</a>
+            <a class="nav-link selected py-3 px-2" href="#">Quiz me</a>
             <a class="nav-link py-3 px-3" href="#">Admin</a>
 
             <div class="dropstart">
@@ -185,6 +185,14 @@
         font-size: 20px;
         color: #47008F;
         text-decoration: underline;
+    }
+
+    .selected{
+        color: #A8DF7D;
+        text-shadow: -1px -1px 0 #47008F,
+        1px -1px 0 #47008F,
+        -1px 1px 0 #47008F,
+        1px 1px 0 #47008F !important;
     }
 
     .nav-link:hover {
