@@ -39,7 +39,9 @@
     </div>
 </nav>
 
-
+<div id="footer" class="d-flex justify-content-end fixed-bottom">
+    <span class="mx-3">design + coded by Andy Rodriguez© - 577147</span>
+</div>
 
 </body>
 </html>
@@ -85,6 +87,17 @@
         background-color: #B590DA;
     }
 }
+
+#footer{
+    background-color: #B590DA;
+
+    span{
+        color: #47008F;
+        font-weight: bold;
+        font-size: 13px;
+    }
+}
+
 body{
     font-family: 'Quicksand', sans-serif;
     background-color: #D6C8E4;
