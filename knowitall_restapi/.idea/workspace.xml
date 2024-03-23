@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/public/media/user_icon_noshadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/views/homepage_user.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/views/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/views/register.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/media/do-you-know-it-all.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/viewTrial1.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/viewTrial1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/TrialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/TrialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/viewTrial1.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/views/homepage_visitor.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "project-setup",
-    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi/app/public/media",
+    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi/app/controllers/views",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,7 +67,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\webd2_assignment\IT2B_Webdev2_end_assignment_577147\knowitall_restapi\app\controllers\views" />
       <recent name="C:\Users\brhig\OneDrive\Escritorio\webd2_assignment\IT2B_Webdev2_end_assignment_577147\knowitall_restapi\app\public\media" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\webd2_assignment\IT2B_Webdev2_end_assignment_577147\knowitall_restapi\app\controllers\views" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -87,6 +95,7 @@
       <workItem from="1711034651442" duration="3452000" />
       <workItem from="1711046651575" duration="7695000" />
       <workItem from="1711099249018" duration="29931000" />
+      <workItem from="1711199100752" duration="7333000" />
     </task>
     <servers />
   </component>
