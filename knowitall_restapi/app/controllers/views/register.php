@@ -43,7 +43,7 @@
             </div>
             <div class="form-floating">
                 <input type="email" class="form-control" id="floatingPassword" placeholder="email">
-                <label for="floatingPassword">password</label>
+                <label for="floatingPassword">email</label>
             </div>
             <div class="form-floating py-2">
                 <input type="text" class="form-control" id="floatingInput" placeholder="@username">
@@ -102,8 +102,8 @@
         width: 300px;
 
         input {
+            border-radius: 100px !important;
             height: 15px;
-            border-radius: 25%;
             background-color: #B590DA;
             color: #A8DF7D;
             font-weight: bold;
@@ -111,7 +111,7 @@
 
         label {
             color: #A8DF7D;
-            font-weight: bold;
+            font-weight: bolder;
             font-size: 20px;
         }
 

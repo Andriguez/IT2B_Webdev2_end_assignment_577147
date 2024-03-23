@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/views/homepage_user.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/views/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/views/register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/media/do-you-know-it-all.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/views/quizzes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/TrialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/TrialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/viewTrial1.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/views/homepage_visitor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/views/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/views/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/views/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/views/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +93,7 @@
       <workItem from="1711034651442" duration="3452000" />
       <workItem from="1711046651575" duration="7695000" />
       <workItem from="1711099249018" duration="29931000" />
-      <workItem from="1711199100752" duration="7333000" />
+      <workItem from="1711199100752" duration="16235000" />
     </task>
     <servers />
   </component>

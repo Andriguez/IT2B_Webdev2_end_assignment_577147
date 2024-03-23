@@ -94,14 +94,16 @@
         width: 300px;
 
         input{
+            border-radius: 100px !important;
             height: 15px;
-            border-radius: 25%;
+            color: #A8DF7D;
             background-color: #B590DA;
+            font-weight: bold;
         }
 
         label{
             color: #A8DF7D;
-            font-weight: bold;
+            font-weight: bolder;
             font-size: 20px;
         }
     }
