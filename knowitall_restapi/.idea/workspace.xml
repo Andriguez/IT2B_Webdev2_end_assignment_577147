@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/TrialController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/viewTrial1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/media/KNOW-IT-ALL_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/public/media/user_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/FlagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/FlagController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/PlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/PlayerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Answer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Answer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Favorite.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Favorite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Flag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Flag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/History.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/History.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Question.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Quiz.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Quiz.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/FlagRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/FlagRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/ProfileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/ProfileRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/QuizRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/QuizRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/FlagService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/FlagService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/viewTrial1.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/viewTrial1.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +52,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "project-setup",
-    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi",
+    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi/app/public/media",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,6 +62,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\brhig\OneDrive\Escritorio\webd2_assignment\IT2B_Webdev2_end_assignment_577147\knowitall_restapi\app\public\media" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -97,7 +87,7 @@
       <workItem from="1710944855091" duration="1019000" />
       <workItem from="1711034651442" duration="3452000" />
       <workItem from="1711046651575" duration="7695000" />
-      <workItem from="1711099249018" duration="20092000" />
+      <workItem from="1711099249018" duration="27966000" />
     </task>
     <servers />
   </component>
