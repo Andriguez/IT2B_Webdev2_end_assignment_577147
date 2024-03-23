@@ -23,9 +23,9 @@
             <a class="nav-link py-3 px-5" href="#">Login</a>
             <a class="nav-link py-3 px-5" href="#">Admin</a>
 
-            <div class="dropdown">
+            <div class="dropstart">
             <a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/media/user_icon.png" height="70" alt="icon">
+                <img src="/media/user_icon_noshadow.png" height="70" alt="icon">
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><h5 class="px-3">Hello, Player</h5></li>
