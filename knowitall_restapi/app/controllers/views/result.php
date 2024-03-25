@@ -70,17 +70,18 @@
     <span id="player-name">player</span>
     <div id="results-div" class="m-3">
         <div class="result">
-            <span class="result-title">playtime</span>
-            <span class="result-content-correct">01:40</span>
+            <span class="result-title">correct answers</span>
+            <span class="result-content-correct">19/20</span>
         </div>
         <div class="result">
             <span class="result-title">ranking</span>
             <span class="result-content-incorrect">#5</span>
         </div>
         <div class="result">
-            <span class="result-title">correct answers</span>
-            <span class="result-content-correct">19/20</span>
+            <span class="result-title">playtime</span>
+            <span class="result-content-correct">01:40</span>
         </div>
+
     </div>
         <button><span class="round-font">quiz more</span></button>
 
