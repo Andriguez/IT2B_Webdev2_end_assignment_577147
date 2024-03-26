@@ -16,6 +16,19 @@ export default {
         </div>
         <div class="col-3 d-flex flex-nowrap justify-content-end">
             <router-link class="nav-link py-3 px-5" to="/login">Login</router-link>
+            <router-link class="nav-link py-3 px-2" to="/quizzes">Quiz me</router-link>
+            <router-link class="nav-link py-3 px-3" to="/admin">Admin</router-link>
+            <div class="dropstart">
+                <a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../assets/user_icon_noshadow.png" height="70" alt="icon">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><h5 class="px-3">Hello, Player</h5></li>
+                    <li><router-link class="dropdown-item" to="/player">view profile</router-link></li>
+                    <li><router-link class="dropdown-item" to="/player">edit profile</router-link></li>
+                    <li><router-link class="dropdown-item" to="/">log out</router-link></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -43,17 +56,26 @@ export default {
             1px 1px 0 #47008F !important;
 }
 
-.dropdown-menu{
-    background-color: #A8DF7D;
+.selected{
+        color: #A8DF7D;
+        text-shadow: -1px -1px 0 #47008F,
+        1px -1px 0 #47008F,
+        -1px 1px 0 #47008F,
+        1px 1px 0 #47008F !important;
+    }
 
-    a{
-        color: #47008F;
-        text-decoration: underline;
-        font-weight: bold;
+.dropdown-menu{
+    background-color: #A8DF7D !important;
+
+    .dropdown-item{
+
+        color: #47008F !important;
+        text-decoration: underline !important;
+        font-weight: bold !important;
     }
 
     h5{
-        color: #A8DF7D;
+        color: #A8DF7D !important;
         text-shadow:
                 -1px -1px 0 #47008F,
                 1px -1px 0 #47008F,

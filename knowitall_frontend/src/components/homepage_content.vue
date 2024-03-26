@@ -5,7 +5,7 @@
     <span class="round-font" style="font-size: 25px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
     </div>
     <div>
-        <a class="nav-link py-4" href="#" style="font-size: 27px">get started</a>
+        <router-link class="nav-link py-4" to="/login" style="font-size: 27px">get started</router-link>
     </div>
 </main>
 </template>
