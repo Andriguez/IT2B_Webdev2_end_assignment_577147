@@ -18,6 +18,8 @@ export default {
             <router-link class="nav-link py-3 px-5" to="/login">Login</router-link>
             <router-link class="nav-link py-3 px-2" to="/quizzes">Quiz me</router-link>
             <router-link class="nav-link py-3 px-3" to="/admin">Admin</router-link>
+            <router-link class="nav-link py-3 px-3" to="/">exit</router-link>
+
             <div class="dropstart">
                 <a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="../assets/user_icon_noshadow.png" height="70" alt="icon">
