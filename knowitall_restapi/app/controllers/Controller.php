@@ -55,11 +55,12 @@ class Controller
         $jwt = $arr[1];
 
         // Decode JWT
-        $secret_key = "YOUR_SECRET_KEY";
+        $secretKey = "577_ANDhrigUEZ_147";
+
 
         if ($jwt) {
             try {
-                $decoded = JWT::decode($jwt, new Key($secret_key, 'HS256'));
+                $decoded = JWT::decode($jwt, new Key($secretKey, 'HS256'));
                 // username is now found in
                 // echo $decoded->data->username;
                 return $decoded;

@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/restapi-complete-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/restapi-complete-master.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/vendor/composer/platform_check.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,25 +55,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "credentialsType com.jetbrains.php.remote.interpreter.ui.PhpCreateRemoteSdkForm": "Docker Compose",
-    "credentialsType com.jetbrains.php.remote.interpreter.ui.PhpInplaceEditRemoteSdkForm": "Docker Compose",
-    "git-widget-placeholder": "project-setup",
-    "last_opened_file_path": "C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi/app/public/media",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "php.override.implement.member.chooser.php.doc": "NONE",
-    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php.composer",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;credentialsType com.jetbrains.php.remote.interpreter.ui.PhpCreateRemoteSdkForm&quot;: &quot;Docker Compose&quot;,
+    &quot;credentialsType com.jetbrains.php.remote.interpreter.ui.PhpInplaceEditRemoteSdkForm&quot;: &quot;Docker Compose&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;project-setup&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/brhig/OneDrive/Escritorio/webd2_assignment/IT2B_Webdev2_end_assignment_577147/knowitall_restapi/app/public/media&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php.composer&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\brhig\OneDrive\Escritorio\webd2_assignment\IT2B_Webdev2_end_assignment_577147\knowitall_restapi\app\public\media" />
@@ -124,6 +111,7 @@
       <workItem from="1711458964266" duration="3159000" />
       <workItem from="1711490579495" duration="4664000" />
       <workItem from="1711537785113" duration="12558000" />
+      <workItem from="1711624068621" duration="3121000" />
     </task>
     <servers />
   </component>

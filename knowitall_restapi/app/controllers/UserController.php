@@ -33,16 +33,28 @@ class UserController extends Controller
         $this->respond($users);
     }
 
-    public function getOne($id)
+    public function getOne($id = NULL)
     {
-        $user = $this->service->getUserById($id);
+        $decoded = $this->checkForJwt();
 
-        if (!$user) {
-            $this->respondWithError(404, "User not found");
-            return;
+        if ($decoded){
+            if(isset($id)){
+                $user = $this->service->getUserById($id);
+            } else {
+                $user = $decoded->data->id;
+            }
+
+            if (!$user) {
+                $this->respondWithError(404, "User not found");
+                return;
+            }
+
+            $this->respond($user);
+
+        } else {
+            $this->respondWithError(401, 'Unauthorized Access to this information!');
         }
 
-        $this->respond($user);
     }
 
     private function generateJwt($user){
@@ -53,7 +65,7 @@ class UserController extends Controller
         $notBefore = $issuedAt;
         $expire = $issuedAt + 600;
 
-        $secretKey = "";
+        $secretKey = "577_ANDhrigUEZ_147";
 
         $payload = array(
             "iss" => $issuer,
