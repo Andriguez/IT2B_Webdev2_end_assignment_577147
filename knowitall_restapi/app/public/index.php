@@ -3,6 +3,8 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 
+date_default_timezone_set('UTC');
+
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
@@ -24,6 +26,9 @@ $router->get('/users/(\d+)', 'UserController@getOne');
 $router->post('/users', 'UserController@create');
 $router->put('/users/(\d+)', 'UserController@update');
 $router->delete('/users/(\d+)', 'UserController@delete');
+$router->post('/login', 'UserController@login');
+
+
 
 $router->get('/player/(\d+)', 'PlayerController@getOne');
 

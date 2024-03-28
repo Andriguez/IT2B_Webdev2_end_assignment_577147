@@ -7,8 +7,11 @@
       <sourceFolder url="file://$MODULE_DIR$/app/repositories" isTestSource="false" packagePrefix="Repositories\" />
       <sourceFolder url="file://$MODULE_DIR$/app/routers" isTestSource="false" packagePrefix="Routers\" />
       <sourceFolder url="file://$MODULE_DIR$/app/services" isTestSource="false" packagePrefix="Services\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/bramus/router" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/firebase/php-jwt" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

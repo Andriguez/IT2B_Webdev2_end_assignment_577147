@@ -113,21 +113,23 @@ class UserRepository extends Repository
     {
         try {
             // retrieve the user with the given username
-            $stmt = $this->connection->prepare("SELECT id, username, password, email FROM user WHERE username = :username");
+            $stmt = $this->connection->prepare("SELECT `Id` FROM `users` WHERE username = :username");
             $stmt->bindParam(':username', $username);
             $stmt->execute();
 
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\User');
-            $user = $stmt->fetch();
+            while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
+                $user = $this->getUserById($row['Id']);
+            }
 
             // verify if the password matches the hash in the database
-            $result = $this->verifyPassword($password, $user->password);
+            //$result = $this->verifyPassword($password, $user->getPassword());
+            $result = $password === $user->getPassword();
 
             if (!$result)
                 return false;
 
             // do not pass the password hash to the caller
-            $user->password = "";
+            $user->setPassword("");
 
             return $user;
         } catch (PDOException $e) {

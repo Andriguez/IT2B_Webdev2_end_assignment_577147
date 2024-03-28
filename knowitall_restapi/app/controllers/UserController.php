@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Exception;
+use Models\User;
 use Services\UserService;
 use \Firebase\JWT\JWT;
 
@@ -42,5 +43,55 @@ class UserController extends Controller
         }
 
         $this->respond($user);
+    }
+
+    private function generateJwt($user){
+
+        $issuer = "http://localhost:5173/";
+        $audience = "http://localhost/";
+        $issuedAt = time();
+        $notBefore = $issuedAt;
+        $expire = $issuedAt + 600;
+
+        $secretKey = "";
+
+        $payload = array(
+            "iss" => $issuer,
+            "aud" => $audience,
+            "iat" => $issuedAt,
+            "nbf" => $notBefore,
+            "exp" => $expire,
+            "data" => array(
+                "id" => $user->getId(),
+                "username" => $user->getUsername(),
+                "usertype" => $user->getUsertype()
+            ));
+
+        $jwt = JWT::encode($payload, $secretKey, 'HS256');
+
+        return array(
+            "message" => "succesful login",
+            "jwt" => $jwt,
+            "username" => $user->getUsername(),
+            "expireAt" => $expire
+        );
+    }
+
+    public function login(){
+        $json = file_get_contents('php://input');
+        $data = json_decode($json);
+
+        $username = $data->username;
+        $password = $data->password;
+
+        $user = $this->service->checkUsernamePassword($username, $password);
+
+        if(!$user){
+            $this->respondWithError(401, 'Invalid login');
+            return;
+        }
+
+        $tokenResponse = $this->generateJwt($user);
+        $this->respond($tokenResponse);
     }
 }
