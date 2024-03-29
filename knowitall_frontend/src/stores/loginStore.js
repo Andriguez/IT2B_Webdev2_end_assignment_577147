@@ -6,11 +6,16 @@ export const useLoginStore = defineStore('login', {
     token: '',
     username: '',
     id: '',
+    usertype: '',
+    loggedIn: false,
+  
   }),
   getters: {
     requestusername: (state) => state.username,
     jwtToken: (state) => state.token,
-    requestuserid: (state) => state.id
+    requestuserid: (state) => state.id,
+    requestusertype: (state) => state.usertype,
+    isLoggedIn: (state) => state.loggedIn
   },
   actions: {
     requestLogin( username, password) {
@@ -25,6 +30,9 @@ export const useLoginStore = defineStore('login', {
           this.username = res.data.username;
           this.token = res.data.jwt;
           this.id = res.data.id;
+          this.usertype = res.data.usertype;
+          this.loggedIn = true;
+          alert(res.data.usertype);
           resolve()
       })
       .catch((error) => reject(error));

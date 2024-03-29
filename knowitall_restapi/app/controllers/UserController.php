@@ -76,7 +76,6 @@ class UserController extends Controller
             "data" => array(
                 "id" => $user->getId(),
                 "username" => $user->getUsername(),
-                "usertype" => $user->getUsertype()
             ));
 
         $jwt = JWT::encode($payload, $secretKey, 'HS256');
@@ -85,7 +84,9 @@ class UserController extends Controller
             "message" => "succesful login",
             "jwt" => $jwt,
             "username" => $user->getUsername(),
-            "expireAt" => $expire
+            "expireAt" => $expire,
+            "usertype" => $user->getUsertype()->getName()
+
         );
     }
 

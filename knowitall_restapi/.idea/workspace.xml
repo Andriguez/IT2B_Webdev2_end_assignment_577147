@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +106,7 @@
       <workItem from="1711458964266" duration="3159000" />
       <workItem from="1711490579495" duration="4664000" />
       <workItem from="1711537785113" duration="12558000" />
-      <workItem from="1711624068621" duration="3121000" />
+      <workItem from="1711624068621" duration="3716000" />
     </task>
     <servers />
   </component>

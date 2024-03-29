@@ -1,9 +1,3 @@
-<script> 
-export default {
-    name: 'Navigation'
-}
-</script>
-
 <template>
     <nav class="navbar d-flex flex-nowrap py-1 expand-lg">
     <div class="container px-0">
@@ -15,17 +9,17 @@ export default {
         </router-link>
         </div>
         <div class="col-3 d-flex flex-nowrap justify-content-end">
-            <router-link class="nav-link py-3 px-5" to="/login">Login</router-link>
-            <router-link class="nav-link py-3 px-2" to="/quizzes">Quiz me</router-link>
-            <router-link class="nav-link py-3 px-3" to="/admin">Admin</router-link>
-            <router-link class="nav-link py-3 px-3" to="/">exit</router-link>
+            <router-link v-if="!isLoggedIn()" class="nav-link py-3 px-5" to="/login">Login</router-link>
+            <router-link v-if="isLoggedIn() && isPlayer()" class="nav-link py-3 px-2" to="/quizzes">Quiz me</router-link>
+            <router-link v-if="isLoggedIn() && isAdmin()" class="nav-link py-3 px-3" to="/admin">Admin</router-link>
+            <router-link v-if="isLoggedIn() && isQuiz()" class="nav-link py-3 px-3" to="/">exit</router-link>
 
-            <div class="dropstart">
+            <div v-if="isLoggedIn() && isPlayer()" class="dropstart">
                 <a class="nav-link" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="../assets/user_icon_noshadow.png" height="70" alt="icon">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><h5 class="px-3">Hello, Player</h5></li>
+                    <li><h5 class="px-3">Hello, <span>Player</span></h5></li>
                     <li><router-link class="dropdown-item" to="/player">view profile</router-link></li>
                     <li><router-link class="dropdown-item" to="/player">edit profile</router-link></li>
                     <li><router-link class="dropdown-item" to="/">log out</router-link></li>
@@ -36,7 +30,52 @@ export default {
 </nav>
 </template>
 
+<script> 
+import { useLoginStore } from '../stores/loginStore';
 
+export default {
+    name: 'Navigation',
+    data() {
+        return {
+            loginStore: useLoginStore(),
+        };
+    },
+    mounted(){
+        this.loginStore = useLoginStore();
+        if (!this.loginStore) {
+            console.error('Failed to initialize login store');
+            return;
+        }
+    },
+    methods: {
+        isLoggedIn(){
+            if (!this.loginStore) {
+                return false;
+            }
+            return this.loginStore.isLoggedIn;
+        },
+        isAdmin(){
+            if (!this.loginStore) {
+                return false;
+            }
+            return this.loginStore.requestusertype === 'admin';
+        },
+        isPlayer(){
+            if (!this.loginStore) {
+                return false;
+            }
+            return this.loginStore.requestusertype === 'player';
+        },
+        isQuiz(){
+            if (!this.loginStore) {
+                return false;
+            }
+            return this.$route.path === '/quiz';
+        }
+
+    }
+}
+</script>
 
 <style>
 .navbar{
