@@ -85,7 +85,9 @@ class UserController extends Controller
             "jwt" => $jwt,
             "username" => $user->getUsername(),
             "expireAt" => $expire,
-            "usertype" => $user->getUsertype()->getName()
+            "usertype" => $user->getUsertype()->getName(),
+            "name" => $user->getName(),
+            "id" => $user->getId(),
 
         );
     }

@@ -23,7 +23,10 @@ class History implements \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize(){
         return [
-            'quiz' => $this->quiz->getName(),
+            'quiz_name' => $this->quiz->getName(),
+            'quiz_topic' => $this->quiz->getTopic()->getName(),
+            'quiz_level' => $this->quiz->getLevel()->getName(),
+            'quiz_nr_questions' => count($this->quiz->getQuestions()),
             'nr_correct_answers' => $this->nr_correct_answers,
             'playtime' => $this->playtime,
             'last_played' => $this->last_played->format('d/m/y H:i'),

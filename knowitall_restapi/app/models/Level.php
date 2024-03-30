@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class Level
+class Level implements \JsonSerializable
 {
     private int $id;
     private string $name;
@@ -18,7 +18,7 @@ class Level
     {
         return [
             'Id' => $this->id,
-            'topic' => $this->name,
+            'level' => $this->name,
         ];
     }
 }

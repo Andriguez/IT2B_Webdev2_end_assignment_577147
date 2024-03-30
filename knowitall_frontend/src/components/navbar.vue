@@ -5,12 +5,13 @@
         </div>
         <div class="col-6 d-flex justify-content-center">
         <router-link class="navbar-brand py-0" to="/">
-            <img src="../assets/KNOW-IT-ALL_logo.png" alt="logo" width="100" height="70">
+            <img v-if="!isQuiz()" src="../assets/KNOW-IT-ALL_logo.png" alt="logo" width="100" height="70">
+            <img v-if="isQuiz()" src="../assets/do-you-know-it-all.png" alt="logo" width="150" height="70">
         </router-link>
         </div>
         <div class="col-3 d-flex flex-nowrap justify-content-end">
             <router-link v-if="!isLoggedIn()" class="nav-link py-3 px-5" to="/login">Login</router-link>
-            <router-link v-if="isLoggedIn() && isPlayer()" class="nav-link py-3 px-2" to="/quizzes">Quiz me</router-link>
+            <router-link v-if="isLoggedIn() && isPlayer() && !isQuiz()" class="nav-link py-3 px-2" to="/quizzes">Quiz me</router-link>
             <router-link v-if="isLoggedIn() && isAdmin()" class="nav-link py-3 px-3" to="/admin">Admin</router-link>
             <router-link v-if="isLoggedIn() && isQuiz()" class="nav-link py-3 px-3" to="/">exit</router-link>
 
@@ -19,10 +20,10 @@
                     <img src="../assets/user_icon_noshadow.png" height="70" alt="icon">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><h5 class="px-3">Hello, <span>Player</span></h5></li>
+                    <li><h5 class="px-3">Hello, {{ this.getNameOfUser() }}</h5></li>
                     <li><router-link class="dropdown-item" to="/player">view profile</router-link></li>
                     <li><router-link class="dropdown-item" to="/player">edit profile</router-link></li>
-                    <li><router-link class="dropdown-item" to="/">log out</router-link></li>
+                    <li><a class="dropdown-item" href="/">log out</a></li>
                 </ul>
             </div>
         </div>
@@ -71,6 +72,12 @@ export default {
                 return false;
             }
             return this.$route.path === '/quiz';
+        },
+        getNameOfUser(){
+            if (!this.loginStore) {
+                return 'Player';
+            }
+            return this.loginStore.name;
         }
 
     }

@@ -16,7 +16,11 @@ class Favorite implements \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize(){
         return [
-            'quiz' => $this->quiz->getName(),
+            'quiz_name' => $this->quiz->getName(),
+            'quiz_topic' => $this->quiz->getTopic()->getName(),
+            'quiz_level' => $this->quiz->getLevel()->getName(),
+            'quiz_avg' => $this->quiz->getAverage(),
+            'quiz_nr_players' => $this->quiz->getNrPlayers(),
             'saved_At' => $this->savedAt->format('d/m/y H:i'),
         ];
     }

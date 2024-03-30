@@ -20,7 +20,7 @@ class Quiz implements \JsonSerializable
     public function setQuestions(array $questions){ $this->questions = $questions; }
 
 
-    public function getId(){    return $this->id;    }
+    public function getId(){    return $this->Id;    }
     public function getName(){  return $this->name;    }
     public function getNrPlayers(){ return $this->nr_players ; }
     public function getAverage(){ return $this->avg_correct_answers;    }

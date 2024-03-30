@@ -12,7 +12,7 @@ class QuizService
     }
 
     public function getAllQuizzes($offset = NULL, $limit = NULL){ return $this->quizRepo->getAllQuizzes($offset, $limit); }
-
+    public function getQuizzesByTopic($topicId, $offset = NULL, $limit = NULL){ return $this->quizRepo->getQuizzesByTopic($topicId, $offset, $limit); }
     public function getQuizById($Id){ return $this->quizRepo->getQuizById($Id); }
 
     public function getQuestions($quizId){ return $this->quizRepo->getQuestions($quizId); }

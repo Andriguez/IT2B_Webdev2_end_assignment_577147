@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from 'vue';
-import History from './player_history_list.vue'
-import Favorites from './player_favorites_list.vue'
+import PlayerHistory from './player_history_list.vue'
+import PlayerFavorites from './player_favorites_list.vue'
+import PlayerDetail from './player_detail.vue'
+import axios from '../../../axios-auth'
+import { useLoginStore } from '@/stores/loginStore';
 
 const activeTab = ref('history');
 </script>
@@ -14,26 +17,16 @@ const activeTab = ref('history');
     <img src="../../../assets/user-profile-img.png">
     </div>
     <div>
-    <span id="player-name" class="round-font">Player Name</span>
-    <span id="player-user-name" class="">@username</span>
+    <span id="player-name" class="round-font">{{ loginStore.requestName }} </span>
+    <span id="player-user-name" class="">@{{ loginStore.requestusername }}</span>
 
         <div class="container details d-flex flex-wrap">
-        <div class="detail d-flex flex-wrap">
-            <span class="detail-title"><br>ranking</span>
-            <span class="detail-content round-font">#7</span>
-        </div>
-        <div class="detail d-flex flex-wrap">
-            <span class="detail-title"><br>average</span>
-            <span class="detail-content round-font">75%</span>
-        </div>
-        <div class="detail d-flex flex-wrap">
-            <span class="detail-title"><br>playtime</span>
-            <span class="detail-content round-font">10:00</span>
-        </div>
-        <div class="detail d-flex flex-wrap">
-            <span class="detail-title" style="font-size: 15px;">quizzes played</span>
-            <span class="detail-content round-font">15</span>
-        </div>
+            <PlayerDetail
+            v-for="(value, key) in details"
+            :key="key"
+            :title="key"
+            :value ="value"
+             />
     </div>
     </div>
 </div>
@@ -44,15 +37,43 @@ const activeTab = ref('history');
 </nav>
 
 <div v-if="activeTab === 'history'">
-<History />
+<PlayerHistory />
 </div>
 <div v-else-if="activeTab === 'favorites'">
-<Favorites />
+<PlayerFavorites />
 </div>
 
 </main>
 </template>
 
+<script>
+export default {
+    name: 'playerProfile',
+    components: {
+        PlayerDetail,
+        PlayerHistory,
+        PlayerFavorites,
+    },
+// props: {
+  //      detail: Object
+    //},
+    data(){
+        return {
+            details: [],
+            userId: '',
+            loginStore: '',
+        };
+    },
+    mounted(){
+        this.loginStore = useLoginStore();
+        this.userId = this.loginStore.requestuserid
+
+        axios.get(`/player/${this.userId}`)
+        .then(result => this.details = result.data)
+        .catch(error => console.log(error))
+    }
+};
+</script>
 
 
 <style>
@@ -91,27 +112,6 @@ const activeTab = ref('history');
             font-size: 20px;
             font-weight: bold;
             color: #47008F;
-        }
-        .detail{
-            max-width: 50px;
-            padding: 1px 5px 1px 5px;
-            margin: 1px 25px 1px 25px;
-            justify-content: center;
-
-            .detail-title{
-                color: #47008F;
-                font-weight: bold;
-                font-size: 18px;
-            }
-            .detail-content{
-                font-size: 30px;
-                color: #A8DF7D;
-                text-shadow: -1px -1px 0 #47008F,
-                1px -1px 0 #47008F,
-                -1px 1px 0 #47008F,
-                1px 1px 0 #47008F !important;
-
-            }
         }
     }
 </style>

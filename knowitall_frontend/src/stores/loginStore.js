@@ -5,17 +5,19 @@ export const useLoginStore = defineStore('login', {
   state: () => ({
     token: '',
     username: '',
-    id: '',
+    userId: '',
     usertype: '',
     loggedIn: false,
+    name: '',
   
   }),
   getters: {
     requestusername: (state) => state.username,
     jwtToken: (state) => state.token,
-    requestuserid: (state) => state.id,
+    requestuserid: (state) => state.userId,
     requestusertype: (state) => state.usertype,
-    isLoggedIn: (state) => state.loggedIn
+    isLoggedIn: (state) => state.loggedIn,
+    requestName: (state) => state.name
   },
   actions: {
     requestLogin( username, password) {
@@ -29,10 +31,11 @@ export const useLoginStore = defineStore('login', {
           axios.defaults.headers.common['Authorization'] = "Bearer " + res.data.jwt;
           this.username = res.data.username;
           this.token = res.data.jwt;
-          this.id = res.data.id;
+          this.userId = res.data.id;
+          this.name = res.data.name;
           this.usertype = res.data.usertype;
+
           this.loggedIn = true;
-          alert(res.data.usertype);
           resolve()
       })
       .catch((error) => reject(error));

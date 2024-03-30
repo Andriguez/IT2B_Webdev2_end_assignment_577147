@@ -24,11 +24,10 @@ class PlayerProfile implements \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize(){
         return [
-            'player_average' => $this->average,
-            'player_ranking' => $this->ranking,
-            'player_playtime' => $this->playtime,
-            'player_history' => $this->history,
-            'player_favorites' => $this->favorites
+            'average' => "{$this->average}%",
+            'ranking' => "#{$this->ranking}",
+            'playtime' => $this->playtime,
+            'answered' => count($this->history)
         ];
     }
 }

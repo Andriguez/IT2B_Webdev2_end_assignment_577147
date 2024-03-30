@@ -31,9 +31,18 @@ $router->post('/users/login', 'UserController@login');
 
 
 $router->get('/player/(\d+)', 'PlayerController@getOne');
+$router->get('/player/(\d+)/history', 'PlayerController@getPlayerHistory');
+$router->get('/player/(\d+/favorites)', 'PlayerController@getPlayerFavorites');
+
+
 
 $router->get('/quizzes', 'QuizController@getAll');
-$router->get('/quizzes/(\d+)', 'QuizController@getOne');
+$router->get('/quizzes/(\d+)', 'QuizController@getQuizzesByTopic');
+
+$router->get('/quizzes/topics', 'QuizController@getAllTopics');
+$router->get('/quizzes/topics/(\d+)', 'QuizController@getTopic');
+
+
 $router->post('/quizzes', 'QuizController@create');
 $router->put('/quizzes/(\d+)', 'QuizController@update');
 $router->delete('/quizzes/(\d+)', 'QuizController@delete');

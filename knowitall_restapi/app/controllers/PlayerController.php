@@ -42,4 +42,26 @@ class PlayerController extends Controller
 
         $this->respond($user->getProfile());
     }
+
+    public function getPlayerHistory($playerId){
+        $history = $this->playerService->getPlayerHistory($playerId);
+
+        if(!isset($history)){
+            $this->respondWithError(404, "Player history not found");
+            return;
+        }
+
+        $this->respond($history);
+    }
+
+    public function getPlayerFavorites($playerId){
+        $favorites = $this->playerService->getPlayerFavorites($playerId);
+
+        if(!isset($favorites)){
+            $this->respondWithError(404, "Player favorites list not found");
+            return;
+        }
+
+        $this->respond($favorites);
+    }
 }

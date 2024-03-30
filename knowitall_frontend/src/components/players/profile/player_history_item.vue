@@ -1,31 +1,40 @@
 <template>
     <div class="card">
             <div class="card-header">
-                <span class="quiz-name">quizz name</span>
-                <span class="quiz-topic">#topic</span>
+                <span class="quiz-name">{{ historyLog.quiz_name }}</span>
+                <span class="quiz-topic">#{{ historyLog.quiz_topic }}</span>
             </div>
             <div class="card-body d-flex flex-nowrap justify-content-center">
                 <div class="quiz-detail">
                     <h5 class="card-title"><br>level</h5>
-                    <p class="card-text round-font">hard</p>
+                    <p class="card-text round-font">{{ historyLog.quiz_level}}</p>
                 </div>
                 <div class="quiz-detail">
-                    <h5 class="card-title">global average</h5>
-                    <p class="card-text round-font">30%</p>
+                    <h5 class="card-title"><br>play time</h5>
+                    <p class="card-text round-font">{{ historyLog.playtime }}</p>
                 </div>
                 <div class="quiz-detail">
-                    <h5 class="card-title">times answered</h5>
-                    <p class="card-text round-font">36</p>
+                    <h5 class="card-title">correct questions</h5>
+                    <p class="card-text round-font">{{ historyLog.nr_correct_answers }} / {{ historyLog.quiz_nr_questions }}</p>
                 </div>
                 <div class="quiz-detail"><a href="#" class="btn btn-primary">▶</a></div>
 
             </div>
             <div class="card-footer d-flex justify-content-end">
-                <label>last modified </label>
-                <span>23/03/24</span>
+                <label>answered on </label>
+                <span>{{ historyLog.last_played }}</span>
             </div>
         </div>
 </template>
+
+<script>
+export default {
+    name: 'HistoryLog',
+    props: {
+        historyLog: Object
+    }
+}
+</script>
 
 <style>
 .card {
