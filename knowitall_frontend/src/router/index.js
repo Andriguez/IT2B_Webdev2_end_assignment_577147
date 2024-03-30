@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useLoginStore } from '@/stores/loginStore'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 
@@ -24,24 +25,63 @@ const router = createRouter({
     {
       path: '/quizzes',
       name: 'quizzes',
-      component: () => import('../views/QuizzesView.vue')
+      component: () => import('../views/QuizzesView.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/admin',
       name: 'admin',
-      component: () => import('../views/RegisterView.vue')
+      component: () => import('../views/RegisterView.vue'),
+      meta: { requiresAuth: true, requiresAdmin: true }
     },
     {
       path: '/player',
       name: 'player',
-      component: () => import('../views/PlayerProfileView.vue')
+      component: () => import('../views/PlayerProfileView.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/quiz',
       name: 'quiz',
-      component: () => import('../views/QuizView.vue')
+      component: () => import('../views/QuizView.vue'),
+      meta: { requiresAuth: true }
+
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      meta: { requiresAuth: true },
+      beforeEnter: (to, from, next) => {
+        const loginStore = useLoginStore();
+        loginStore.logout();
+        next('/');
+      }
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  const loginStore = useLoginStore();
+
+  if(loginStore.isLoggedIn && (to.path === '/login' || to.path === '/register')){
+      next('/');
+  }
+
+  if(to.meta.requiresAuth){
+    
+    if(!loginStore.isLoggedIn){
+      next('/login');
+    } else {
+      if(to.meta.requiresAdmin && loginStore.requestusertype !== 'admin'){
+        next('/');
+
+      } else {
+        next();
+      }
+    }
+  } else {
+    next();
+  }
+});
 
 export default router

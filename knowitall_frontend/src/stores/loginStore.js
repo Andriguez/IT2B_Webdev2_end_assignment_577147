@@ -4,20 +4,14 @@ import axios from '@/axios-auth';
 export const useLoginStore = defineStore('login', {
   state: () => ({
     token: '',
-    username: '',
-    userId: '',
-    usertype: '',
     loggedIn: false,
-    name: '',
-  
+    userData: ''
+
   }),
   getters: {
-    requestusername: (state) => state.username,
     jwtToken: (state) => state.token,
-    requestuserid: (state) => state.userId,
-    requestusertype: (state) => state.usertype,
     isLoggedIn: (state) => state.loggedIn,
-    requestName: (state) => state.name
+    requestUserData: (state) => state.userData
   },
   actions: {
     requestLogin( username, password) {
@@ -27,19 +21,41 @@ export const useLoginStore = defineStore('login', {
           password: password,
       })
       .then((res)=>{ 
-          console.log(res.data);
           axios.defaults.headers.common['Authorization'] = "Bearer " + res.data.jwt;
-          this.username = res.data.username;
           this.token = res.data.jwt;
-          this.userId = res.data.id;
-          this.name = res.data.name;
-          this.usertype = res.data.usertype;
-
           this.loggedIn = true;
+          this.userData = res.data;
+          localStorage.setItem('jwtToken', res.data.jwt);
+          localStorage.setItem('userData', JSON.stringify(res.data));
+          console.log(res.data);
           resolve()
       })
       .catch((error) => reject(error));
       },
     )},
+    logout(){
+      localStorage.removeItem('jwtToken');
+      localStorage.removeItem('userData')
+      this.loggedIn = false;
+
+      delete axios.defaults.headers.common['Authorization'];
+      return Promise.resolve('/');
+    },
+    retriveTokenFromStorage(){
+
+      if(localStorage.getItem('jwtToken')){
+        const localUserData = localStorage.getItem('userData');
+        this.loggedIn = true;
+        this.token = localStorage.getItem('jwtToken');
+        this.userData = JSON.parse(localUserData);
+        console.log(this.userData)
+  
+        axios.defaults.headers.common['Authorization'] = "Bearer " + this.token;
+        return Promise.resolve('/');
+
+      } else {
+        return Promise.resolve('/login')
+      }
+    }
   },
 })

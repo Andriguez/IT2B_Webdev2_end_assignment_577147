@@ -27,7 +27,7 @@ export default {
     },
     mounted(){
         this.loginStore = useLoginStore();
-        this.userId = this.loginStore.requestuserid
+        this.userId = this.loginStore.requestUserData.id;
 
         axios.get(`/player/${this.userId}/favorites`)
         .then(result => this.favorites = result.data)

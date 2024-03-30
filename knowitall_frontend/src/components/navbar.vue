@@ -13,6 +13,7 @@
             <router-link v-if="!isLoggedIn()" class="nav-link py-3 px-5" to="/login">Login</router-link>
             <router-link v-if="isLoggedIn() && isPlayer() && !isQuiz()" class="nav-link py-3 px-2" to="/quizzes">Quiz me</router-link>
             <router-link v-if="isLoggedIn() && isAdmin()" class="nav-link py-3 px-3" to="/admin">Admin</router-link>
+            <router-link v-if="isLoggedIn() && isAdmin()" class="nav-link py-3 px-3" to="/logout">log out</router-link>
             <router-link v-if="isLoggedIn() && isQuiz()" class="nav-link py-3 px-3" to="/">exit</router-link>
 
             <div v-if="isLoggedIn() && isPlayer()" class="dropstart">
@@ -23,7 +24,7 @@
                     <li><h5 class="px-3">Hello, {{ this.getNameOfUser() }}</h5></li>
                     <li><router-link class="dropdown-item" to="/player">view profile</router-link></li>
                     <li><router-link class="dropdown-item" to="/player">edit profile</router-link></li>
-                    <li><a class="dropdown-item" href="/">log out</a></li>
+                    <li><router-link class="dropdown-item" to="/logout">log out</router-link></li>
                 </ul>
             </div>
         </div>
@@ -42,7 +43,6 @@ export default {
         };
     },
     mounted(){
-        this.loginStore = useLoginStore();
         if (!this.loginStore) {
             console.error('Failed to initialize login store');
             return;
@@ -59,13 +59,13 @@ export default {
             if (!this.loginStore) {
                 return false;
             }
-            return this.loginStore.requestusertype === 'admin';
+            return this.loginStore.requestUserData.usertype === 'admin';
         },
         isPlayer(){
             if (!this.loginStore) {
                 return false;
             }
-            return this.loginStore.requestusertype === 'player';
+            return this.loginStore.requestUserData.usertype === 'player';
         },
         isQuiz(){
             if (!this.loginStore) {
@@ -77,7 +77,7 @@ export default {
             if (!this.loginStore) {
                 return 'Player';
             }
-            return this.loginStore.name;
+            return this.loginStore.requestUserData.name;
         }
 
     }

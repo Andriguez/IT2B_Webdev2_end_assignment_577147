@@ -17,8 +17,8 @@ const activeTab = ref('history');
     <img src="../../../assets/user-profile-img.png">
     </div>
     <div>
-    <span id="player-name" class="round-font">{{ loginStore.requestName }} </span>
-    <span id="player-user-name" class="">@{{ loginStore.requestusername }}</span>
+    <span id="player-name" class="round-font">{{ getName() }}  </span>
+    <span id="player-user-name" class=""> @{{ getUsername() }}</span>
 
         <div class="container details d-flex flex-wrap">
             <PlayerDetail
@@ -61,16 +61,23 @@ export default {
         return {
             details: [],
             userId: '',
-            loginStore: '',
+            loginStore: useLoginStore(),
         };
     },
     mounted(){
-        this.loginStore = useLoginStore();
-        this.userId = this.loginStore.requestuserid
+        this.userId = this.loginStore.requestUserData.id;
 
         axios.get(`/player/${this.userId}`)
         .then(result => this.details = result.data)
         .catch(error => console.log(error))
+    },
+    methods: {
+        getName(){
+            return this.loginStore.requestUserData.name;
+        },
+        getUsername(){
+            return this.loginStore.requestUserData.username;
+        }
     }
 };
 </script>
