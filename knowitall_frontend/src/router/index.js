@@ -31,7 +31,7 @@ const router = createRouter({
     {
       path: '/admin',
       name: 'admin',
-      component: () => import('../views/RegisterView.vue'),
+      component: () => import('../views/AdminView.vue'),
       meta: { requiresAuth: true, requiresAdmin: true }
     },
     {
@@ -72,7 +72,7 @@ router.beforeEach((to, from, next) => {
     if(!loginStore.isLoggedIn){
       next('/login');
     } else {
-      if(to.meta.requiresAdmin && loginStore.requestusertype !== 'admin'){
+      if(to.meta.requiresAdmin && loginStore.requestUserData.usertype !== 'admin'){
         next('/');
 
       } else {
