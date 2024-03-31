@@ -3,6 +3,7 @@ import QuizTableItem from './quiz_table_item.vue';
 </script>
 
 <template>
+<div class="d-flex justify-content-center"><h3 class="round-font">Quizzes</h3></div>
 <div class="btn-group p-4">
     <button type="button" class="btn dropdown-toggle" style="width: 120px;" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="round-font">all topics</span>

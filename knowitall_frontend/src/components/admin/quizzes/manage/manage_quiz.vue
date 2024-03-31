@@ -3,6 +3,7 @@ import Question from './manage_quiz_question.vue'
 </script>
 
 <template>
+    <div class="d-flex justify-content-center"><h3 class="round-font">Quizzes</h3></div>
 <div class="container">
 <form class="row g-3">
     <div class="col-md-6">
