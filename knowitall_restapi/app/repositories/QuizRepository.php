@@ -148,7 +148,7 @@ class QuizRepository extends Repository
 
     public function getQuestionById($Id){
         try {
-            $query = "SELECT `question`, `timer` FROM `questions` WHERE `Id` = :id";
+            $query = "SELECT `question` FROM `questions` WHERE `Id` = :id";
 
             $stmt = $this->connection->prepare($query);
             $stmt->bindParam(':id', $Id, PDO::PARAM_INT);
@@ -158,7 +158,6 @@ class QuizRepository extends Repository
                 $question = new Question();
                 $question->setId($Id);
                 $question->setQuestion($row['question']);
-                $question->setTimer($row['timer']);
                 $question->setAnswers($this->getAnswers($Id));
             }
 
