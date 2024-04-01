@@ -1,11 +1,13 @@
 <?php
 namespace Controllers;
 
+use Services\FlagService;
 use Services\QuizService;
 
 class QuizController extends Controller
 {
     private QuizService $quizService;
+    private FlagService $flagService;
 
     public function __construct()
     {
@@ -25,7 +27,12 @@ class QuizController extends Controller
         }
 
         $quizzesObjects = $this->quizService->getAllQuizzes($offset, $limit);
-        $this->respond($this->quizToJSON($quizzesObjects));
+
+        if($this->getLoggedUser($this->checkForJwt())->getUsertype()->getId() === 1){
+            $this->respond($this->quizToJsonAdmin($quizzesObjects));
+        } else {
+            $this->respond($this->quizToJSON($quizzesObjects));
+        }
 
     }
 
@@ -41,8 +48,12 @@ class QuizController extends Controller
         }
 
         $quizzesObjects = $this->quizService->getQuizzesByTopic($topicId, $offset, $limit);
-        $this->respond($this->quizToJSON($quizzesObjects));
-    }
+
+        if($this->getLoggedUser($this->checkForJwt())->getUsertype()->getId() === 1){
+            $this->respond($this->quizToJsonAdmin($quizzesObjects));
+        } else {
+            $this->respond($this->quizToJSON($quizzesObjects));
+        }    }
 
     private function quizToJSON($inputArray){
         $quizzes = Array();
@@ -53,6 +64,28 @@ class QuizController extends Controller
                 'name' => $quizObject->getName(),
                 'nr_players' => $quizObject->getNrPlayers(),
                 'avg_correct_answers' => $quizObject->getAverage(),
+                'topic' => $quizObject->getTopic()->getName(),
+                'level' => $quizObject->getLevel()->getName(),
+                'mod_date' => $quizObject->getModDate()->format('d/m/y H:i'),
+            );
+
+            $quizzes[] = $quiz;
+        }
+
+        return $quizzes;
+    }
+
+    private function quizToJsonAdmin($inputArray){
+        $quizzes = Array();
+        $this->flagService = new FlagService();
+
+        foreach ($inputArray as $quizObject){
+            $quiz = Array(
+                'Id' => $quizObject->getId(),
+                'name' => $quizObject->getName(),
+                'nr_players' => $quizObject->getNrPlayers(),
+                'nr_questions' => count($quizObject->getQuestions()),
+                'nr_flags' => $this->flagService->getCountFlagsByQuiz($quizObject->getId()),
                 'topic' => $quizObject->getTopic()->getName(),
                 'level' => $quizObject->getLevel()->getName(),
                 'mod_date' => $quizObject->getModDate()->format('d/m/y H:i'),
@@ -91,5 +124,22 @@ class QuizController extends Controller
         }
 
         $this->respond($topic);
+    }
+
+    public function getAllLevels(){
+        $levels = $this->quizService->getAllLevels();
+
+        $this->respond($levels);
+    }
+
+    public function getLevel($levelId){
+        $level = $this->quizService->getLevelById($levelId);
+
+        if(!$level){
+            $this->respondWithError(404, "Level not found");
+            return;
+        }
+
+        $this->respond($level);
     }
 }

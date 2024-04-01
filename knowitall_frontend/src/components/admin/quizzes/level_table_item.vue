@@ -9,8 +9,8 @@ function openWindow(tab) {
 
 <template>
 <tr>
-    <td>level name</td>
-    <td>100</td>
+    <td>{{ level.level }}</td>
+    <td>{{ level.nr_quizzes }}</td>
     <td>
         <div class="btn-group" role="group" aria-label="buttons">
             <button type="button" class="btn btn-primary" @click="openWindow('manage_level')">Edit</button>
@@ -21,5 +21,10 @@ function openWindow(tab) {
 </template>
 
 <script>
-
+export default {
+    name: 'LevelTableItem',
+    props: {
+        level: Object
+    }
+}
 </script>

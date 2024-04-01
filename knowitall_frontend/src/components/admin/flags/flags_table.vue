@@ -82,7 +82,7 @@ export default {
         return 'all flags';
       }
     }
-  },
+  }
 
 }
 </script>

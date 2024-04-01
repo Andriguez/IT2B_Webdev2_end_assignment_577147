@@ -8,13 +8,14 @@ function openWindow(tab) {
 </script>
 
 <template>
-<tr>
-    <td>quiz name</td>
-    <td>topic</td>
-    <td>level</td>
-    <td>10</td>
-    <td>2</td>
-    <td>96</td>
+<tr v-bind="quiz">
+    <td>{{ quiz.name }}</td>
+    <td>{{ quiz.topic }}</td>
+    <td>{{ quiz.level }}</td>
+    <td>{{ quiz.nr_questions }}</td>
+    <td>{{ quiz.nr_flags }}</td>
+    <td>{{ quiz.nr_players }}</td>
+    <td>{{ quiz.mod_date }}</td>
     <td>
         <div class="btn-group" role="group" aria-label="buttons">
             <button class="btn" @click="openWindow('manage_quiz')">Edit</button>
@@ -25,5 +26,10 @@ function openWindow(tab) {
 </template>
 
 <script>
-
+export default {
+    name: 'QuizTableItem',
+    props: {
+        quiz: Object
+    }
+}
 </script>

@@ -79,7 +79,7 @@ class UserController extends Controller
         $audience = "http://localhost/";
         $issuedAt = time();
         $notBefore = $issuedAt;
-        $expire = $issuedAt + 600;
+        $expire = $issuedAt + 1600;
 
         $secretKey = "577_ANDhrigUEZ_147";
 

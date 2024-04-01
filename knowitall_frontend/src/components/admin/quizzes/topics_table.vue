@@ -1,5 +1,6 @@
 <script setup>
 import TopicTableItem from './topic_table_item.vue'
+import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
@@ -23,12 +24,30 @@ function openWindow(tab) {
 </tr>
 </thead>
 <tbody class="table-group-divider">
-<TopicTableItem  @openWindow="openWindow" />
-<TopicTableItem  @openWindow="openWindow" />
-<TopicTableItem  @openWindow="openWindow" />
+<TopicTableItem v-for="topic in topics"
+:key="topic.Id"
+:topic="topic"
+ @openWindow="openWindow" />
 
 </tbody>
 </table>
-
-
 </template>
+
+<script>
+export default {
+name: 'TopicsTable',
+data(){
+  return {
+    topics: []
+  };
+},
+components: {
+  TopicTableItem
+},
+mounted(){
+  axios.get('/quizzes/topics')
+  .then(result => this.topics = result.data)
+  .catch(error => console.log(error))
+}
+}
+</script>

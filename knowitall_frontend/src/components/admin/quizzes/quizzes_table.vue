@@ -1,5 +1,6 @@
 <script setup>
 import QuizTableItem from './quiz_table_item.vue';
+import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
@@ -12,12 +13,11 @@ function openWindow(tab) {
 <div class="d-flex justify-content-center"><h3 class="round-font">Quizzes</h3></div>
 <div class="btn-group p-4">
     <button type="button" class="btn dropdown-toggle" style="width: 120px;" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="round-font">all topics</span>
+    <span class="round-font">{{ selectedTopicText }}</span>
     </button>
     <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something</a></li>
+        <li><a class="dropdown-item" href="#" @click="getQuizzes(null)">All Quizzes</a></li>
+        <li v-for="topic in topics" :key="topic.Id"><a class="dropdown-item" href="#" @click="getQuizzes(topic)">{{ topic.topic }}</a></li>
     </ul>
 </div>
 
@@ -32,17 +32,64 @@ function openWindow(tab) {
     <th scope="col" class="round-font">Nr questions</th>
     <th scope="col" class="round-font">Nr flags</th>
     <th scope="col" class="round-font">Nr players</th>
+    <th scope="col" class="round-font">Last Modified</th>
     <th scope="col" class="round-font">action</th>
 </tr>
 </thead>
 <tbody class="table-group-divider">
-<QuizTableItem @openWindow="openWindow" />
-<QuizTableItem @openWindow="openWindow" />
-<QuizTableItem @openWindow="openWindow" />
+<QuizTableItem v-for="quiz in quizzes"
+:key="quiz.Id"
+:quiz="quiz"
+@openWindow="openWindow" />
 
 </tbody>
 </table>
 </template>
+
+<script>
+export default {
+    name: 'QuizzesTable',
+    data(){
+        return{
+            quizzes: [],
+            topics: [],
+            selectedTopic: null,
+            getQuizzesURL: ''
+        }
+    },
+    components: {
+       QuizTableItem 
+    },
+    methods: {
+        getQuizzes(topic){
+            this.selectedTopic = topic;
+
+            if(this.selectedTopic === null){ this.getQuizzesURL = '/quizzes' } else { this.getQuizzesURL = `/quizzes/${topic.Id}`}
+
+            axios.get(this.getQuizzesURL)
+            .then(result => this.quizzes = result.data)
+            .catch(error => console.log(error))
+        }
+
+    },
+    mounted(){
+        axios.get('/quizzes/topics')
+        .then(result => this.topics = result.data)
+        .catch(error => console.log(error));
+
+        this.getQuizzes(null);
+    },
+    computed: {
+        selectedTopicText(){
+            if (this.selectedTopic === null) {
+        return 'All Quizzes';
+      } else {
+        return this.selectedTopic.topic;
+      }
+        }
+    }
+}
+</script>
 
 <style>
 .btn{

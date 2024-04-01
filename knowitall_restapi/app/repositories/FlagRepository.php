@@ -89,4 +89,20 @@ class FlagRepository extends Repository
 
     }
 
+    public function getCountFlagsByQuiz($quizId){
+        try {
+
+            $query = "SELECT COUNT(Id) AS amount FROM flags WHERE quiz_Id = :quizId";
+
+            $stmt = $this->connection->prepare($query);
+            $stmt->bindParam(':quizId', $quizId, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
 }

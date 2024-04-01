@@ -9,8 +9,8 @@ function openWindow(tab) {
 
 <template>
 <tr>
-    <td>topic name</td>
-    <td>10</td>
+    <td>{{ topic.topic }}</td>
+    <td>{{ topic.nr_quizzes }}</td>
     <td>
         <div class="btn-group" role="group" aria-label="buttons">
             <button type="button" class="btn btn-primary" @click="openWindow('manage_topic')">Edit</button>
@@ -21,5 +21,10 @@ function openWindow(tab) {
 </template>
 
 <script>
-
+export default {
+    name: 'TopicTableItem',
+    props: {
+        topic: Object
+    }
+}
 </script>

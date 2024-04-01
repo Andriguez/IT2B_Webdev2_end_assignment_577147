@@ -5,9 +5,11 @@ namespace Controllers;
 use Exception;
 use \Firebase\JWT\JWT;
 use \Firebase\JWT\Key;
+use Services\UserService;
 
 class Controller
 {
+    private UserService $userService;
     function respond($data)
     {
         $this->respondWithCode(200, $data);
@@ -69,5 +71,10 @@ class Controller
                 return;
             }
         }
+    }
+
+    protected function getLoggedUser($jwt){
+        $this->userService = new UserService();
+        return $loggedUser = $this->userService->getUserById($jwt->data->id);
     }
 }

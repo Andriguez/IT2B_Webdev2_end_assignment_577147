@@ -27,7 +27,7 @@ abstract class User implements \JsonSerializable {
             'name' => $this->name,
             'username' => $this->username,
             'type' => $this->usertype,
-            
+
         ];
     }
 }

@@ -1,5 +1,6 @@
 <script setup>
 import LevelTableItem from './level_table_item.vue'
+import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
@@ -23,10 +24,30 @@ function openWindow(tab) {
 </tr>
 </thead>
 <tbody class="table-group-divider">
-<LevelTableItem  @openWindow="openWindow" />
-<LevelTableItem />
-<LevelTableItem />
+<LevelTableItem v-for="level in levels"
+:key="level.Id"
+:level="level"
+@openWindow="openWindow" />
 
 </tbody>
 </table>
 </template>
+
+<script>
+export default {
+name: 'LevelsTable',
+data(){
+  return {
+    levels: []
+  };
+},
+components: {
+  LevelTableItem
+},
+mounted(){
+  axios.get('/quizzes/levels')
+  .then(result => this.levels = result.data)
+  .catch(error => console.log(error))
+}
+}
+</script>

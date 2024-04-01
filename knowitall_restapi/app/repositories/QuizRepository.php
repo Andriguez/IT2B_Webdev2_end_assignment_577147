@@ -238,6 +238,8 @@ class QuizRepository extends Repository
                 $level = new Level();
                 $level->setId($Id);
                 $level->setName($row['name']);
+                $level->setNrQuizzes($this->getCountQuizzesBy($Id,'level'));
+
             }
 
             return $level;
@@ -276,9 +278,31 @@ class QuizRepository extends Repository
                 $topic = new Topic();
                 $topic->setId($Id);
                 $topic->setName($row['name']);
+                $topic->setNrQuizzes($this->getCountQuizzesBy($Id, 'topic'));
             }
 
             return $topic;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getCountQuizzesBy($Id, $filter = NULL){
+        try {
+            if ($filter === 'level'){
+                $query = "SELECT COUNT(Id) AS amount FROM quizzes WHERE level = :id";
+            } else if ($filter === 'topic'){
+                $query = "SELECT COUNT(Id) AS amount FROM quizzes WHERE topic = :id";
+            } else {
+                $query = "SELECT COUNT(Id) AS amount FROM quizzes";
+            }
+
+            $stmt = $this->connection->prepare($query);
+            $stmt->bindParam(':id', $Id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            return $stmt->fetchColumn();
         } catch (PDOException $e) {
             echo $e;
         }

@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/flags/flags_table.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/flags/flags_table.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/topics_table.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/topics_table.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/QuizController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Level.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Level.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Topic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Topic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/UserService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/FlagRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/FlagRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/QuizRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/QuizRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/FlagService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/FlagService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +122,7 @@
       <workItem from="1711805169919" duration="9961000" />
       <workItem from="1711898006387" duration="2588000" />
       <workItem from="1711911804845" duration="5653000" />
-      <workItem from="1711981863462" duration="1465000" />
+      <workItem from="1711981863462" duration="7024000" />
     </task>
     <servers />
   </component>
