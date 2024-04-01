@@ -33,6 +33,22 @@ class UserController extends Controller
         $this->respond($users);
     }
 
+    public function getUsersByType($type){
+        $offset = NULL;
+        $limit = NULL;
+
+        if (isset($_GET["offset"]) && is_numeric($_GET["offset"])) {
+            $offset = $_GET["offset"];
+        }
+        if (isset($_GET["limit"]) && is_numeric($_GET["limit"])) {
+            $limit = $_GET["limit"];
+        }
+
+        $users = $this->service->getUsersByType($type, $offset, $limit);
+
+        $this->respond($users);
+    }
+
     public function getOne($id = NULL)
     {
         $decoded = $this->checkForJwt();

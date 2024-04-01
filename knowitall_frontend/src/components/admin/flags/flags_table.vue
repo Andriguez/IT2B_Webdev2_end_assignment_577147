@@ -65,9 +65,7 @@ export default {
             if(this.selectedFilter === null){ this.getFlagsURL = '/flags' } else {this.getFlagsURL = `/flags/${filter}`};
 
             axios.get(this.getFlagsURL)
-            .then(result => {
-                this.flags = result.data;
-                console.log(result.data);})
+            .then(result => this.flags = result.data)
                 .catch(error => console.log(error))
         }
     },

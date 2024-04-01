@@ -37,9 +37,35 @@ class UserRepository extends Repository
         }
     }
 
+    function getUsersByType($type, $offset = NULL, $limit = NULL)
+    {
+        try {
+            $query = "SELECT `Id` FROM users WHERE usertype = :type";
+            if (isset($limit) && isset($offset)) {
+                $query .= " LIMIT :limit OFFSET :offset ";
+            }
+            $stmt = $this->connection->prepare($query);
+            if (isset($limit) && isset($offset)) {
+                $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+                $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            }
+
+            $stmt->bindParam(':type', $type, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $users = array();
+            while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
+                $users[] = $this->getUserById($row['Id']);
+            }
+
+            return $users;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     public function getUserById($id){
         $query = "SELECT `name`, `username`, `password`, `usertype` FROM `users` WHERE Id = :id";
-
 
         try{
             $statement = $this->connection->prepare($query);

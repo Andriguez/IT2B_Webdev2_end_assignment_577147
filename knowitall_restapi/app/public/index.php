@@ -22,11 +22,14 @@ $router->put('/products/(\d+)', 'ProductController@update');
 $router->delete('/products/(\d+)', 'ProductController@delete');
 
 $router->get('/users', 'UserController@getAll');
-$router->get('/users/(\d+)', 'UserController@getOne');
-$router->post('/users', 'UserController@create');
-$router->put('/users/(\d+)', 'UserController@update');
-$router->delete('/users/(\d+)', 'UserController@delete');
+$router->get('/users/(\d+)', 'UserController@getUsersByType');
+$router->get('/user/(\d+)', 'UserController@getOne');
+$router->post('/user', 'UserController@create');
+$router->put('/user/(\d+)', 'UserController@update');
+$router->delete('/user/(\d+)', 'UserController@delete');
 $router->post('/users/login', 'UserController@login');
+
+
 
 
 

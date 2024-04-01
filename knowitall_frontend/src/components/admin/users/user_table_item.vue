@@ -9,10 +9,9 @@ function openWindow(tab) {
 
 <template>
 <tr>
-    <td>user name</td>
-    <td>user username</td>
-    <td>39</td>
-    <td>player</td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.username }}</td>
+    <td>{{ user.type.type_name }}</td>
     <td>
         <div class="btn-group" role="group" aria-label="buttons">
             <button type="button" class="btn btn-primary" @click="openWindow('manage_user')">Edit</button>
@@ -23,5 +22,11 @@ function openWindow(tab) {
 </template>
 
 <script>
+export default {
+    name: 'UserTableItem',
+    props:{
+        user: Object
+    }
+}
 
 </script>
