@@ -31,6 +31,32 @@ class FlagRepository extends Repository
         }
     }
 
+    public function getAllFlagsByFilter($isSolved ,$offset = NULL, $limit = NULL){
+        try {
+            $query = "SELECT `Id` FROM flags WHERE isSolved = :input";
+            if (isset($limit) && isset($offset)) {
+                $query .= " LIMIT :limit OFFSET :offset ";
+            }
+            $stmt = $this->connection->prepare($query);
+            if (isset($limit) && isset($offset)) {
+                $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+                $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            }
+
+            $stmt->bindParam(':input', $isSolved, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $flags = array();
+            while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
+                $flags[] = $this->getFlagById($row['Id']);
+            }
+
+            return $flags;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     public function getFlagById($Id){
         $query = "SELECT `user_Id`, `quiz_Id`, `question_Id`, `message`, `isSolved`, dateTime FROM `flags` WHERE Id = :id";
 

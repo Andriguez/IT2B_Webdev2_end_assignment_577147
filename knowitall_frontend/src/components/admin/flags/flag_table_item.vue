@@ -9,21 +9,60 @@ function openWindow(tab) {
 
 <template>
 <tr>
-    <td>20/02/24 at 10:33</td>
-    <td>@username</td>
-    <td>this is not the right answer to the question asked.. the right answer should have been kjskjsosjbnsbjishujbsi</td>
-    <td><a href="#" @click="openWindow('manage_quiz')">quizname</a></td>
-    <td>10</td>
+    <td>{{ flag.sentAt }}</td>
+    <td>{{ flag.user }}</td>
+    <td>"{{ flag.message }}"</td>
+    <td><a href="#" @click="openWindow('manage_quiz')">{{ flag.quiz }}</a></td>
     <td>
-        <select id="inputState" class="form-select">
-            <option selected>Choose...</option>
-            <option>solved</option>
-            <option>unsolved</option>
+        <span id="questionNr" :data-tooltip="question_text">{{ flag.question_nr }}</span>
+    </td>
+    <td>
+        <select id="inputState" class="form-select" v-model="isSolved">
+            <option :value="null" selected>Choose...</option>
+            <option :value="true">solved</option>
+            <option :value="false">unsolved</option>
         </select>
     </td>
 </tr>
 </template>
 
 <script>
+export default {
+    name: 'FlagTableItem',
+    data(){
+        return{
+            isSolved: null,
+            question_text: '',
+        }
+    },
+    props: {
+        flag: Object
+    },
+    mounted(){
+        this.isSolved = this.flag.isSolved;
+        this.question_text = this.flag.question;
+    },
+    watch: {
+    'flag.isSolved'(newValue) {
+      this.isSolved = newValue === 1;
+    }
+  }
+}
+
 
 </script>
+
+<style>
+#questionNr::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    display: none;
+}
+
+#questionNr:hover::after {
+    display: block;
+    background-color: #B590DA;
+    border: 2px solid #47008F;
+    color: #A8DF7D;
+}
+</style>

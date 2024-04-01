@@ -12,5 +12,6 @@ class FlagService
     }
 
     public function getAllFlags($offset = NULL, $limit = NULL){ return $this->flagRepo->getAllFlags($offset, $limit); }
+    public function getAllFlagsByFilter($isSolved, $offset = NULL, $limit = NULL){ return $this->flagRepo->getAllFlagsByFilter($isSolved, $offset, $limit); }
     public function getFlagById($id){ return $this->flagRepo->getFlagById($id); }
 }

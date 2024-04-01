@@ -48,9 +48,12 @@ $router->put('/quizzes/(\d+)', 'QuizController@update');
 $router->delete('/quizzes/(\d+)', 'QuizController@delete');
 
 $router->get('/flags', 'FlagController@getAll');
-$router->get('/flags/(\d+)', 'FlagController@getOne');
-$router->post('/flags', 'FlagController@create');
-$router->delete('/flags/(\d+)', 'FlagController@delete');
+$router->get('/flags/(\d+)', 'FlagController@getFlagsByFilter');
+$router->get('/flags/(\d+)', 'FlagController@getFlagsByFilter');
+
+$router->get('/flag/(\d+)', 'FlagController@getOne');
+$router->post('/flag', 'FlagController@create');
+$router->delete('/flag/(\d+)', 'FlagController@delete');
 
 $router->get('/trial', 'TrialController@index');
 

@@ -24,9 +24,25 @@ class FlagController extends Controller
             $limit = $_GET["limit"];
         }
 
-        $users = $this->flagService->getAllFlags($offset, $limit);
+        $flags = $this->flagService->getAllFlags($offset, $limit);
 
-        $this->respond($users);
+        $this->respond($flags);
+    }
+
+    public function getFlagsByFilter($isSolved){
+        $offset = NULL;
+        $limit = NULL;
+
+        if (isset($_GET["offset"]) && is_numeric($_GET["offset"])) {
+            $offset = $_GET["offset"];
+        }
+        if (isset($_GET["limit"]) && is_numeric($_GET["limit"])) {
+            $limit = $_GET["limit"];
+        }
+
+        $filteredFlags = $this->flagService->getAllFlagsByFilter($isSolved,$offset, $limit);
+
+        $this->respond($filteredFlags);
     }
 
     public function getOne($id)

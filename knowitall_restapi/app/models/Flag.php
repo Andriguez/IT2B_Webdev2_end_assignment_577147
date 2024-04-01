@@ -27,6 +27,21 @@ class Flag implements \JsonSerializable
     public function getQuestion(){ return $this->question; }
     public function getIsSolved(){ return $this->isSolved; }
     public function getSentAt(){ return $this->sentAt; }
+    public function getQuestionNr(){
+        $questionId = $this->question->getId();
+        $questions = $this->quiz->getQuestions();
+
+        $position = false;
+
+        foreach ($questions as $index => $question) {
+            if ($question->getId() === $questionId) {
+                $position = $index + 1;
+                break;
+            }
+        }
+
+        return $position;
+    }
 
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
@@ -36,6 +51,7 @@ class Flag implements \JsonSerializable
             'user' => $this->user->getUsername(),
             'quiz' => $this->quiz->getName(),
             'question' => $this->question->getQuestion(),
+            'question_nr' => $this->getQuestionNr(),
             'message' => $this->message,
             'isSolved' => $this->isSolved,
             'sentAt' => $this->sentAt->format('d/m/y H:i')
