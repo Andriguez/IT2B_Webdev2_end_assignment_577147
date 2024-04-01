@@ -1,3 +1,12 @@
+<script setup>
+import { defineEmits } from 'vue';
+const emit = defineEmits(['openWindow']);
+
+function openWindow(tab) {
+  emit('openWindow', tab);
+}
+</script>
+
 <template>
 <tr>
     <td>user name</td>
@@ -6,7 +15,7 @@
     <td>player</td>
     <td>
         <div class="btn-group" role="group" aria-label="buttons">
-            <button type="button" class="btn btn-primary">Edit</button>
+            <button type="button" class="btn btn-primary" @click="openWindow('manage_user')">Edit</button>
             <button type="button" class="btn btn-danger">Delete</button>
         </div>
     </td>

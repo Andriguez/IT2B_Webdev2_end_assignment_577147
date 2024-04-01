@@ -54,9 +54,6 @@ export default {
         PlayerHistory,
         PlayerFavorites,
     },
-// props: {
-  //      detail: Object
-    //},
     data(){
         return {
             details: [],

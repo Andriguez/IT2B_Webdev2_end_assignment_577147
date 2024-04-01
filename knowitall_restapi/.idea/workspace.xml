@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/adminContent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/adminContent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/admin_Quiz.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/manage/manage_quiz.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/manage/manage_quiz.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/adminNavbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/adminNavbar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/quizzes_table.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/quizzes_table.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/topic_table_item.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/topic_table_item.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/topics_table.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/topics_table.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/views/AdminView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/views/AdminView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +113,7 @@
       <workItem from="1711726006777" duration="10617000" />
       <workItem from="1711805169919" duration="9961000" />
       <workItem from="1711898006387" duration="2588000" />
-      <workItem from="1711911804845" duration="631000" />
+      <workItem from="1711911804845" duration="1669000" />
     </task>
     <servers />
   </component>

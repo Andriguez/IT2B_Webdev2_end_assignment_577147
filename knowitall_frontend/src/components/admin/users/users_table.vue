@@ -1,5 +1,11 @@
 <script setup>
 import UserTableItem from './user_table_item.vue'
+
+import { defineEmits } from 'vue';
+const emit = defineEmits(['openWindow']);
+function openWindow(tab) {
+  emit('openWindow', tab);
+}
 </script>
 
 <template>
@@ -26,7 +32,7 @@ import UserTableItem from './user_table_item.vue'
 </tr>
 </thead>
 <tbody class="table-group-divider">
-<UserTableItem />
+<UserTableItem  @openWindow="openWindow" />
 <UserTableItem />
 <UserTableItem />
 

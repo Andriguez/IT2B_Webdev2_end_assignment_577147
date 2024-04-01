@@ -1,11 +1,17 @@
 <script setup>
 import TopicTableItem from './topic_table_item.vue'
+
+import { defineEmits } from 'vue';
+const emit = defineEmits(['openWindow']);
+function openWindow(tab) {
+  emit('openWindow', tab);
+}
 </script>
 
 <template>
  <div class="d-flex justify-content-center"><h3 class="round-font">Topics</h3></div>
 
-<button class="btn m-3">Create new Topic</button>
+<button class="btn m-3" @click="openWindow('manage_topic')">Create new Topic</button>
 
 <table class="table table-success table-striped">
 <thead>
@@ -17,9 +23,9 @@ import TopicTableItem from './topic_table_item.vue'
 </tr>
 </thead>
 <tbody class="table-group-divider">
-<TopicTableItem />
-<TopicTableItem />
-<TopicTableItem />
+<TopicTableItem  @openWindow="openWindow" />
+<TopicTableItem  @openWindow="openWindow" />
+<TopicTableItem  @openWindow="openWindow" />
 
 </tbody>
 </table>

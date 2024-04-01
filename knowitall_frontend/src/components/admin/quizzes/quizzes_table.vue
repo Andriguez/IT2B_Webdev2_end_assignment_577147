@@ -1,5 +1,11 @@
 <script setup>
 import QuizTableItem from './quiz_table_item.vue';
+
+import { defineEmits } from 'vue';
+const emit = defineEmits(['openWindow']);
+function openWindow(tab) {
+  emit('openWindow', tab);
+}
 </script>
 
 <template>
@@ -15,7 +21,7 @@ import QuizTableItem from './quiz_table_item.vue';
     </ul>
 </div>
 
-<button class="btn">Create new Quiz</button>
+<button class="btn" @click="openWindow('manage_quiz')">Create new Quiz</button>
 
 <table class="table table-success table-striped">
 <thead>
@@ -30,16 +36,15 @@ import QuizTableItem from './quiz_table_item.vue';
 </tr>
 </thead>
 <tbody class="table-group-divider">
-<QuizTableItem />
-<QuizTableItem />
-<QuizTableItem />
+<QuizTableItem @openWindow="openWindow" />
+<QuizTableItem @openWindow="openWindow" />
+<QuizTableItem @openWindow="openWindow" />
 
 </tbody>
 </table>
 </template>
 
 <style>
-
 .btn{
         border-radius: 18px;
         background-color: #B590DA;

@@ -1,5 +1,11 @@
 <script setup>
 import FlagTableItem from './flag_table_item.vue'
+
+import { defineEmits } from 'vue';
+const emit = defineEmits(['openWindow']);
+function openWindow(tab) {
+  emit('openWindow', tab);
+}
 </script>
 
 <template>
@@ -26,9 +32,9 @@ import FlagTableItem from './flag_table_item.vue'
 </tr>
 </thead>
 <tbody class="table-group-divider">
-<FlagTableItem />
-<FlagTableItem />
-<FlagTableItem />
+<FlagTableItem  @openWindow="openWindow" />
+<FlagTableItem  @openWindow="openWindow" />
+<FlagTableItem  @openWindow="openWindow" />
 
 </tbody>
 </table>
