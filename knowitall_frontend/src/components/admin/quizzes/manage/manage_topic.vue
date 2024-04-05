@@ -45,6 +45,7 @@ export default {
                 newTopicName = res.data.topic.topic;
                 message = `new topic ${newTopicName} has been created.`;
                 alert(message);
+                resolve();
             })
             .catch((error) => reject(error));
         })

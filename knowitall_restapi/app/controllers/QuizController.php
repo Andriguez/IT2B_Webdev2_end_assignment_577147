@@ -155,7 +155,11 @@ class QuizController extends Controller
     }
 
     public function deleteTopic($topicId){
-
+        try{
+            $this->respond($this->quizService->deleteTopic($topicId));
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e);
+        }
     }
     public function getAllLevels(){
         $levels = $this->quizService->getAllLevels();

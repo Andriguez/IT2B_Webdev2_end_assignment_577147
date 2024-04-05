@@ -317,6 +317,22 @@ class QuizRepository extends Repository
         return $this->getTopicById($id) ?? null;
     }
 
+    public function deleteTopic($id){
+        $query = "DELETE FROM quiz_topics WHERE Id = :topicId";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->bindParam('topicId', $id);
+            return $statement->execute();
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return true;
+
+    }
+
     public function getCountQuizzesBy($Id, $filter = NULL){
         try {
             if ($filter === 'level'){

@@ -33,4 +33,5 @@ class QuizService
 
     public function createTopic($name) { return $this->quizRepo->createTopic($name); }
     public function editTopic($id, $name) { return $this->quizRepo->editTopic($id,$name);}
+    public function deleteTopic($id) { return $this->quizRepo->deleteTopic($id); }
 }
