@@ -30,4 +30,7 @@ class QuizService
     public function getAllTopics(){ return $this->quizRepo->getAllTopics(); }
 
     public function getTopicById($Id){ return $this->quizRepo->getTopicById($Id); }
+
+    public function createTopic($name) { return $this->quizRepo->createTopic($name); }
+    public function editTopic($id, $name) { return $this->quizRepo->editTopic($id,$name);}
 }

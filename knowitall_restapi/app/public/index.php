@@ -44,6 +44,9 @@ $router->get('/quizzes/(\d+)', 'QuizController@getQuizzesByTopic');
 
 $router->get('/quizzes/topics', 'QuizController@getAllTopics');
 $router->get('/quizzes/topics/(\d+)', 'QuizController@getTopic');
+$router->post('/quizzes/topics', 'QuizController@createTopic');
+$router->put('/quizzes/topics/(\d+)', 'QuizController@editTopic');
+
 
 $router->get('/quizzes/levels', 'QuizController@getAllLevels');
 $router->get('/quizzes/levels/(\d+)', 'QuizController@getLevel');

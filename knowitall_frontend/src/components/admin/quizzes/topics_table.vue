@@ -4,15 +4,14 @@ import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
-function openWindow(tab) {
-  emit('openWindow', tab);
-}
+
+
 </script>
 
 <template>
  <div class="d-flex justify-content-center"><h3 class="round-font">Topics</h3></div>
 
-<button class="btn m-3" @click="openWindow('manage_topic')">Create new Topic</button>
+<button class="btn m-3" @click="openWindow('manage_topic',null)">Create new Topic</button>
 
 <table class="table table-success table-striped">
 <thead>
@@ -43,6 +42,11 @@ data(){
 },
 components: {
   TopicTableItem
+},
+methods: {
+  openWindow(tab, object) {
+  this.$emit('openWindow', tab, object);
+}
 },
 mounted(){
   axios.get('/quizzes/topics')

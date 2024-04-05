@@ -1,10 +1,6 @@
 <script setup>
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
-
-function openWindow(tab) {
-  emit('openWindow', tab);
-}
 </script>
 
 <template>
@@ -13,7 +9,7 @@ function openWindow(tab) {
     <td>{{ topic.nr_quizzes }}</td>
     <td>
         <div class="btn-group" role="group" aria-label="buttons">
-            <button type="button" class="btn btn-primary" @click="openWindow('manage_topic')">Edit</button>
+            <button type="button" class="btn btn-primary" @click="openWindow(topic)">Edit</button>
             <button type="button" class="btn btn-danger">Delete</button>
         </div>
     </td>
@@ -25,6 +21,11 @@ export default {
     name: 'TopicTableItem',
     props: {
         topic: Object
+    },
+    methods: {
+        openWindow(object) {
+            this.$emit('openWindow','manage_topic', object);
+        }
     }
 }
 </script>

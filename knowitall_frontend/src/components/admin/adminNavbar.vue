@@ -18,7 +18,7 @@ export default {
     name: 'AdminNavbar',
     methods: {
         openWindow(tab) {
-            this.$emit('open-window', tab)
+            this.$emit('openWindow', tab, null)
         }
     }
 }

@@ -126,6 +126,37 @@ class QuizController extends Controller
         $this->respond($topic);
     }
 
+    public function createTopic(){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $name = $data->topicname;
+            $topic = $this->quizService->createTopic($name);
+
+            $this->respond($topic);
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
+    public function editTopic($topicId){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $name = $data->topicname;
+            $topic = $this->quizService->editTopic($topicId, $name);
+
+            $this->respond($topic);
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
+    public function deleteTopic($topicId){
+
+    }
     public function getAllLevels(){
         $levels = $this->quizService->getAllLevels();
 

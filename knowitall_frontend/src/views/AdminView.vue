@@ -36,7 +36,7 @@ import FlagsTable from '../components/admin/flags/flags_table.vue'
         <TopicsTable @openWindow="changeWindow" />
         </div>
         <div v-else-if="selectedTab === 'manage_topic'">
-        <ManageTopic @openWindow="changeWindow" />
+        <ManageTopic :topic="selectedObject" @openWindow="changeWindow" />
         </div>
         <div v-else-if="selectedTab === 'flags'">
         <FlagsTable @openWindow="changeWindow" />
@@ -49,12 +49,15 @@ export default {
     name: 'AdminView',
     data(){
         return{
-            selectedTab: 'quizzes'
+            selectedTab: 'quizzes',
+            selectedObject: null
         }
     },
     methods: {
-        changeWindow(tab){
+        changeWindow(tab, object){
             this.selectedTab = tab;
+            this.selectedObject = object;
+            console.log(object);
         }
     }
 }

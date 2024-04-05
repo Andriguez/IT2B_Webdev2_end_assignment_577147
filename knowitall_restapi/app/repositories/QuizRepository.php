@@ -287,6 +287,36 @@ class QuizRepository extends Repository
         }
     }
 
+    public function createTopic($name){
+        $query = "INSERT INTO `quiz_topics`(`name`) VALUES (?)";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$this->sanitizeText($name)]);
+
+            $topicId = $this->connection->lastInsertId();
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return $this->getTopicById($topicId) ?? null;
+    }
+
+    public function editTopic($id, $name){
+        $query = "UPDATE `quiz_topics` SET `name`= ? WHERE Id = ?";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$this->sanitizeText($name), $id]);
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return $this->getTopicById($id) ?? null;
+    }
+
     public function getCountQuizzesBy($Id, $filter = NULL){
         try {
             if ($filter === 'level'){
@@ -306,5 +336,9 @@ class QuizRepository extends Repository
         } catch (PDOException $e) {
             echo $e;
         }
+    }
+
+    private function sanitizeText($input):string{
+        return htmlspecialchars($input);
     }
 }

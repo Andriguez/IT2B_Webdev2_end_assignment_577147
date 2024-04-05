@@ -31,8 +31,8 @@ export const useLoginStore = defineStore('login', {
           resolve()
       })
       .catch((error) => reject(error));
-      },
-    )},
+      },)
+    },
     logout(){
       localStorage.removeItem('jwtToken');
       localStorage.removeItem('userData')
