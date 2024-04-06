@@ -24,13 +24,13 @@ class QuizService
     public function getAnswerById($Id){ return $this->quizRepo->getAnswerById($Id); }
 
     public function getAllLevels(){ return $this->quizRepo->getAllLevels(); }
-
     public function getLevelById($Id){ return $this->quizRepo->getLevelById($Id); }
+    public function createLevel($name) { return $this->quizRepo->createLevel($name); }
+    public function editLevel($id, $name) { return $this->quizRepo->editLevel($id,$name);}
+    public function deleteLevel($id) { return $this->quizRepo->deleteLevel($id); }
 
     public function getAllTopics(){ return $this->quizRepo->getAllTopics(); }
-
     public function getTopicById($Id){ return $this->quizRepo->getTopicById($Id); }
-
     public function createTopic($name) { return $this->quizRepo->createTopic($name); }
     public function editTopic($id, $name) { return $this->quizRepo->editTopic($id,$name);}
     public function deleteTopic($id) { return $this->quizRepo->deleteTopic($id); }

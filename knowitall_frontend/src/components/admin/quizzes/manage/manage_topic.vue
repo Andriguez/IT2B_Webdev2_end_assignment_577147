@@ -1,5 +1,5 @@
 <script setup>
-import { defineEmits, resolveDirective } from 'vue';
+import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
 </script>
 
@@ -11,13 +11,11 @@ const emit = defineEmits(['openWindow']);
         <label for="inputName" class="form-label">Name</label>
         <input type="text" class="form-control" id="inputName" v-model="topicName">
     </div>
-    <div class="col-12 mb-4" v-if="topic !== null">
-        <button type="submit" class="btn" @click="editTopic">Save</button>
-    </div>
-    <div class="col-12 mb-4" v-else>
-        <button type="submit" class="btn" @click="createTopic">Create New</button>
-    </div>
     </form>
+    <div class="col-12 my-4">
+        <button class="btn" @click="editTopic" v-if="topic !== null">Save</button>
+        <button class="btn" @click="createTopic" v-else>Create New</button>
+    </div>
     </div>
 </template>
 
@@ -41,11 +39,10 @@ export default {
                     topicname: this.topicName
                 })
             .then((res)=>{
-                newTopicId = res.data.topic.Id;
-                newTopicName = res.data.topic.topic;
-                message = `new topic ${newTopicName} has been created.`;
+                const message = `new topic ${res.data.topic} has been created.`;
                 alert(message);
                 resolve();
+                this.$emit('openWindow', 'topics', null);
             })
             .catch((error) => reject(error));
         })
@@ -55,12 +52,12 @@ export default {
                 axios.put(`/quizzes/topics/${this.topic.Id}`,{
                 topicname: this.topicName})
                 .then((res) => {
-                    newTopicName = res.data.topic.topic;
-                    message = `topic name has been changed to ${newTopicName}`;
+                    const message = `topic name has been changed to ${res.data.topic}`;
                     alert(message);
                     resolve();
                 })
                 .catch((error) => reject(error));
+                this.$emit('openWindow', 'topics', null);
             })
         }
     },

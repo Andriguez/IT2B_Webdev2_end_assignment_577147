@@ -177,4 +177,40 @@ class QuizController extends Controller
 
         $this->respond($level);
     }
+
+    public function createLevel(){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $name = $data->level;
+            $level = $this->quizService->createLevel($name);
+
+            $this->respond($level);
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
+    public function editLevel($levelId){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $name = $data->level;
+            $level = $this->quizService->editLevel($levelId, $name);
+
+            $this->respond($level);
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
+    public function deleteLevel($levelId){
+        try{
+            $this->respond($this->quizService->deleteLevel($levelId));
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e);
+        }
+    }
 }

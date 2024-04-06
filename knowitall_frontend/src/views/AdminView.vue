@@ -24,13 +24,13 @@ import FlagsTable from '../components/admin/flags/flags_table.vue'
         <UsersTable @openWindow="changeWindow" />
         </div>
         <div v-else-if="selectedTab === 'manage_user'">
-        <ManageUser @openWindow="changeWindow" />
+        <ManageUser :user="selectedObject" @openWindow="changeWindow" />
         </div>
         <div v-else-if="selectedTab === 'levels'">
         <LevelsTable @openWindow="changeWindow" />
         </div>
         <div v-else-if="selectedTab === 'manage_level'">
-        <ManageLevel @openWindow="changeWindow" />
+        <ManageLevel :level="selectedObject" @openWindow="changeWindow" />
         </div>
         <div v-else-if="selectedTab === 'topics'">
         <TopicsTable @openWindow="changeWindow" />
@@ -55,9 +55,15 @@ export default {
     },
     methods: {
         changeWindow(tab, object){
-            this.selectedTab = tab;
+            this.selectedTab = '';
             this.selectedObject = object;
-            console.log(object);
+
+            this.$nextTick(() => {
+                this.selectedTab = tab;
+            });
+
+            console.log(`tab = ${tab}, object = ${object}`);
+
         }
     }
 }

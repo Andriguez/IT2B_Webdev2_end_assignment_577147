@@ -4,9 +4,6 @@ import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
-function openWindow(tab) {
-  emit('openWindow', tab);
-}
 </script>
 
 <template>
@@ -63,6 +60,9 @@ export default {
             axios.get(this.getUsersURL)
             .then(result => this.users = result.data)
                 .catch(error => console.log(error))
+        },
+        openWindow(tab, object){
+          this.$emit('openWindow', tab, object);
         }
     },
     mounted(){

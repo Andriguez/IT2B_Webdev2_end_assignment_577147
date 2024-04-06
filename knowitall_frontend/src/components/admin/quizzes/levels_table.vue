@@ -4,15 +4,12 @@ import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
-function openWindow(tab) {
-  emit('openWindow', tab);
-}
 </script>
 
 <template>
     <div class="d-flex justify-content-center"><h3 class="round-font">Levels</h3></div>
 
-<button class="btn m-3" @click="openWindow('manage_level')">Create new Level</button>
+<button class="btn m-3" @click="openWindow('manage_level',null)">Create new Level</button>
 
 <table class="table table-success table-striped">
 <thead>
@@ -43,6 +40,11 @@ data(){
 },
 components: {
   LevelTableItem
+},
+methods: {
+  openWindow(tab, object) {
+  this.$emit('openWindow', tab, object);
+}
 },
 mounted(){
   axios.get('/quizzes/levels')

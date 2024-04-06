@@ -41,6 +41,7 @@ export default {
                         this.resultMessage = `topic ${this.topic.topic} has been deleted`;
                     } else { this.resultMessage = `topic ${this.topic.topic} has not been deleted`;}
                     alert(this.resultMessage);
+                    this.$emit('openWindow', 'topics', null);
                     resolve();
                 })
                 .catch((error) => reject(error));

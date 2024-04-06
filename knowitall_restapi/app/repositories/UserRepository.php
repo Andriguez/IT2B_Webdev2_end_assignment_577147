@@ -95,6 +95,36 @@ class UserRepository extends Repository
         } catch (\PDOException $e){echo $e;}
     }
 
+    function editUser($userId, $name, $username, $type){
+        $query = "UPDATE `users` SET `name`= ?,`username`= ?,`usertype`=? WHERE `Id` = ?";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$this->sanitizeText($name), $this->sanitizeText($username), $type, $userId]);
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return $this->getUserById($userId) ?? null;
+    }
+
+    function deleteUser($userId){
+        $query = "DELETE FROM `users` WHERE `Id` = :userId";
+
+        try{
+
+            $statement = $this->connection->prepare($query);
+            $statement->bindParam('userId', $userId);
+            return $statement->execute();
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return false;
+    }
+
     function getAllUserTypes()
     {
         try {
@@ -173,5 +203,9 @@ class UserRepository extends Repository
     function verifyPassword($input, $hash)
     {
         return password_verify($input, $hash);
+    }
+
+    private function sanitizeText($input):string{
+        return htmlspecialchars($input);
     }
 }

@@ -4,8 +4,6 @@ import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
-
-
 </script>
 
 <template>

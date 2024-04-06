@@ -25,13 +25,11 @@ $router->get('/users', 'UserController@getAll');
 $router->get('/users/(\d+)', 'UserController@getUsersByType');
 $router->get('/user/(\d+)', 'UserController@getOne');
 $router->post('/user', 'UserController@create');
-$router->put('/user/(\d+)', 'UserController@update');
-$router->delete('/user/(\d+)', 'UserController@delete');
+$router->put('/user/(\d+)', 'userController@editUser');
+$router->delete('/user/(\d+)', 'UserController@deleteUser');
 $router->post('/users/login', 'UserController@login');
 
-
-
-
+$router->get('/users/types', 'UserController@getUsertypes');
 
 $router->get('/player/(\d+)', 'PlayerController@getOne');
 $router->get('/player/(\d+)/history', 'PlayerController@getPlayerHistory');
@@ -52,6 +50,10 @@ $router->delete('/quizzes/topics/(\d+)', 'QuizController@deleteTopic');
 
 $router->get('/quizzes/levels', 'QuizController@getAllLevels');
 $router->get('/quizzes/levels/(\d+)', 'QuizController@getLevel');
+$router->post('/quizzes/levels', 'QuizController@createLevel');
+$router->put('/quizzes/levels/(\d+)', 'QuizController@editLevel');
+$router->delete('/quizzes/levels/(\d+)', 'QuizController@deleteLevel');
+
 
 $router->post('/quizzes', 'QuizController@create');
 $router->put('/quizzes/(\d+)', 'QuizController@update');

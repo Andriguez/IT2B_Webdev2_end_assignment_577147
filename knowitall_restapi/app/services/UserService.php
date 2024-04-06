@@ -21,6 +21,12 @@ class UserService {
     public function getUserById($Id){
         return $this->repository->getUserById($Id);
     }
+    public function editUser($userId, $name, $username, $type){
+        return $this->repository->editUser($userId, $name, $username, $type);
+    }
+    public function deleteUser($userId){
+        return $this->repository->deleteUser($userId);
+    }
     public function getAllUserTypes() {
         return $this->repository->getAllUserTypes();
     }

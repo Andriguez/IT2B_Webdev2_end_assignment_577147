@@ -248,6 +248,52 @@ class QuizRepository extends Repository
         }
     }
 
+    public function createLevel($name){
+        $query = "INSERT INTO `quiz_level`(`name`) VALUES (?)";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$this->sanitizeText($name)]);
+
+            $levelId = $this->connection->lastInsertId();
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return $this->getLevelById($levelId) ?? null;
+    }
+
+    public function editLevel($id, $name){
+        $query = "UPDATE `quiz_level` SET `name`= ? WHERE Id = ?";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$this->sanitizeText($name), $id]);
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return $this->getLevelById($id) ?? null;
+    }
+
+    public function deleteLevel($id){
+        $query = "DELETE FROM quiz_level WHERE Id = :levelId";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->bindParam('levelId', $id);
+            return $statement->execute();
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return false;
+
+    }
+
     public function getAllTopics(){
         try {
             $query = "SELECT `Id` FROM quiz_topics";

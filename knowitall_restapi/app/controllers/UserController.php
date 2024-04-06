@@ -73,6 +73,40 @@ class UserController extends Controller
 
     }
 
+    public function editUser($userId){
+        try {
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $name = $data->name;
+            $username = $data->username;
+            $type = $data->usertype;
+
+
+            $user = $this->service->editUser($userId, $name, $username, $type);
+
+            $this->respond($user);
+        } catch (Exception $e){
+            $this->respondWithError(500, $e);
+        }
+    }
+
+    public function deleteUser($userId){
+        try{
+            $this->respond($this->service->deleteUser($userId));
+        } catch (Exception $e){
+            $this->respondWithError(500, $e);
+        }
+    }
+
+    public function getUsertypes(){
+        try {
+            $this->respond($this->service->getAllUserTypes());
+        } catch (Exception $e){
+            $this->respondWithError(500, $e);
+        }
+    }
+
     private function generateJwt($user){
 
         $issuer = "http://localhost:5173/";
