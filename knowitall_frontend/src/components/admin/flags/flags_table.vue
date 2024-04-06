@@ -4,23 +4,18 @@ import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
-function openWindow(tab) {
-  emit('openWindow', tab);
-}
-
 </script>
 
 <template>
 <div class="d-flex justify-content-center"><h3 class="round-font">Flags</h3></div>
 <div class="btn-group p-4">
     <button type="button" class="btn dropdown-toggle" style="width: 120px;" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="round-font">{{ selectedFilterText }}</span>
+        <span class="round-font">{{ selectedFilterText() }}</span>
     </button>
     <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#" @click="getFlags(null)">All Flags</a></li>
         <li><a class="dropdown-item" href="#" @click="getFlags('1')">Solved</a></li>
         <li><a class="dropdown-item" href="#" @click="getFlags('0')">Unsolved</a></li>
-
     </ul>
 </div>
 
@@ -67,22 +62,18 @@ export default {
             axios.get(this.getFlagsURL)
             .then(result => this.flags = result.data)
                 .catch(error => console.log(error))
+        },
+        openWindow(tab, object) {
+          this.$emit('openWindow', tab, object);
+        },
+        selectedFilterText() {
+          if (this.selectedFilter === '1') {
+          return 'solved';
+          } else if (this.selectedFilter === '0') { return 'unsolved';} else { return 'all flags';}
         }
     },
     mounted(){
         this.getFlags(null);
     },
-    computed: {
-    selectedFilterText() {
-      if (this.selectedFilter === '1') {
-        return 'solved';
-      } else if (this.selectedFilter === '0') {
-        return 'unsolved';
-      } else {
-        return 'all flags';
-      }
-    }
-  }
-
 }
 </script>

@@ -57,5 +57,20 @@ class FlagController extends Controller
         $this->respond($flag);
     }
 
+    public function editFlagStatus($flagId){
+        try {
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $input = $data->isSolved;
+
+            $flag = $this->flagService->editFlagStatus($flagId, $input);
+
+            $this->respond($flag);
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e);
+        }
+    }
+
 
 }

@@ -49,7 +49,7 @@ class Flag implements \JsonSerializable
         return [
             'Id' => $this->Id,
             'user' => $this->user->getUsername(),
-            'quiz' => $this->quiz->getName(),
+            'quiz' => ['Id' => $this->quiz->getId(),'name' => $this->quiz->getName()],
             'question' => $this->question->getQuestion(),
             'question_nr' => $this->getQuestionNr(),
             'message' => $this->message,

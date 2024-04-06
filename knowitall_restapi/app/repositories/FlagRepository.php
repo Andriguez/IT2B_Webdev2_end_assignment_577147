@@ -89,6 +89,20 @@ class FlagRepository extends Repository
 
     }
 
+    public function editFlagStatus($flagId, $isSolved){
+        $query = "UPDATE `flags` SET `isSolved`= ? WHERE `Id` = ? ";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$isSolved, $flagId]);
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return $this->getFlagById($flagId) ?? null;
+    }
+
     public function getCountFlagsByQuiz($quizId){
         try {
 

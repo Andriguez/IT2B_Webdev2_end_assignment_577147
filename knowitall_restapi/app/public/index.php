@@ -35,8 +35,6 @@ $router->get('/player/(\d+)', 'PlayerController@getOne');
 $router->get('/player/(\d+)/history', 'PlayerController@getPlayerHistory');
 $router->get('/player/(\d+/favorites)', 'PlayerController@getPlayerFavorites');
 
-
-
 $router->get('/quizzes', 'QuizController@getAll');
 $router->get('/quizzes/(\d+)', 'QuizController@getQuizzesByTopic');
 
@@ -65,6 +63,7 @@ $router->get('/flags/(\d+)', 'FlagController@getFlagsByFilter');
 
 $router->get('/flag/(\d+)', 'FlagController@getOne');
 $router->post('/flag', 'FlagController@create');
+$router->put('/flag/(\d+)', 'FlagController@editFlagStatus');
 $router->delete('/flag/(\d+)', 'FlagController@delete');
 
 $router->get('/trial', 'TrialController@index');
