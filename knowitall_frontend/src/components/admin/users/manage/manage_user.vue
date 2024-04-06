@@ -23,13 +23,12 @@ const emit = defineEmits(['openWindow']);
         </select>
     </div>
 
-
-    <div class="col-12 mb-4">
-        <button type="button" class="btn me-3">Reset Password</button>
+</form>
+    <div class="col-12 my-4">
+        <button type="button" class="btn me-3" @click="resetUserPassword">Reset Password</button>
         <label> *resets password to <strong>password123</strong></label>
     </div>
 
-</form>
     <div class="col-12 my-4">
         <button class="btn" @click="editUser">Save</button>
     </div>
@@ -65,8 +64,22 @@ export default {
                     this.$emit('openWindow', 'users', null);
                 })
                 .catch((error) => reject(error));
-                console.log(this.usertype);
+            })
+        },
 
+        resetUserPassword(){
+            let resultMessage = '';
+            return new Promise((resolve, reject) => {
+                axios.patch(`/resetpwd/${this.user.Id}`)
+                .then((res) => {
+                    resolve();
+                    if(res.data === true){
+                        resultMessage = `password of user @${this.username} has been resetted`;
+                    } else { resultMessage = `password of user ${this.username} has not been resetted`;}
+                    alert(resultMessage);
+                    this.$emit('openWindow', 'users', null);
+                })
+                .catch((error) => reject(error));
             })
         }
 

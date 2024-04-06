@@ -24,6 +24,9 @@ class UserService {
     public function editUser($userId, $name, $username, $type){
         return $this->repository->editUser($userId, $name, $username, $type);
     }
+    public function resetUserPassword($userId){
+        return $this->repository->resetUserPassword($userId);
+    }
     public function deleteUser($userId){
         return $this->repository->deleteUser($userId);
     }

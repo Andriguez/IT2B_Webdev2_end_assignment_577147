@@ -28,6 +28,9 @@ $router->post('/user', 'UserController@create');
 $router->put('/user/(\d+)', 'userController@editUser');
 $router->delete('/user/(\d+)', 'UserController@deleteUser');
 $router->post('/users/login', 'UserController@login');
+$router->post('/users/register', 'UserController@register');
+$router->patch('/resetpwd/(\d+)', 'UserController@resetPassword');
+
 
 $router->get('/users/types', 'UserController@getUsertypes');
 
@@ -43,7 +46,6 @@ $router->get('/quizzes/topics/(\d+)', 'QuizController@getTopic');
 $router->post('/quizzes/topics', 'QuizController@createTopic');
 $router->put('/quizzes/topics/(\d+)', 'QuizController@editTopic');
 $router->delete('/quizzes/topics/(\d+)', 'QuizController@deleteTopic');
-
 
 
 $router->get('/quizzes/levels', 'QuizController@getAllLevels');

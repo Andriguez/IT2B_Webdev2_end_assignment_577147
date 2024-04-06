@@ -109,13 +109,28 @@ class UserRepository extends Repository
         return $this->getUserById($userId) ?? null;
     }
 
+    function resetUserPassword($userId){
+        $query = "UPDATE `users` SET `password`= ? WHERE `Id` = ?";
+
+        try{
+            $statement = $this->connection->prepare($query);
+            $password = 'password123';
+            return $statement->execute([$password, $userId]);
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return false;
+    }
+
     function deleteUser($userId){
         $query = "DELETE FROM `users` WHERE `Id` = :userId";
 
         try{
 
             $statement = $this->connection->prepare($query);
-            $statement->bindParam('userId', $userId);
+            $statement->bindParam(':userId', $userId);
             return $statement->execute();
 
         } catch (PDOException $e){

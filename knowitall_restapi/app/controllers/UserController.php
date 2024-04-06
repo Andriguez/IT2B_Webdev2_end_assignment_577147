@@ -82,10 +82,17 @@ class UserController extends Controller
             $username = $data->username;
             $type = $data->usertype;
 
-
             $user = $this->service->editUser($userId, $name, $username, $type);
 
             $this->respond($user);
+        } catch (Exception $e){
+            $this->respondWithError(500, $e);
+        }
+    }
+
+    public function resetPassword($userId){
+        try{
+            $this->respond($this->service->resetUserPassword($userId));
         } catch (Exception $e){
             $this->respondWithError(500, $e);
         }
