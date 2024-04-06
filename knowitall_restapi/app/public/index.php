@@ -41,6 +41,9 @@ $router->get('/player/(\d+/favorites)', 'PlayerController@getPlayerFavorites');
 $router->get('/quizzes', 'QuizController@getAll');
 $router->get('/quizzes/(\d+)', 'QuizController@getQuizzesByTopic');
 
+$router->get('/quiz/(\d+)', 'QuizController@getOne');
+
+
 $router->get('/quizzes/topics', 'QuizController@getAllTopics');
 $router->get('/quizzes/topics/(\d+)', 'QuizController@getTopic');
 $router->post('/quizzes/topics', 'QuizController@createTopic');

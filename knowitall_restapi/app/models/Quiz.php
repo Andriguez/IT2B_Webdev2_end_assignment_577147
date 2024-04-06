@@ -42,7 +42,8 @@ class Quiz implements \JsonSerializable
             'topic' => $this->topic,
             'level' => $this->level,
             'mod_date' => $this->modification_date->format('d/m/y H:i'),
-            'questions' => $this->questions
+            'questions' => $this->questions,
+            'nr_questions' => count($this->questions)
         ];
     }
 }

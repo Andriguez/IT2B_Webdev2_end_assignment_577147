@@ -18,7 +18,7 @@ import FlagsTable from '../components/admin/flags/flags_table.vue'
             <QuizzesTable  @openWindow="changeWindow" />
         </div>
         <div v-else-if="selectedTab === 'manage_quiz'">
-        <ManageQuiz @openWindow="changeWindow" />
+        <ManageQuiz :quiz="selectedObject" @openWindow="changeWindow" />
         </div>
         <div v-else-if="selectedTab === 'users'">
         <UsersTable @openWindow="changeWindow" />

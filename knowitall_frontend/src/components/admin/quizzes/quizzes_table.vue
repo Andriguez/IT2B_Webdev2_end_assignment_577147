@@ -4,9 +4,6 @@ import axios from '../../../axios-auth'
 
 import { defineEmits } from 'vue';
 const emit = defineEmits(['openWindow']);
-function openWindow(tab) {
-  emit('openWindow', tab);
-}
 </script>
 
 <template>
@@ -21,7 +18,7 @@ function openWindow(tab) {
     </ul>
 </div>
 
-<button class="btn" @click="openWindow('manage_quiz')">Create new Quiz</button>
+<button class="btn" @click="openWindow('manage_quiz', null)">Create new Quiz</button>
 
 <table class="table table-success table-striped">
 <thead>
@@ -61,6 +58,9 @@ export default {
        QuizTableItem 
     },
     methods: {
+        openWindow(tab, object) {
+            this.$emit('openWindow', tab, object);
+        },
         getQuizzes(topic){
             this.selectedTopic = topic;
 
