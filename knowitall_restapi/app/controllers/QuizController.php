@@ -97,7 +97,7 @@ class QuizController extends Controller
         return $quizzes;
     }
 
-    public function getOne($id)
+    public function getQuiz($id)
     {
         $quiz = $this->quizService->getQuizById($id);
 
@@ -107,6 +107,58 @@ class QuizController extends Controller
         }
 
         $this->respond($quiz);
+    }
+
+    public function editQuiz($quizId){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $name = $data->name;
+            $topic = $data->topic;
+            $level = $data->level;
+
+            $quiz = $this->quizService->editQuiz($quizId, $name, $topic, $level);
+
+            $this->respond($quiz);
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
+    public function createQuiz(){
+
+    }
+    public function deleteQuiz($quizId){
+
+    }
+
+    public function editQuestion($qId){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $questionText = $data->question;
+
+            $this->respond($this->quizService->editQuestion($qId, $questionText));
+
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
+    public function editAnswer($aId){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $answerText = $data->answer;
+            $isCorrect = $data->isCorrect;
+
+            $this->respond($this->quizService->editAnswer($aId, $answerText, $isCorrect));
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
     }
 
     public function getAllTopics(){

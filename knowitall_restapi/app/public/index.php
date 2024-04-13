@@ -41,8 +41,12 @@ $router->get('/player/(\d+/favorites)', 'PlayerController@getPlayerFavorites');
 $router->get('/quizzes', 'QuizController@getAll');
 $router->get('/quizzes/(\d+)', 'QuizController@getQuizzesByTopic');
 
-$router->get('/quiz/(\d+)', 'QuizController@getOne');
-
+$router->get('/quiz/(\d+)', 'QuizController@getQuiz');
+$router->post('/quiz', 'QuizController@createQuiz');
+$router->put('/quiz/(\d+)', 'QuizController@editQuiz');
+$router->put('/quiz/questions/(\d+)', 'QuizController@editQuestion');
+$router->put('/quiz/answers/(\d+)', 'QuizController@editAnswer');
+$router->delete('/quiz/(\d+)', 'QuizController@deleteQuiz');
 
 $router->get('/quizzes/topics', 'QuizController@getAllTopics');
 $router->get('/quizzes/topics/(\d+)', 'QuizController@getTopic');

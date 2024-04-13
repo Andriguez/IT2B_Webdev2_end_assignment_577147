@@ -127,6 +127,28 @@ class QuizRepository extends Repository
         }
     }
 
+    public function createQuiz(){
+
+    }
+
+    public function editQuiz($quizId, $name, $topic, $level){
+        try{
+            $query = "UPDATE `quizzes` SET `name`= ? ,`topic`= ?, `level`= ?,`modification_date`= ? WHERE `Id` = ?";
+
+            $statement = $this->connection->prepare($query);
+            $modDate = date('Y-m-d H:i:s');
+            $statement->execute([$this->sanitizeText($name), $topic, $level, $modDate, $quizId]);
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return $this->getQuizById($quizId) ?? null;
+    }
+
+    public function deleteQuiz($quizId){
+
+    }
+
     public function getQuestions($quizId){
         try {
             $query = "SELECT `Id` FROM questions WHERE quizz_Id = :quizId";
@@ -157,7 +179,7 @@ class QuizRepository extends Repository
             while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
                 $question = new Question();
                 $question->setId($Id);
-                $question->setQuestion($row['question']);
+                $question->setQuestion(htmlspecialchars_decode($row['question']));
                 $question->setAnswers($this->getAnswers($Id));
             }
 
@@ -167,6 +189,26 @@ class QuizRepository extends Repository
         }
     }
 
+    public function createQuestion(){
+
+    }
+
+    public function editQuestion($qId, $questionText){
+        try{
+            $query = "UPDATE `questions` SET `question`= ? WHERE `Id`= ?";
+
+            $statement = $this->connection->prepare($query);
+            return $statement->execute([$this->sanitizeText($questionText), $qId]);
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return false;
+    }
+
+    public function deleteQuestion($qId){
+
+    }
     public function getAnswers($questionId){
         try {
             $query = "SELECT `Id` FROM answers WHERE questionId = :questionId";
@@ -197,7 +239,7 @@ class QuizRepository extends Repository
             while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
                 $answer = new Answer();
                 $answer->setId($Id);
-                $answer->setAnswerText($row['answer_text']);
+                $answer->setAnswerText(htmlspecialchars_decode($row['answer_text']));
                 $answer->setAnswerExplain($row['answer_explain'] ?? null);
                 $answer->setIsCorrect($row['isCorrect']);
             }
@@ -206,6 +248,28 @@ class QuizRepository extends Repository
         } catch (PDOException $e) {
             echo $e;
         }
+    }
+
+    public function createAnswer(){
+
+    }
+
+    public function editAnswer($aId, $answerText, $isCorrect){
+        try{
+            $query = "UPDATE `answers` SET `answer_text`= ? ,`isCorrect`= ? WHERE `Id`= ?";
+
+            $statement = $this->connection->prepare($query);
+            return $statement->execute([$this->sanitizeText($answerText), $isCorrect, $aId]);
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return false;
+    }
+
+    public function deleteAnswer($aId){
+
     }
 
     public function getAllLevels(){

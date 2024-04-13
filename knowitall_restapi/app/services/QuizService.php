@@ -14,14 +14,17 @@ class QuizService
     public function getAllQuizzes($offset = NULL, $limit = NULL){ return $this->quizRepo->getAllQuizzes($offset, $limit); }
     public function getQuizzesByTopic($topicId, $offset = NULL, $limit = NULL){ return $this->quizRepo->getQuizzesByTopic($topicId, $offset, $limit); }
     public function getQuizById($Id){ return $this->quizRepo->getQuizById($Id); }
+    public function editQuiz($quizId, $name, $topic, $level){ return $this->quizRepo->editQuiz($quizId, $name,$topic, $level); }
 
     public function getQuestions($quizId){ return $this->quizRepo->getQuestions($quizId); }
 
     public function getQuestionById($Id){ return $this->quizRepo->getQuestionById($Id); }
+    public function editQuestion($qId, $questionText){ return $this->quizRepo->editQuestion($qId, $questionText); }
 
     public function getAnswers($questionId){ return $this->quizRepo->getAnswers($questionId); }
 
     public function getAnswerById($Id){ return $this->quizRepo->getAnswerById($Id); }
+    public function editAnswer($aId, $answerText, $isCorrect){ return $this->quizRepo->editAnswer($aId, $answerText, $isCorrect); }
 
     public function getAllLevels(){ return $this->quizRepo->getAllLevels(); }
     public function getLevelById($Id){ return $this->quizRepo->getLevelById($Id); }
