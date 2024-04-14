@@ -4,11 +4,13 @@ import Answer from './answer.vue';
 import Result from './result.vue';
 import Timer from './timer.vue'
 import axios from '../../axios-auth'
+//import { ref } from 'vue';
+
 </script>
 <template>
 <main>
     <div id="timer-container" class="px-4 py-2">
-        <Timer />
+        <Timer ref="timerComponent" />
     </div>
 
         <Question v-if="currentQuestion" :question="currentQuestion" />
@@ -17,6 +19,7 @@ import axios from '../../axios-auth'
         <Answer v-for="(answer, index) in currentAnswers" :key="index" :answer="answer" @answer-selected="handleAnswerSelected(answer)"/>
     </div>
 </main>
+<Result :results="setResults()" v-if="displayResults" @stop-timer="stopTimer()"/>
 </template>
 
 <script>
@@ -28,7 +31,10 @@ export default {
             userAnswers: [],
             questions: {},
             answers: {},
-            selectedAnswer: null
+            selectedAnswer: null,
+            //results: {},
+            displayResults: false,
+            timer: 0
         };
     },
     props: {
@@ -40,14 +46,29 @@ export default {
     components: {
         Timer,
         Question,
-        Answer
+        Answer,
+        Result
     },
     methods: {
         nextQuestion() {
       if (this.currentIndex < this.questions.length - 1) {
         this.currentIndex++;
         this.selectedAnswer = null;
+      } else {
+        this.displayResults = true;
       }
+    },
+    setResults(){
+        let nr_correct_answers = 0;
+        this.userAnswers.forEach( ans => {
+            if(ans.isCorrect){
+                nr_correct_answers++;
+            }
+        });
+        let uAnswers = this.userAnswers;
+        let timer = this.timer;
+
+        return this.results = {nr_correct_answers, uAnswers, timer};
     },
     handleAnswerSelected(answer){
         if (this.selectedAnswer) return;
@@ -73,14 +94,16 @@ export default {
       });
       } }, 2000);
         
-        
-
         this.userAnswers.push(this.selectedAnswer);
 
         this.$emit('answer-selected', this.selectedAnswer);
 
-
-        setTimeout(() => { this.nextQuestion(); }, 7000);
+        setTimeout(() => { this.nextQuestion(); }, 5000);
+    },
+    stopTimer(){
+        this.timer = this.$refs.timerComponent.stopTimer();
+        //this.timer = this.$refs.timerComponent.timerValue;
+        console.log(this.timer);
     }
     },
     computed: {
@@ -90,6 +113,7 @@ export default {
         currentAnswers(){
             return this.currentQuestion ? this.currentQuestion.answers : [];
         }
+
     },
     mounted(){
         axios.get(`/quiz/${this.quizId}`)

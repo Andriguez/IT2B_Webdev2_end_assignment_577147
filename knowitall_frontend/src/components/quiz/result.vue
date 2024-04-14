@@ -1,22 +1,22 @@
 <template>
 <div class="overlay-container">
 <div class="container round-font" id="result-container">
-    <span id="result-text-correct">congratulations!!</span>
-    <span id="result-text-incorrect">better luck next time,</span>
+    <span :id="getResultMsg()[0]">{{ getResultMsg()[1] }}</span>
+    <span id=""></span>
 
-    <span id="player-name">player</span>
+    <span id="player-name">{{getNameOfUser()}}</span>
     <div id="results-div" class="m-3">
         <div class="result">
-            <span class="result-title">correct answers</span>
-            <span class="result-content-correct">19/20</span>
+            <span class="result-title">correct answers </span>
+            <span class="result-content-correct"> {{ `${results.nr_correct_answers}/${results.uAnswers.length}` }} </span>
         </div>
         <div class="result">
-            <span class="result-title">ranking</span>
-            <span class="result-content-incorrect">#5</span>
+            <span class="result-title">ranking </span>
+            <span class="result-content-incorrect"> #5</span>
         </div>
         <div class="result">
-            <span class="result-title">playtime</span>
-            <span class="result-content-correct">01:40</span>
+            <span class="result-title">playtime </span>
+            <span class="result-content-correct"> {{ formattedTimer() }}</span>
         </div>
 
     </div>
@@ -25,8 +25,47 @@
 </div>
 </div>
 </template>
+
 <script>
+import { useLoginStore } from '../../stores/loginStore';
+import axios from '../../axios-auth'
+
+export default {
+    name: 'Result',
+    data(){
+        return {
+            loginStore: useLoginStore(),
+        };
+    },
+    props: {
+        results: Object
+    },
+    mounted(){
+        this.$emit('stop-timer');
+    },
+    methods: {
+        getNameOfUser(){
+            if (!this.loginStore) {
+                return 'Player';
+            }
+            return this.loginStore.requestUserData.name;
+        },
+        getResultMsg(){
+            if (this.results.nr_correct_answers > this.results.uAnswers.length / 2){
+                return ['result-text-correct', 'congratulations!!'];
+            } else {
+                return ['result-text-incorrect', 'better luck next time, '];
+            }
+        },
+        formattedTimer(){
+            const minutes = Math.floor(this.results.timer / 60);
+            const seconds = this.results.timer % 60;
+             return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+    }
+}
 </script>
+
 <style>
  #result-container{
         background-color: #B590DA;
