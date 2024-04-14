@@ -29,7 +29,7 @@ const emit = defineEmits(['openWindow']);
 
     <div class="col-md-2">
     <label for="quantity" class="form-label">Nr questions</label>
-    <input type="number" class="form-control" id="quantity" name="quantity" min="1" max="20" v-model="quizObject.nr_questions" @change="updateQuizInfo">
+    <input type="number" class="form-control" id="quantity" name="quantity" :min="quizObject.nr_questions" max="20" v-model="quizObject.nr_questions" @change="addQuestion">
     </div>
 
     <div class="d-flex justify-content-center"><h5 class="round-font">QUESTIONS</h5></div>
@@ -40,6 +40,11 @@ const emit = defineEmits(['openWindow']);
         @update-question="updateQuestion(index, $event)"
         @update-answer="updateAnswer(index, $event)"
         />
+
+        <ManageQuizQuestion v-for="digit in nr_new_questions" 
+        @create-question="createQuestion($event)"
+        />
+
 
 </form>
 <div class="col-12 my-4">
@@ -60,7 +65,9 @@ export default {
             answers: {},
             updatedQuestions: [],
             updatedAnswers: [],
-            updatedQuizInfo: false
+            updatedQuizInfo: false,
+            nr_new_questions: '',
+            new_questions: []
         };
     },
     props: {
@@ -107,10 +114,15 @@ export default {
             });
         }
 
-        //this.$emit('openWindow', 'quizzes', null);
+        if (this.new_questions.length > 0){
+            this.new_questions.forEach(question =>{
+                this.postQuestion(question);
+            });
+        }
+
+        this.$emit('openWindow', 'quizzes', null);
 
     },
-
     editQuizInfo(){
         return new Promise((resolve, reject) => {
                 axios.put(`/quiz/${this.quizObject.Id}`,{
@@ -151,6 +163,25 @@ export default {
     },
     createQUiz(){
 
+    },
+    postQuestion(question){
+        return new Promise((resolve, reject) => {
+                axios.post(`/quiz/questions/${this.quizObject.Id}`,{
+                    question: question.text,
+                    answers: question.answers
+                })
+                .then((res) => {
+                    resolve();
+                    console.log(res.data);
+                })
+                .catch((error) => reject(error));
+            })
+    },
+    createQuestion(question){
+        this.new_questions.push(question);
+    },
+    addQuestion(){
+        this.nr_new_questions++;
     }
     },
     mounted(){
@@ -163,8 +194,8 @@ export default {
                     this.answers[a.Id] = a;
                 })
             });
-            console.log(this.questions);
-            console.log(this.answers); 
+            //console.log(this.questions);
+            //console.log(this.answers); 
 
         })
         .catch(error => console.log(error));

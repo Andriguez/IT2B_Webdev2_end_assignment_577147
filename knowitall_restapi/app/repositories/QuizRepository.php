@@ -189,8 +189,19 @@ class QuizRepository extends Repository
         }
     }
 
-    public function createQuestion(){
+    public function createQuestion($quizId, $questionText){
+        try{
+            $query = "INSERT INTO `questions`(`quizz_Id`, `question`) VALUES (?,?)";
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$quizId, $this->sanitizeText($questionText)]);
 
+            $questionId = $this->connection->lastInsertId();
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return $questionId ?? null;
     }
 
     public function editQuestion($qId, $questionText){
@@ -250,8 +261,16 @@ class QuizRepository extends Repository
         }
     }
 
-    public function createAnswer(){
+    public function createAnswer($questionId, $answerText, $isCorrect){
+        try{
+            $query = "INSERT INTO `answers`(`questionId`, `answer_text`, `isCorrect`) VALUES (?,?,?)";
+            $statement = $this->connection->prepare($query);
+            return $statement->execute([$questionId, $this->sanitizeText($answerText), $isCorrect]);
 
+        } catch (PDOException $e){
+            echo $e;
+        }
+        return false;
     }
 
     public function editAnswer($aId, $answerText, $isCorrect){

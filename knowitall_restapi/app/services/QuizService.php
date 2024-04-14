@@ -20,10 +20,11 @@ class QuizService
 
     public function getQuestionById($Id){ return $this->quizRepo->getQuestionById($Id); }
     public function editQuestion($qId, $questionText){ return $this->quizRepo->editQuestion($qId, $questionText); }
+    public function createQuestion($quizId, $questionText){ return $this->quizRepo->createQuestion($quizId, $questionText); }
 
     public function getAnswers($questionId){ return $this->quizRepo->getAnswers($questionId); }
-
     public function getAnswerById($Id){ return $this->quizRepo->getAnswerById($Id); }
+    public function createAnswer($questionId, $answerText, $isCorrect){ return $this->quizRepo->createAnswer($questionId, $answerText, $isCorrect); }
     public function editAnswer($aId, $answerText, $isCorrect){ return $this->quizRepo->editAnswer($aId, $answerText, $isCorrect); }
 
     public function getAllLevels(){ return $this->quizRepo->getAllLevels(); }

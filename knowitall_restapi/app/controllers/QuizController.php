@@ -147,6 +147,26 @@ class QuizController extends Controller
         }
     }
 
+    public function AddNewQuestion($quizId){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $questionText = $data->question;
+            $answers = $data->answers;
+            $questionId = $this->quizService->createQuestion($quizId, $questionText);
+
+            $results = [];
+            foreach ($answers as $a){
+                $results = $this->quizService->createAnswer($questionId, $a->text, $a->bool);
+            }
+
+            $this->respond($results);
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
     public function editAnswer($aId){
         try{
             $json = file_get_contents('php://input');
