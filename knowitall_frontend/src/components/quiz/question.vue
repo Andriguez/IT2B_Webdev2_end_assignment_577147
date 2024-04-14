@@ -1,11 +1,16 @@
 <template>
     <div id="question-container" class="d-flex justify-content-center">
-        <span class="round-font" id="question">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam?</span>
+        <span class="round-font" id="question">{{ question.question }}</span>
 </div>
 </template>
 
 <script>
-
+export default {
+    name: 'Question',
+    props: {
+        question: Object
+    }
+}
 </script>
 
 <style>

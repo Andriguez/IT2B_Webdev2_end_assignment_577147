@@ -25,7 +25,7 @@
                 <h5 class="card-title">times answered</h5>
                 <p class="card-text round-font">{{ quiz.nr_players }}</p>
             </div>
-            <div class="quiz-detail"><a href="#" @click="$router.replace('/quiz');" class="btn btn-primary">▶</a></div>
+            <div class="quiz-detail"><a href="#" @click="$router.replace(`/quiz/${quiz.Id}`);" class="btn btn-primary">▶</a></div>
 
         </div>
         <div class="card-footer">

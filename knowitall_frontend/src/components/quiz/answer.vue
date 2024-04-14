@@ -1,8 +1,19 @@
 <template>
-<button class="answer selected-answer"><span class="round-font">Lorem ipsum dolor sit amet, consectetur</span></button>
+<button class="answer selected-answer" @click="emitNextQuestion()"><span class="round-font">{{ answer.answer }}</span></button>
 </template>
 
 <script>
+export default {
+    name: 'Answer',
+    props: {
+        answer: Object
+    },
+    methods: {
+        emitNextQuestion(){
+            this.$emit('next-question');
+        }
+    }
+}
 </script>
 
 <style>

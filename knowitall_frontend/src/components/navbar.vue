@@ -23,7 +23,6 @@
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><h5 class="px-3">Hello, {{ this.getNameOfUser() }}</h5></li>
                     <li><router-link class="dropdown-item" to="/player">view profile</router-link></li>
-                    <li><router-link class="dropdown-item" to="/player">edit profile</router-link></li>
                     <li><router-link class="dropdown-item" to="/logout">log out</router-link></li>
                 </ul>
             </div>
