@@ -2,7 +2,7 @@
         <div class="input-group mb-3">
             <div class="input-group-text">
                 <input class="form-check-input mt-0" type="checkbox" v-if="new_answer == false" v-model="answer.isCorrect" aria-label="Checkbox for following text input" @change="emitUpdateAnswer">
-                <input class="form-check-input mt-0" type="checkbox" v-else v-model="isCorrectBool" aria-label="Checkbox for following text input" @change="emitUpdateAnswer">
+                <input class="form-check-input mt-0" type="checkbox" v-else v-model="isCorrectBool" aria-label="Checkbox for following text input">
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox" v-if="new_answer == false" v-model="answer.answer" @input="emitUpdateAnswer">
             <input type="text" class="form-control" aria-label="Text input with checkbox" v-else v-model="answerText" @change="emitCreateAnswer">
@@ -16,7 +16,7 @@ export default {
         return {
             isCorrectBool: false,
             answerText: '',
-            new_answer: false
+            new_answer: true
         };
     },
     props: {
@@ -34,10 +34,9 @@ export default {
     },
     mounted(){
         if(this.answer){
+            this.new_answer = false;
             this.isCorrectBool = this.answer.isCorrect;
             this.answerText = this.answer.answer;
-        } else {
-            this.new_answer = true;
         }
     }
 }

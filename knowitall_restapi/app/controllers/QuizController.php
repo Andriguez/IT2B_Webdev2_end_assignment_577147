@@ -127,10 +127,35 @@ class QuizController extends Controller
     }
 
     public function createQuiz(){
+        try{
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
 
+            $name = $data->name;
+            $topic = $data->topic;
+            $level = $data->level;
+            $questions = $data->questions;
+
+            $quizId = $this->quizService->createQuiz($name, $topic, $level);
+            $result = [];
+            foreach ($questions as $q){
+                $questionId = $this->quizService->createQuestion($quizId, $q->text);
+                foreach ($q->answers as $a){
+                    $result = $this->quizService->createAnswer($questionId, $a->text, $a->bool);
+                }
+            }
+
+            $this->respond($result);
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
     }
     public function deleteQuiz($quizId){
-
+        try{
+            $this->respond($this->quizService->deleteQuiz($quizId));
+        } catch (\Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
     }
 
     public function editQuestion($qId){

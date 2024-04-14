@@ -11,17 +11,25 @@ const emit = defineEmits(['openWindow']);
 <form class="row g-3">
     <div class="col-md-6">
         <label for="inputName" class="form-label">Name</label>
-        <input type="text" class="form-control" id="inputName" v-model="quizObject.name" @input="updateQuizInfo">
+        <input type="text" class="form-control" id="inputName" v-if="isNewQuiz == false" v-model="quizObject.name" @input="updateQuizInfo">
+        <input type="text" class="form-control" id="inputName" v-else v-model="quizName" @input="updateQuizInfo">
+
     </div>
     <div class="col-md-2">
         <label for="inputState" class="form-label" >Topic</label>
-        <select id="inputState" class="form-select" v-model="quizObject.topic" @change="updateQuizInfo">
+        <select v-if="isNewQuiz == false" id="inputState" class="form-select" v-model="quizObject.topic" @change="updateQuizInfo">
+            <option v-for="topic in topics" :value="topic">{{ topic.topic }}</option>
+        </select>
+        <select v-else id="inputState" class="form-select" v-model="quizTopic" @change="updateQuizInfo">
             <option v-for="topic in topics" :value="topic">{{ topic.topic }}</option>
         </select>
     </div>
     <div class="col-md-2">
         <label for="inputState" class="form-label">Level</label>
-        <select id="inputState" class="form-select" v-model="quizObject.level" @change="updateQuizInfo">
+        <select v-if="isNewQuiz == false" id="inputState" class="form-select" v-model="quizObject.level" @change="updateQuizInfo">
+            <option v-for="level in levels" :value="level">{{ level.level }}</option>
+        </select>
+        <select v-else id="inputState" class="form-select" v-model="quizLevel" @change="updateQuizInfo">
             <option v-for="level in levels" :value="level">{{ level.level }}</option>
         </select>
     </div>
@@ -29,7 +37,9 @@ const emit = defineEmits(['openWindow']);
 
     <div class="col-md-2">
     <label for="quantity" class="form-label">Nr questions</label>
-    <input type="number" class="form-control" id="quantity" name="quantity" :min="quizObject.nr_questions" max="20" v-model="quizObject.nr_questions" @change="addQuestion">
+    <input type="number" class="form-control" id="quantity" name="quantity" v-if="isNewQuiz === true" min="1" max="20" v-model="nr_new_questions" @change="addQuestion">
+    <input type="number" class="form-control" id="quantity" name="quantity" v-else :min="quizObject.nr_questions" max="20" v-model="quizObject.nr_questions" @change="addQuestion">
+
     </div>
 
     <div class="d-flex justify-content-center"><h5 class="round-font">QUESTIONS</h5></div>
@@ -48,7 +58,9 @@ const emit = defineEmits(['openWindow']);
 
 </form>
 <div class="col-12 my-4">
-        <button class="btn" @click="editQuiz">Save</button>
+        <button v-if="isNewQuiz == false" class="btn" @click="editQuiz">Save</button>
+        <button v-else class="btn" @click="createQuiz">Save</button>
+
     </div>
 </div>
 </template>
@@ -67,7 +79,11 @@ export default {
             updatedAnswers: [],
             updatedQuizInfo: false,
             nr_new_questions: '',
-            new_questions: []
+            new_questions: [],
+            isNewQuiz: true,
+            quizName: '',
+            quizLevel: {},
+            quizTopic: {},
         };
     },
     props: {
@@ -161,7 +177,25 @@ export default {
                 .catch((error) => reject(error));
             })
     },
-    createQUiz(){
+    createQuiz(){
+        return new Promise((resolve, reject) => {
+                axios.post(`/quiz/new`,{
+                    name: this.quizName,
+                    level: this.quizLevel.Id,
+                    topic: this.quizTopic.Id,
+
+                    questions: this.new_questions,
+                })
+                .then((res) => {
+                    resolve();
+                    console.log(res.data);
+                })
+                .catch((error) => reject(error));
+                this.$emit('openWindow', 'quizzes', null);
+
+            })
+    },
+    postQuiz(){
 
     },
     postQuestion(question){
@@ -172,7 +206,6 @@ export default {
                 })
                 .then((res) => {
                     resolve();
-                    console.log(res.data);
                 })
                 .catch((error) => reject(error));
             })
@@ -185,20 +218,22 @@ export default {
     }
     },
     mounted(){
+        if(this.quiz){
+        this.isNewQuiz = false;
+        
         axios.get(`/quiz/${this.quiz}`)
         .then(result => { this.quizObject = result.data;
             this.quizObject.questions.forEach(q => {
                 this.questions[q.Id] = q;
-                
                 q.answers.forEach(a => {
                     this.answers[a.Id] = a;
                 })
             });
             //console.log(this.questions);
             //console.log(this.answers); 
-
         })
         .catch(error => console.log(error));
+    }
 
         axios.get('/quizzes/topics')
         .then(result => this.topics = result.data)

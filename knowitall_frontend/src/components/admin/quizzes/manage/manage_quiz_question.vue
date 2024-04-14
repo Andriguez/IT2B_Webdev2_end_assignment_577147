@@ -6,8 +6,8 @@ import ManageQuizAnswer from './manage_quiz_answer.vue'
     <div class="d-flex flex-nowrap">
         <div class="col-md-6 mb-3 me-3">
         <label for="exampleFormControlTextarea1" class="form-label">Question Text</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" v-if="new_question == false" v-model="question.question" @input="emitUpdateQuestion"></textarea>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" v-else v-model="questionText" @input="emitCreateQuestion"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" v-if="new_question == false" v-model="question.question" @change="emitUpdateQuestion"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" v-else v-model="questionText" @change="emitCreateQuestion"></textarea>
 
     </div>
 
@@ -40,7 +40,7 @@ export default {
             answers: [],
             nr_answers: 0,
             new_answers: [],
-            new_question: false,
+            new_question: true,
         };
     },
     props: {
@@ -51,7 +51,6 @@ export default {
     },
     methods: {
         emitUpdateQuestion() {
-            
             this.$emit('update-question', this.question.Id);
     },
         updateAnswer(index, updatedAnswer){
@@ -68,12 +67,12 @@ export default {
         }
     },
     mounted(){
-        if(this.question){
+        if(!this.question){
+            this.nr_answers = 3;
+        } else {
+            this.new_question = false;
             this.questionText = this.question.question;
             this.answers = this.question.answers;
-        } else {
-            this.nr_answers = 3;
-            this.new_question = true;
         }
     }
 

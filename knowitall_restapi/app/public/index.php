@@ -42,7 +42,7 @@ $router->get('/quizzes', 'QuizController@getAll');
 $router->get('/quizzes/(\d+)', 'QuizController@getQuizzesByTopic');
 
 $router->get('/quiz/(\d+)', 'QuizController@getQuiz');
-$router->post('/quiz', 'QuizController@createQuiz');
+$router->post('/quiz/new', 'QuizController@createQuiz');
 $router->post('/quiz/questions/(\d+)', 'QuizController@AddNewQuestion');
 $router->put('/quiz/(\d+)', 'QuizController@editQuiz');
 $router->put('/quiz/questions/(\d+)', 'QuizController@editQuestion');

@@ -15,6 +15,8 @@ class QuizService
     public function getQuizzesByTopic($topicId, $offset = NULL, $limit = NULL){ return $this->quizRepo->getQuizzesByTopic($topicId, $offset, $limit); }
     public function getQuizById($Id){ return $this->quizRepo->getQuizById($Id); }
     public function editQuiz($quizId, $name, $topic, $level){ return $this->quizRepo->editQuiz($quizId, $name,$topic, $level); }
+    public function createQuiz($name, $topic, $level){ return $this->quizRepo->createQuiz($name, $topic, $level); }
+    public function deleteQuiz($quizId){ return $this->quizRepo->deleteQuiz($quizId); }
 
     public function getQuestions($quizId){ return $this->quizRepo->getQuestions($quizId); }
 
