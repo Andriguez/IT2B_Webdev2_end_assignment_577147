@@ -80,23 +80,6 @@ class QuizRepository extends Repository
         } catch (\PDOException $e){echo $e;}
     }
 
-    public function getQuizByName($name){
-        try {
-            $query = "SELECT `Id` FROM quizzes WHERE name = :name";
-
-            $stmt = $this->connection->prepare($query);
-            $stmt->execute();
-
-            while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
-                $quiz = $this->getQuizById($row['Id']);
-            }
-
-            return $quiz;
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-
     public function getQuizById($Id){
         try {
             $query = "SELECT `name`, `topic`, `nr_players`, `level`, `modification_date`
@@ -109,7 +92,7 @@ class QuizRepository extends Repository
             while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
                 $quiz = new Quiz();
                 $quiz->setId($Id);
-                $quiz->setName($row['name']);
+                $quiz->setName(htmlspecialchars_decode($row['name']));
                 $quiz->setTopic($this->getTopicById($row['topic']));
                 $quiz->setNrPlayers($row['nr_players']);
                 $quiz->setLevel($this->getLevelById($row['level']));

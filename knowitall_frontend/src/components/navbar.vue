@@ -70,7 +70,7 @@ export default {
             if (!this.loginStore) {
                 return false;
             }
-            return this.$route.path === '/quiz';
+            return this.$route.path === '/quiz/:quizId';
         },
         getNameOfUser(){
             if (!this.loginStore) {

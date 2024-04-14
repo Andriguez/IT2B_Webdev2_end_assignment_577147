@@ -100,7 +100,7 @@ class UserRepository extends Repository
 
             $query = "INSERT INTO `users` (`name`, `username`, `password`, `usertype`) VALUES (?,?,?,?)";
             $statement = $this->connection->prepare($query);
-            $statement->execute([$name, $username,$password, $type]);
+            $statement->execute([$name, $username,$this->hashPassword($password), $type]);
             $userId =  $this->connection->lastInsertId();
 
             if ($type === 2){
@@ -145,7 +145,7 @@ class UserRepository extends Repository
         try{
             $statement = $this->connection->prepare($query);
             $password = 'password123';
-            return $statement->execute([$password, $userId]);
+            return $statement->execute([$this->hashPassword($password), $userId]);
 
         } catch (PDOException $e){
             echo $e;
@@ -223,8 +223,8 @@ class UserRepository extends Repository
             }
 
             // verify if the password matches the hash in the database
-            //$result = $this->verifyPassword($password, $user->getPassword());
-            $result = $password === $user->getPassword();
+            $result = $this->verifyPassword($password, $user->getPassword());
+            //$result = $password === $user->getPassword();
 
             if (!$result)
                 return false;

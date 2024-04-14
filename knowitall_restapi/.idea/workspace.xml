@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/manage/manage_quiz.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/manage/manage_quiz.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/quiz/result.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/quiz/result.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/quizzes/quiz_item.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/quizzes/quiz_item.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/homepage_content.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/homepage_content.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/navbar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/PlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/PlayerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/TrialController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/productcontroller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Favorite.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Favorite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/media/KNOW-IT-ALL_logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/media/do-you-know-it-all.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/media/user-profile-img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/media/user_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/media/user_icon_noshadow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/ProfileRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/ProfileRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/productrepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/ProfileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/ProfileService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/QuizRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/QuizRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/developmentdb.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +119,7 @@
       <workItem from="1711981863462" duration="7024000" />
       <workItem from="1712316849745" duration="9075000" />
       <workItem from="1712396266499" duration="10707000" />
-      <workItem from="1712927356467" duration="37479000" />
+      <workItem from="1712927356467" duration="39611000" />
     </task>
     <servers />
   </component>
