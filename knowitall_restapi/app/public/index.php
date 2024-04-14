@@ -14,13 +14,6 @@ $router = new \Bramus\Router\Router();
 
 $router->setNamespace('Controllers');
 
-// routes for the products endpoint
-$router->get('/products', 'ProductController@getAll');
-$router->get('/products/(\d+)', 'ProductController@getOne');
-$router->post('/products', 'ProductController@create');
-$router->put('/products/(\d+)', 'ProductController@update');
-$router->delete('/products/(\d+)', 'ProductController@delete');
-
 $router->get('/users', 'UserController@getAll');
 $router->get('/users/(\d+)', 'UserController@getUsersByType');
 $router->get('/user/(\d+)', 'UserController@getOne');
@@ -30,7 +23,6 @@ $router->delete('/user/(\d+)', 'UserController@deleteUser');
 $router->post('/users/login', 'UserController@login');
 $router->post('/users/register', 'UserController@register');
 $router->patch('/resetpwd/(\d+)', 'UserController@resetPassword');
-
 
 $router->get('/users/types', 'UserController@getUsertypes');
 

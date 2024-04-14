@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf6e8e6-abbd-4050-b109-9dd5affafb09" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/manage/manage_quiz.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/admin/quizzes/manage/manage_quiz.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../knowitall_frontend/src/components/register_form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../knowitall_frontend/src/components/register_form.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/QuizRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/QuizRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/QuizService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/QuizService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/UserService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/UserService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +118,7 @@
       <workItem from="1711981863462" duration="7024000" />
       <workItem from="1712316849745" duration="9075000" />
       <workItem from="1712396266499" duration="10707000" />
-      <workItem from="1712927356467" duration="12297000" />
+      <workItem from="1712927356467" duration="15871000" />
     </task>
     <servers />
   </component>

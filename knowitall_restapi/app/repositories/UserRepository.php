@@ -95,6 +95,36 @@ class UserRepository extends Repository
         } catch (\PDOException $e){echo $e;}
     }
 
+    function createUser($name, $username, $type, $password){
+        try{
+
+            $query = "INSERT INTO `users` (`name`, `username`, `password`, `usertype`) VALUES (?,?,?,?)";
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$name, $username,$password, $type]);
+            $userId =  $this->connection->lastInsertId();
+
+            if ($type === 2){
+                $this->createPlayerProfile($userId);
+            }
+
+        } catch(PDOException $e){
+            echo $e;
+        }
+
+        return $this->getUserById($userId) ?? null;
+    }
+
+    private function createPlayerProfile($userId){
+        try{
+            $query = "INSERT INTO `player_info`(`userId`, `average`, `ranking`, `playtime`) VALUES (?,0,0,'00:00')";
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$userId]);
+
+        } catch(PDOException $e){
+            echo $e;
+        }
+    }
+
     function editUser($userId, $name, $username, $type){
         $query = "UPDATE `users` SET `name`= ?,`username`= ?,`usertype`=? WHERE `Id` = ?";
 

@@ -21,6 +21,9 @@ class UserService {
     public function getUserById($Id){
         return $this->repository->getUserById($Id);
     }
+    public function createUser($name, $username, $password, $type){
+        return $this->repository->createUser($name,$username, $type, $password);
+    }
     public function editUser($userId, $name, $username, $type){
         return $this->repository->editUser($userId, $name, $username, $type);
     }

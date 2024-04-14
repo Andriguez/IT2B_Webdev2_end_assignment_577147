@@ -166,4 +166,29 @@ class UserController extends Controller
         $tokenResponse = $this->generateJwt($user);
         $this->respond($tokenResponse);
     }
+
+    public function register(){
+        try{
+
+            $json = file_get_contents('php://input');
+            $data = json_decode($json);
+
+            $username = $data->username;
+            $password = $data->password;
+            $name = $data->fullname;
+            $type = 2; //player
+
+            $user = $this->service->createUser($name, $username, $password, $type);
+
+            if(!$user){
+                $this->respondWithError(401, [false ,'registration failed']);
+                return;
+            }
+
+            $this->respond([true, $user]);
+
+        } catch (Exception $e){
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
 }
