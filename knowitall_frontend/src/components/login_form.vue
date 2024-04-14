@@ -13,7 +13,7 @@
             </div>
 
             <div class="container d-flex justify-content-center flex-nowrap">
-                <a class="nav-link py-4 px-3" @click="login()" style="font-size: 27px; cursor: pointer;">login</a>
+                <a class="nav-link py-4 px-3" @click="login()" href="#" style="font-size: 27px; cursor: pointer;">login</a>
                 <router-link class="nav-link py-4 px-3" to="/register" style="font-size: 27px">sign up</router-link>
             </div>
         </form>

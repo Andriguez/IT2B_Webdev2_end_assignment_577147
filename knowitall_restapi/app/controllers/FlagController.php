@@ -24,9 +24,13 @@ class FlagController extends Controller
             $limit = $_GET["limit"];
         }
 
-        $flags = $this->flagService->getAllFlags($offset, $limit);
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user && $user->getUsertype()->getId() === 1){
+            $flags = $this->flagService->getAllFlags($offset, $limit);
+            $this->respond($flags);
+        }
 
-        $this->respond($flags);
+
     }
 
     public function getFlagsByFilter($isSolved){
@@ -40,9 +44,11 @@ class FlagController extends Controller
             $limit = $_GET["limit"];
         }
 
-        $filteredFlags = $this->flagService->getAllFlagsByFilter($isSolved,$offset, $limit);
-
-        $this->respond($filteredFlags);
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user && $user->getUsertype()->getId() === 1){
+            $filteredFlags = $this->flagService->getAllFlagsByFilter($isSolved,$offset, $limit);
+            $this->respond($filteredFlags);
+        }
     }
 
     public function getOne($id)
@@ -64,9 +70,12 @@ class FlagController extends Controller
 
             $input = $data->isSolved;
 
-            $flag = $this->flagService->editFlagStatus($flagId, $input);
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && $user->getUsertype()->getId() === 1){
+                $flag = $this->flagService->editFlagStatus($flagId, $input);
+                $this->respond($flag);
+            }
 
-            $this->respond($flag);
         } catch (\Exception $e){
             $this->respondWithError(500, $e);
         }

@@ -22,53 +22,62 @@ class PlayerController extends Controller
 
     public function getOne($id)
     {
+        $loggedUser = $this->getLoggedUser($this->checkForJwt());
+        if($loggedUser){
+            $user = $this->userService->getUserById($id);
 
-        $user = $this->userService->getUserById($id);
+            $history = $this->playerService->getPlayerHistory($id);
+            $favorites = $this->playerService->getPlayerFavorites($id);
+            $playerInfo = $this->playerService->getPlayerInfoById($id);
 
-        $history = $this->playerService->getPlayerHistory($id);
-        $favorites = $this->playerService->getPlayerFavorites($id);
-        $playerInfo = $this->playerService->getPlayerInfoById($id);
-
-        $profile = new PlayerProfile();
-        $profile->setAverage($playerInfo['average']);
-        $profile->setRanking($playerInfo['ranking']);
-        $profile->setPlaytime($playerInfo['playtime']);
-        $profile->setHistory($history);
-        $profile->setFavorites($favorites);
-        $profile->setTotalCorrectAnswers($playerInfo['total_correct_answers']);
-        $profile->setTotalAnswers($playerInfo['total_answers']);
+            $profile = new PlayerProfile();
+            $profile->setAverage($playerInfo['average']);
+            $profile->setRanking($playerInfo['ranking']);
+            $profile->setPlaytime($playerInfo['playtime']);
+            $profile->setHistory($history);
+            $profile->setFavorites($favorites);
+            $profile->setTotalCorrectAnswers($playerInfo['total_correct_answers']);
+            $profile->setTotalAnswers($playerInfo['total_answers']);
 
 
-        $user->setProfile($profile);
+            $user->setProfile($profile);
 
-        if (!$user) {
-            $this->respondWithError(404, "Player Profile not found");
-            return;
+            if (!$user) {
+                $this->respondWithError(404, "Player Profile not found");
+                return;
+            }
+
+            $this->respond($user->getProfile());
+
         }
-
-        $this->respond($user->getProfile());
     }
 
     public function getPlayerHistory($playerId){
-        $history = $this->playerService->getPlayerHistory($playerId);
 
-        if(!isset($history)){
-            $this->respondWithError(404, "Player history not found");
-            return;
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user){
+            $history = $this->playerService->getPlayerHistory($playerId);
+
+            if(!isset($history)){
+                $this->respondWithError(404, "Player history not found");
+                return;
+            }
+            $this->respond($history);
+
         }
-
-        $this->respond($history);
     }
 
     public function getPlayerFavorites($playerId){
-        $favorites = $this->playerService->getPlayerFavorites($playerId);
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user){
+            $favorites = $this->playerService->getPlayerFavorites($playerId);
 
-        if(!isset($favorites)){
-            $this->respondWithError(404, "Player favorites list not found");
-            return;
+            if(!isset($favorites)){
+                $this->respondWithError(404, "Player favorites list not found");
+                return;
+            }
+            $this->respond($favorites);
         }
-
-        $this->respond($favorites);
     }
 
     public function addPlayerResults($quizId){

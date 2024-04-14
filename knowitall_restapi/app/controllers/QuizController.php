@@ -99,28 +99,33 @@ class QuizController extends Controller
 
     public function getQuiz($id)
     {
-        $quiz = $this->quizService->getQuizById($id);
-
-        if (!$quiz) {
-            $this->respondWithError(404, "Quiz not found");
-            return;
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user){
+            $quiz = $this->quizService->getQuizById($id);
+            if (!$quiz) {
+                $this->respondWithError(404, "Quiz not found");
+                return;
+            }
+            $this->respond($quiz);
         }
-
-        $this->respond($quiz);
     }
 
     public function editQuiz($quizId){
         try{
-            $json = file_get_contents('php://input');
-            $data = json_decode($json);
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $json = file_get_contents('php://input');
+                $data = json_decode($json);
 
-            $name = $data->name;
-            $topic = $data->topic;
-            $level = $data->level;
+                $name = $data->name;
+                $topic = $data->topic;
+                $level = $data->level;
 
-            $quiz = $this->quizService->editQuiz($quizId, $name, $topic, $level);
+                $quiz = $this->quizService->editQuiz($quizId, $name, $topic, $level);
 
-            $this->respond($quiz);
+                $this->respond($quiz);
+            }
+
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }
@@ -128,31 +133,40 @@ class QuizController extends Controller
 
     public function createQuiz(){
         try{
-            $json = file_get_contents('php://input');
-            $data = json_decode($json);
 
-            $name = $data->name;
-            $topic = $data->topic;
-            $level = $data->level;
-            $questions = $data->questions;
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
 
-            $quizId = $this->quizService->createQuiz($name, $topic, $level);
-            $result = [];
-            foreach ($questions as $q){
-                $questionId = $this->quizService->createQuestion($quizId, $q->text);
-                foreach ($q->answers as $a){
-                    $result = $this->quizService->createAnswer($questionId, $a->text, $a->bool);
+                $json = file_get_contents('php://input');
+                $data = json_decode($json);
+
+                $name = $data->name;
+                $topic = $data->topic;
+                $level = $data->level;
+                $questions = $data->questions;
+
+                $quizId = $this->quizService->createQuiz($name, $topic, $level);
+                $result = [];
+                foreach ($questions as $q){
+                    $questionId = $this->quizService->createQuestion($quizId, $q->text);
+                    foreach ($q->answers as $a){
+                        $result = $this->quizService->createAnswer($questionId, $a->text, $a->bool);
+                    }
                 }
-            }
 
-            $this->respond($result);
+                $this->respond($result);
+            }
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }
     }
     public function deleteQuiz($quizId){
         try{
-            $this->respond($this->quizService->deleteQuiz($quizId));
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $this->respond($this->quizService->deleteQuiz($quizId));
+            }
+
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }
@@ -160,12 +174,16 @@ class QuizController extends Controller
 
     public function editQuestion($qId){
         try{
-            $json = file_get_contents('php://input');
-            $data = json_decode($json);
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
 
-            $questionText = $data->question;
+                $json = file_get_contents('php://input');
+                $data = json_decode($json);
 
-            $this->respond($this->quizService->editQuestion($qId, $questionText));
+                $questionText = $data->question;
+
+                $this->respond($this->quizService->editQuestion($qId, $questionText));
+            }
 
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
@@ -174,19 +192,24 @@ class QuizController extends Controller
 
     public function AddNewQuestion($quizId){
         try{
-            $json = file_get_contents('php://input');
-            $data = json_decode($json);
 
-            $questionText = $data->question;
-            $answers = $data->answers;
-            $questionId = $this->quizService->createQuestion($quizId, $questionText);
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $json = file_get_contents('php://input');
+                $data = json_decode($json);
 
-            $results = [];
-            foreach ($answers as $a){
-                $results = $this->quizService->createAnswer($questionId, $a->text, $a->bool);
+                $questionText = $data->question;
+                $answers = $data->answers;
+                $questionId = $this->quizService->createQuestion($quizId, $questionText);
+
+                $results = [];
+                foreach ($answers as $a){
+                    $results = $this->quizService->createAnswer($questionId, $a->text, $a->bool);
+                }
+
+                $this->respond($results);
             }
 
-            $this->respond($results);
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }
@@ -194,45 +217,57 @@ class QuizController extends Controller
 
     public function editAnswer($aId){
         try{
-            $json = file_get_contents('php://input');
-            $data = json_decode($json);
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
 
-            $answerText = $data->answer;
-            $isCorrect = $data->isCorrect;
-            $explanation = $data->explanation;
+                $json = file_get_contents('php://input');
+                $data = json_decode($json);
 
-            $this->respond($this->quizService->editAnswer($aId, $answerText, $isCorrect, $explanation));
+                $answerText = $data->answer;
+                $isCorrect = $data->isCorrect;
+                $explanation = $data->explanation;
+
+                $this->respond($this->quizService->editAnswer($aId, $answerText, $isCorrect, $explanation));
+
+            }
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }
     }
 
     public function getAllTopics(){
-        $topics = $this->quizService->getAllTopics();
-
-        $this->respond($topics);
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user){
+            $topics = $this->quizService->getAllTopics();
+            $this->respond($topics);
+        }
     }
 
     public function getTopic($topicId){
         $topic = $this->quizService->getTopicById($topicId);
 
-        if(!$topic){
-            $this->respondWithError(404, "Topic not found");
-            return;
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user){
+            if(!$topic){
+                $this->respondWithError(404, "Topic not found");
+                return;
+            }
+            $this->respond($topic);
         }
-
-        $this->respond($topic);
     }
 
     public function createTopic(){
         try{
             $json = file_get_contents('php://input');
             $data = json_decode($json);
-
             $name = $data->topicname;
-            $topic = $this->quizService->createTopic($name);
 
-            $this->respond($topic);
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $topic = $this->quizService->createTopic($name);
+                $this->respond($topic);
+            }
+
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }
@@ -242,11 +277,14 @@ class QuizController extends Controller
         try{
             $json = file_get_contents('php://input');
             $data = json_decode($json);
-
             $name = $data->topicname;
-            $topic = $this->quizService->editTopic($topicId, $name);
 
-            $this->respond($topic);
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $topic = $this->quizService->editTopic($topicId, $name);
+                $this->respond($topic);
+            }
+
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }
@@ -254,26 +292,37 @@ class QuizController extends Controller
 
     public function deleteTopic($topicId){
         try{
-            $this->respond($this->quizService->deleteTopic($topicId));
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $this->respond($this->quizService->deleteTopic($topicId));
+            }
         } catch (\Exception $e){
             $this->respondWithError(500, $e);
         }
     }
     public function getAllLevels(){
-        $levels = $this->quizService->getAllLevels();
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user){
+            $levels = $this->quizService->getAllLevels();
+            $this->respond($levels);
+        }
 
-        $this->respond($levels);
     }
 
     public function getLevel($levelId){
-        $level = $this->quizService->getLevelById($levelId);
 
-        if(!$level){
-            $this->respondWithError(404, "Level not found");
-            return;
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user){
+
+            $level = $this->quizService->getLevelById($levelId);
+            if(!$level){
+                $this->respondWithError(404, "Level not found");
+                return;
+            }
+
+            $this->respond($level);
         }
 
-        $this->respond($level);
     }
 
     public function createLevel(){
@@ -282,7 +331,11 @@ class QuizController extends Controller
             $data = json_decode($json);
 
             $name = $data->level;
-            $level = $this->quizService->createLevel($name);
+
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $level = $this->quizService->createLevel($name);
+            }
 
             $this->respond($level);
         } catch (\Exception $e){
@@ -294,11 +347,15 @@ class QuizController extends Controller
         try{
             $json = file_get_contents('php://input');
             $data = json_decode($json);
-
             $name = $data->level;
-            $level = $this->quizService->editLevel($levelId, $name);
 
-            $this->respond($level);
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $level = $this->quizService->editLevel($levelId, $name);
+                $this->respond($level);
+            }
+
+
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }
@@ -306,7 +363,11 @@ class QuizController extends Controller
 
     public function deleteLevel($levelId){
         try{
-            $this->respond($this->quizService->deleteLevel($levelId));
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 1)){
+                $this->respond($this->quizService->deleteLevel($levelId));
+            }
+
         } catch (\Exception $e){
             $this->respondWithError(500, $e);
         }

@@ -28,9 +28,11 @@ class UserController extends Controller
             $limit = $_GET["limit"];
         }
 
-        $users = $this->service->getAllUsers($offset, $limit);
-
-        $this->respond($users);
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user && $user->getUsertype()->getId() === 1){
+            $users = $this->service->getAllUsers($offset, $limit);
+            $this->respond($users);
+        }
     }
 
     public function getUsersByType($type){
@@ -44,9 +46,12 @@ class UserController extends Controller
             $limit = $_GET["limit"];
         }
 
-        $users = $this->service->getUsersByType($type, $offset, $limit);
+        $user = $this->getLoggedUser($this->checkForJwt());
+        if($user && $user->getUsertype()->getId() === 1){
+            $users = $this->service->getUsersByType($type, $offset, $limit);
 
-        $this->respond($users);
+            $this->respond($users);
+        }
     }
 
     public function getOne($id = NULL)
@@ -75,16 +80,19 @@ class UserController extends Controller
 
     public function editUser($userId){
         try {
-            $json = file_get_contents('php://input');
-            $data = json_decode($json);
+            $loggedUser = $this->getLoggedUser($this->checkForJwt());
+            if($loggedUser && $loggedUser->getUsertype()->getId() === 1){
+                $json = file_get_contents('php://input');
+                $data = json_decode($json);
 
-            $name = $data->name;
-            $username = $data->username;
-            $type = $data->usertype;
+                $name = $data->name;
+                $username = $data->username;
+                $type = $data->usertype;
 
-            $user = $this->service->editUser($userId, $name, $username, $type);
+                $user = $this->service->editUser($userId, $name, $username, $type);
 
-            $this->respond($user);
+                $this->respond($user);
+            }
         } catch (Exception $e){
             $this->respondWithError(500, $e);
         }
@@ -92,7 +100,10 @@ class UserController extends Controller
 
     public function resetPassword($userId){
         try{
-            $this->respond($this->service->resetUserPassword($userId));
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && $user->getUsertype()->getId() === 1){
+                $this->respond($this->service->resetUserPassword($userId));
+            }
         } catch (Exception $e){
             $this->respondWithError(500, $e);
         }
@@ -100,7 +111,10 @@ class UserController extends Controller
 
     public function deleteUser($userId){
         try{
-            $this->respond($this->service->deleteUser($userId));
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && $user->getUsertype()->getId() === 1){
+                $this->respond($this->service->deleteUser($userId));
+            }
         } catch (Exception $e){
             $this->respondWithError(500, $e);
         }
@@ -108,7 +122,10 @@ class UserController extends Controller
 
     public function getUsertypes(){
         try {
-            $this->respond($this->service->getAllUserTypes());
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user){
+                $this->respond($this->service->getAllUserTypes());
+            }
         } catch (Exception $e){
             $this->respondWithError(500, $e);
         }

@@ -23,13 +23,19 @@ class PlayerProfile implements \JsonSerializable
     public function getHistory(){ return $this->history; }
     public function getTotalCorrectAnswers(){ return $this->total_correct_answers; }
     public function getTotalAnswers(){ return $this->total_answers; }
+    private function formatPlaytime($playtime){
+        $minutes = floor($playtime / 60);
+        $seconds = $playtime % 60;
+
+        return sprintf("%02d:%02d", $minutes, $seconds);
+    }
 
     #[\ReturnTypeWillChange]
     public function jsonSerialize(){
         return [
             'average' => "{$this->average}%",
             'ranking' => "#{$this->ranking}",
-            'playtime' => $this->playtime,
+            'playtime' => $this->formatPlaytime($this->playtime),
             'answered' => count($this->history)
         ];
     }
