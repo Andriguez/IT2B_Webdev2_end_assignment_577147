@@ -272,7 +272,11 @@ class QuizRepository extends Repository
                 $answer = new Answer();
                 $answer->setId($Id);
                 $answer->setAnswerText(htmlspecialchars_decode($row['answer_text']));
-                $answer->setAnswerExplain($row['answer_explain'] ?? null);
+                
+                $explanation = $row['answer_explain'] ?? null;
+                if(isset($explanation)){ $explanation = htmlspecialchars_decode($explanation);}
+
+                $answer->setAnswerExplain($explanation);
                 $answer->setIsCorrect($row['isCorrect']);
             }
 
@@ -294,12 +298,12 @@ class QuizRepository extends Repository
         return false;
     }
 
-    public function editAnswer($aId, $answerText, $isCorrect){
+    public function editAnswer($aId, $answerText, $isCorrect, $explanation){
         try{
-            $query = "UPDATE `answers` SET `answer_text`= ? ,`isCorrect`= ? WHERE `Id`= ?";
+            $query = "UPDATE `answers` SET `answer_text`= ? ,`isCorrect`= ?, `answer_explain` = ? WHERE `Id`= ?";
 
             $statement = $this->connection->prepare($query);
-            return $statement->execute([$this->sanitizeText($answerText), $isCorrect, $aId]);
+            return $statement->execute([$this->sanitizeText($answerText), $isCorrect, $this->sanitizeText($explanation), $aId]);
 
         } catch (PDOException $e){
             echo $e;

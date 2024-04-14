@@ -19,9 +19,9 @@ export default {
     }
   },
   mounted() {
-    //this.timer = setInterval(() => {
-      //this.counter++;
-    //}, 1000);
+    this.timer = setInterval(() => {
+      this.counter++;
+    }, 1000);
   },
   beforeUnmount() {
     clearInterval(this.timer);

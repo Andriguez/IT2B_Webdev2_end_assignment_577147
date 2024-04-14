@@ -1,16 +1,24 @@
 <template>
-<button class="answer selected-answer" @click="emitNextQuestion()"><span class="round-font">{{ answer.answer }}</span></button>
+<button class="answer" :class="answer.class" :disabled="answer.selected" @click="selectAnswer">
+    <span class="round-font">{{ answer.answer }}</span>
+    <br>
+    <span style="font-size: 14px;">{{ answer.explain  }}</span>
+</button>
 </template>
 
 <script>
 export default {
     name: 'Answer',
+    data(){
+        return {
+        }
+    },
     props: {
         answer: Object
     },
     methods: {
-        emitNextQuestion(){
-            this.$emit('next-question');
+        selectAnswer(){
+            this.$emit('answer-selected', this.answer);
         }
     }
 }
@@ -57,7 +65,7 @@ export default {
 
         .wrong-correct-answer{
             border: solid 3px #47008F;
-            background-color: #BDDAA6;
+            background-color: #aeb8a6;
 
             span{
                 color: #A8DF7D;

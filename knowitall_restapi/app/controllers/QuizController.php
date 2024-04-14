@@ -199,8 +199,9 @@ class QuizController extends Controller
 
             $answerText = $data->answer;
             $isCorrect = $data->isCorrect;
+            $explanation = $data->explanation;
 
-            $this->respond($this->quizService->editAnswer($aId, $answerText, $isCorrect));
+            $this->respond($this->quizService->editAnswer($aId, $answerText, $isCorrect, $explanation));
         } catch (\Exception $e){
             $this->respondWithError(500, $e->getMessage());
         }

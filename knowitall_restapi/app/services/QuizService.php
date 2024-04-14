@@ -27,7 +27,7 @@ class QuizService
     public function getAnswers($questionId){ return $this->quizRepo->getAnswers($questionId); }
     public function getAnswerById($Id){ return $this->quizRepo->getAnswerById($Id); }
     public function createAnswer($questionId, $answerText, $isCorrect){ return $this->quizRepo->createAnswer($questionId, $answerText, $isCorrect); }
-    public function editAnswer($aId, $answerText, $isCorrect){ return $this->quizRepo->editAnswer($aId, $answerText, $isCorrect); }
+    public function editAnswer($aId, $answerText, $isCorrect, $explanation){ return $this->quizRepo->editAnswer($aId, $answerText, $isCorrect, $explanation); }
 
     public function getAllLevels(){ return $this->quizRepo->getAllLevels(); }
     public function getLevelById($Id){ return $this->quizRepo->getLevelById($Id); }

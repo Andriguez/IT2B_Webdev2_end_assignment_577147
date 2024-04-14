@@ -168,7 +168,8 @@ export default {
         return new Promise((resolve, reject) => {
                 axios.put(`/quiz/answers/${answer.Id}`,{
                     answer: answer.answer,
-                    isCorrect: answer.isCorrect ? 1: 0
+                    isCorrect: answer.isCorrect ? 1: 0,
+                    explanation: answer.explanation
                 })
                 .then((res) => {
                     resolve();

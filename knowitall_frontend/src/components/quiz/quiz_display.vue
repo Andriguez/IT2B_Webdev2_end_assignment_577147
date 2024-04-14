@@ -14,7 +14,7 @@ import axios from '../../axios-auth'
         <Question v-if="currentQuestion" :question="currentQuestion" />
     
     <div id="answers-container" class="container d-flex flex-wrap justify-content-center">
-        <Answer v-for="(answer, index) in currentAnswers" :key="index" :answer="answer" @next-question="nextQuestion()"/>
+        <Answer v-for="(answer, index) in currentAnswers" :key="index" :answer="answer" @answer-selected="handleAnswerSelected(answer)"/>
     </div>
 </main>
 </template>
@@ -27,7 +27,8 @@ export default {
             currentIndex: 0,
             userAnswers: [],
             questions: {},
-            answers: {}
+            answers: {},
+            selectedAnswer: null
         };
     },
     props: {
@@ -45,8 +46,42 @@ export default {
         nextQuestion() {
       if (this.currentIndex < this.questions.length - 1) {
         this.currentIndex++;
+        this.selectedAnswer = null;
       }
     },
+    handleAnswerSelected(answer){
+        if (this.selectedAnswer) return;
+
+        this.selectedAnswer = answer;
+        this.selectedAnswer.class = 'selected-answer'
+
+        setTimeout(() => {
+            this.currentAnswers.forEach(ans => {
+        if (ans.isCorrect) {
+          ans.explain = ans.explanation;
+        }
+      });        
+        if (this.selectedAnswer.isCorrect) {
+        this.selectedAnswer.class = 'correct-answer';
+      } else {
+        this.selectedAnswer.class = 'wrong-answer';
+
+        this.currentAnswers.forEach(ans => {
+        if (ans.isCorrect) {
+          ans.class = 'wrong-correct-answer';
+        }
+      });
+      } }, 2000);
+        
+        
+
+        this.userAnswers.push(this.selectedAnswer);
+
+        this.$emit('answer-selected', this.selectedAnswer);
+
+
+        setTimeout(() => { this.nextQuestion(); }, 7000);
+    }
     },
     computed: {
         currentQuestion(){

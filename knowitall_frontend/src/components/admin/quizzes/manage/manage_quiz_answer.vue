@@ -6,6 +6,8 @@
             </div>
             <input type="text" class="form-control" aria-label="Text input with checkbox" v-if="new_answer == false" v-model="answer.answer" @input="emitUpdateAnswer">
             <input type="text" class="form-control" aria-label="Text input with checkbox" v-else v-model="answerText" @change="emitCreateAnswer">
+
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" v-if="isCorrectBool == true" v-model="answer.explanation" @change="emitUpdateAnswer"></textarea>
         </div>
 </template>
 
