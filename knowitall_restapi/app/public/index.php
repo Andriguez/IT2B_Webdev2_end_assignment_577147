@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 
-date_default_timezone_set('UTC');
+date_default_timezone_set('Europe/Amsterdam');
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -29,6 +29,9 @@ $router->get('/users/types', 'UserController@getUsertypes');
 $router->get('/player/(\d+)', 'PlayerController@getOne');
 $router->get('/player/(\d+)/history', 'PlayerController@getPlayerHistory');
 $router->get('/player/(\d+/favorites)', 'PlayerController@getPlayerFavorites');
+$router->post('/player/(\d+/favorites)', 'PlayerControlleraAddPlayerFavorites');
+$router->post('/player/results/(\d+)', 'PlayerController@addPlayerResults');
+
 
 $router->get('/quizzes', 'QuizController@getAll');
 $router->get('/quizzes/(\d+)', 'QuizController@getQuizzesByTopic');

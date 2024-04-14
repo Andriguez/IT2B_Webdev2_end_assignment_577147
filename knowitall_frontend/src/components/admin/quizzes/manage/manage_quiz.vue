@@ -193,7 +193,6 @@ export default {
                 })
                 .catch((error) => reject(error));
                 this.$emit('openWindow', 'quizzes', null);
-
             })
     },
     postQuiz(){

@@ -63,10 +63,10 @@ class QuizController extends Controller
                 'Id' => $quizObject->getId(),
                 'name' => $quizObject->getName(),
                 'nr_players' => $quizObject->getNrPlayers(),
-                'avg_correct_answers' => $quizObject->getAverage(),
                 'topic' => $quizObject->getTopic()->getName(),
                 'level' => $quizObject->getLevel()->getName(),
                 'mod_date' => $quizObject->getModDate()->format('d/m/y H:i'),
+                'nr_questions' => count($quizObject->getQuestions())
             );
 
             $quizzes[] = $quiz;

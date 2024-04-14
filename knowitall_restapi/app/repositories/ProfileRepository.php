@@ -10,7 +10,7 @@ class ProfileRepository extends Repository
 {
     public function getPlayerInfo($playerId){
         try {
-            $query = "SELECT `average`, `ranking`, `playtime` FROM `player_info` WHERE `userId` = :id";
+            $query = "SELECT `average`, `ranking`, `playtime`, `total_correct_answers`,`total_questions_answered` FROM `player_info` WHERE `userId` = :id";
 
             $stmt = $this->connection->prepare($query);
             $stmt->bindParam(':id', $playerId, PDO::PARAM_INT);
@@ -21,12 +21,28 @@ class ProfileRepository extends Repository
                 $playerInfo['average'] = $row['average'];
                 $playerInfo['ranking'] = $row['ranking'];
                 $playerInfo['playtime'] = $row['playtime'];
+                $playerInfo['total_correct_answers'] = $row['total_correct_answers'];
+                $playerInfo['total_answers'] = $row['total_questions_answered'];
             }
 
             return $playerInfo;
         } catch (PDOException $e) {
             echo $e;
         }
+    }
+
+    public function updatePlayerInfo($userId, $average, $playtime, $total_correct_answers, $total_answers){
+        try {
+            $query = "UPDATE `player_info` SET `average`=?,`playtime`=?,`total_correct_answers`=?,`total_questions_answered`=? WHERE `userId`=?";
+
+            $statement = $this->connection->prepare($query);
+            return $statement->execute([$average, $playtime, $total_correct_answers, $total_answers, $userId]);
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+
+        return false;
     }
 
     public function getPlayerHistory($playerId)
@@ -60,6 +76,34 @@ class ProfileRepository extends Repository
         }
     }
 
+    public function addPlayerHistory($playerId, $quizId, $nr_correct_answers, $playtime){
+        try{
+            $query = "INSERT INTO `history`(`user_Id`, `quiz_Id`, `nr_correct_answers`, `last_played`, `playtime`)
+                        VALUES (:userId, :quizId, :nr_answers,:last_played, :playtime)
+                        ON DUPLICATE KEY UPDATE           
+                        `nr_correct_answers` = VALUES(`nr_correct_answers`),
+                        `last_played` = VALUES(`last_played`),
+                        `playtime` = VALUES(`playtime`)";
+
+            $lastPlayed = date('Y-m-d H:i:s');
+
+            $statement = $this->connection->prepare($query);
+
+            return $statement->execute(array(
+                ':userId' => $playerId,
+                ':quizId' => $quizId,
+                ':nr_answers' => $nr_correct_answers,
+                ':playtime' => $playtime,
+                ':last_played' => $lastPlayed
+            ));
+
+        } catch(PDOException $e){
+            echo $e;
+        }
+
+        return false;
+    }
+
     public function getPlayerFavorites($playerId){
         try {
             $query = "SELECT `quiz_Id`, savedAt  FROM favorites WHERE user_Id = :playerId";
@@ -83,6 +127,39 @@ class ProfileRepository extends Repository
 
             return $favorites;
         } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+    public function getUsersAverage(){
+        try {
+            $query = "SELECT `userId`,`average` FROM `player_info`";
+
+            $statement = $this->connection->prepare($query);
+            $statement->execute();
+            $average = array();
+            while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
+                $average[$row['userId']] = $row['average'];
+            }
+
+            return $average;
+
+        } catch (PDOException $e){
+            echo $e;
+        }
+    }
+
+    public function updateUsersRanking($userId, $ranking){
+        try {
+            $query = "UPDATE `player_info` SET `ranking`= :ranking WHERE `userId`=:userId";
+
+            $statement = $this->connection->prepare($query);
+            $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $statement->bindParam(':ranking', $ranking, PDO::PARAM_INT);
+
+            $statement->execute();
+
+        } catch (PDOException $e){
             echo $e;
         }
     }

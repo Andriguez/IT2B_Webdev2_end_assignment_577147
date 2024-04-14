@@ -67,8 +67,9 @@ export default {
         });
         let uAnswers = this.userAnswers;
         let timer = this.timer;
+        let quiz = this.quizId
 
-        return this.results = {nr_correct_answers, uAnswers, timer};
+        return this.results = {nr_correct_answers, uAnswers, timer, quiz};
     },
     handleAnswerSelected(answer){
         if (this.selectedAnswer) return;

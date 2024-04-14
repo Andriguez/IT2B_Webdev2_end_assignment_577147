@@ -20,7 +20,7 @@
         </div>
 
     </div>
-        <button><span class="round-font">quiz more</span></button>
+        <button><span class="round-font" @click="exit">quiz more</span></button>
 
 </div>
 </div>
@@ -50,6 +50,22 @@ export default {
             }
             return this.loginStore.requestUserData.name;
         },
+        postResults(){
+            return new Promise((resolve, reject) => {
+                axios.post(`/player/results/${this.results.quiz}`,{
+                    nr_correct_answers: this.results.nr_correct_answers,
+                    playtime: this.results.timer,
+                    answers_count: this.results.uAnswers.length,
+                 })
+                .then((res) => {
+                    resolve();
+                    console.log(res.data);
+                    console.log(this.results.timer)
+                })
+                .catch((error) => reject(error));
+                this.$emit('openWindow', 'quizzes', null);
+            })
+        },
         getResultMsg(){
             if (this.results.nr_correct_answers > this.results.uAnswers.length / 2){
                 return ['result-text-correct', 'congratulations!!'];
@@ -61,6 +77,10 @@ export default {
             const minutes = Math.floor(this.results.timer / 60);
             const seconds = this.results.timer % 60;
              return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        },
+        exit(){
+            this.postResults();
+            this.$router.replace('/quizzes');
         }
     }
 }

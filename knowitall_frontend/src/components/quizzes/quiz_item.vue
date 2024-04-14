@@ -18,8 +18,8 @@
             <p class="card-text round-font">{{ quiz.level }}</p>
             </div>
             <div class="quiz-detail">
-                <h5 class="card-title">global average</h5>
-                <p class="card-text round-font">{{ quiz.avg_correct_answers }}%</p>
+                <h5 class="card-title"># of Questions</h5>
+                <p class="card-text round-font">{{ quiz.nr_questions }}</p>
             </div>
             <div class="quiz-detail">
                 <h5 class="card-title">times answered</h5>

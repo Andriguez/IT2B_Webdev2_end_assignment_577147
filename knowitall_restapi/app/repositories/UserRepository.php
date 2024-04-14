@@ -116,7 +116,7 @@ class UserRepository extends Repository
 
     private function createPlayerProfile($userId){
         try{
-            $query = "INSERT INTO `player_info`(`userId`, `average`, `ranking`, `playtime`) VALUES (?,0,0,'00:00')";
+            $query = "INSERT INTO `player_info`(`userId`, `average`, `ranking`, `playtime`, `total_correct_answers`,`total_questions_answered`) VALUES (?,0,0,0,0,0)";
             $statement = $this->connection->prepare($query);
             $statement->execute([$userId]);
 

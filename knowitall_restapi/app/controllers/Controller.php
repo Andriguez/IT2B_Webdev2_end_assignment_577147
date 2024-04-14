@@ -75,6 +75,6 @@ class Controller
 
     protected function getLoggedUser($jwt){
         $this->userService = new UserService();
-        return $loggedUser = $this->userService->getUserById($jwt->data->id);
+        return $this->userService->getUserById($jwt->data->id);
     }
 }

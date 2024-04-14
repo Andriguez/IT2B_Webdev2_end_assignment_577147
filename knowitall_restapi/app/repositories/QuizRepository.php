@@ -6,6 +6,7 @@ use Models\Level;
 use Models\Question;
 use Models\Quiz;
 use Models\Topic;
+use mysql_xdevapi\Statement;
 use PDO;
 use PDOException;
 
@@ -98,7 +99,7 @@ class QuizRepository extends Repository
 
     public function getQuizById($Id){
         try {
-            $query = "SELECT `name`, `topic`, `nr_players`, `level`, `avg_correct_answers`, `modification_date`
+            $query = "SELECT `name`, `topic`, `nr_players`, `level`, `modification_date`
             FROM `quizzes` WHERE `Id` = :id";
 
             $stmt = $this->connection->prepare($query);
@@ -112,7 +113,6 @@ class QuizRepository extends Repository
                 $quiz->setTopic($this->getTopicById($row['topic']));
                 $quiz->setNrPlayers($row['nr_players']);
                 $quiz->setLevel($this->getLevelById($row['level']));
-                $quiz->setAverage($row['avg_correct_answers']);
 
                 $dateTime_string = $row['modification_date'];
                 $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $dateTime_string);
@@ -154,6 +154,17 @@ class QuizRepository extends Repository
         }
 
         return $this->getQuizById($quizId) ?? null;
+    }
+
+    public function updateNrPlayers($quizId){
+        try {
+            $query = "UPDATE `quizzes` SET `nr_players` = `nr_players`+1 WHERE `Id` = ?";
+            $statement = $this->connection->prepare($query);
+            $statement->execute([$quizId]);
+
+        } catch (PDOException $e){
+            echo $e;
+        }
     }
 
     public function deleteQuiz($quizId){
@@ -272,7 +283,7 @@ class QuizRepository extends Repository
                 $answer = new Answer();
                 $answer->setId($Id);
                 $answer->setAnswerText(htmlspecialchars_decode($row['answer_text']));
-                
+
                 $explanation = $row['answer_explain'] ?? null;
                 if(isset($explanation)){ $explanation = htmlspecialchars_decode($explanation);}
 

@@ -17,6 +17,7 @@ class QuizService
     public function editQuiz($quizId, $name, $topic, $level){ return $this->quizRepo->editQuiz($quizId, $name,$topic, $level); }
     public function createQuiz($name, $topic, $level){ return $this->quizRepo->createQuiz($name, $topic, $level); }
     public function deleteQuiz($quizId){ return $this->quizRepo->deleteQuiz($quizId); }
+    public function updateNrPlayers($quizId){ $this->quizRepo->updateNrPlayers($quizId); }
 
     public function getQuestions($quizId){ return $this->quizRepo->getQuestions($quizId); }
 

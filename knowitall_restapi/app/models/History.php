@@ -7,12 +7,12 @@ class History implements \JsonSerializable
     private Quiz $quiz;
     private int $nr_correct_answers;
     private \DateTime $last_played;
-    private string $playtime;
+    private int $playtime;
 
     public function setQuiz(Quiz $quiz){ $this->quiz = $quiz; }
     public function setNrCorrectAnswers(int $nr_correct_answers){ $this->nr_correct_answers = $nr_correct_answers; }
     public function setLastPlayed(\DateTime $last_played){ $this->last_played = $last_played; }
-    public function setPlaytime(string $playtime){ $this->playtime = $playtime; }
+    public function setPlaytime(int $playtime){ $this->playtime = $playtime; }
 
 
     public function getQuiz(){ return $this->quiz; }
