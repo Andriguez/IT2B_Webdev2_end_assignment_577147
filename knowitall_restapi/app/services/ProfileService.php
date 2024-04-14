@@ -16,6 +16,8 @@ class ProfileService
     public function getPlayerHistory($playerId){ return $this->profilerRepo->getPlayerHistory($playerId); }
     public function addPlayerHistory($playerId, $quizId, $nr_correct_answers, $playtime){ return $this->profilerRepo->addPlayerHistory($playerId, $quizId, $nr_correct_answers, $playtime); }
     public function getPlayerFavorites($playerId){ return $this->profilerRepo->getPlayerFavorites($playerId); }
+    public function addPlayerFavorite($playerId, $quizId){ return $this->profilerRepo->addPlayerFavorite($playerId, $quizId);}
+    public function deletePlayerFavorite($playerId, $quizId) {return $this->profilerRepo->deletePlayerFavorite($playerId, $quizId); }
     public function getUsersAverage(){ return $this->profilerRepo->getUsersAverage();}
     public function updateUsersRanking($userId, $ranking){ $this->profilerRepo->updateUsersRanking($userId, $ranking);}
 

@@ -8,11 +8,11 @@
     <div id="results-div" class="m-3">
         <div class="result">
             <span class="result-title">correct answers </span>
-            <span class="result-content-correct"> {{ `${results.nr_correct_answers}/${results.uAnswers.length}` }} </span>
+            <span class="result-content-correct"> {{ `${results.nr_correct_answers}` }} </span>
         </div>
         <div class="result">
-            <span class="result-title">ranking </span>
-            <span class="result-content-incorrect"> #5</span>
+            <span class="result-title"># of questions </span>
+            <span class="result-content-incorrect"> {{ results.uAnswers.length }}</span>
         </div>
         <div class="result">
             <span class="result-title">playtime </span>
@@ -59,8 +59,6 @@ export default {
                  })
                 .then((res) => {
                     resolve();
-                    console.log(res.data);
-                    console.log(this.results.timer)
                 })
                 .catch((error) => reject(error));
                 this.$emit('openWindow', 'quizzes', null);

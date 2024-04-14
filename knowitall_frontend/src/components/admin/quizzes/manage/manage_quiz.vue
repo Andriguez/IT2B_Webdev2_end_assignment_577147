@@ -229,8 +229,6 @@ export default {
                     this.answers[a.Id] = a;
                 })
             });
-            //console.log(this.questions);
-            //console.log(this.answers); 
         })
         .catch(error => console.log(error));
     }

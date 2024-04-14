@@ -131,6 +131,38 @@ class ProfileRepository extends Repository
         }
     }
 
+    public function addPlayerFavorite($playerId, $quizId){
+        try{
+            $query = "INSERT INTO `favorites`(`user_Id`, `quiz_Id`, `savedAt`) VALUES (?, ?, ?)";
+
+            $savedAt = date('Y-m-d H:i:s');
+            $statement = $this->connection->prepare($query);
+
+            return $statement->execute([$playerId, $quizId, $savedAt]);
+
+        } catch(PDOException $e){
+            echo $e;
+        }
+
+        return false;
+    }
+
+    public function deletePlayerFavorite($playerId, $quizId){
+        try{
+            $query = "DELETE FROM `favorites` WHERE `user_Id` = :userId AND `quiz_Id` = :quizId";
+            $statement = $this->connection->prepare($query);
+            $statement->bindParam(':userId', $playerId, PDO::PARAM_INT);
+            $statement->bindParam(':quizId', $quizId, PDO::PARAM_INT);
+
+            return $statement->execute();
+
+        } catch(PDOException $e){
+            echo $e;
+        }
+
+        return false;
+    }
+
     public function getUsersAverage(){
         try {
             $query = "SELECT `userId`,`average` FROM `player_info`";

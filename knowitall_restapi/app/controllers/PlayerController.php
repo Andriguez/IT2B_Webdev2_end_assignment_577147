@@ -132,4 +132,28 @@ class PlayerController extends Controller
         }
     }
 
+    public function addPlayerFavorite($quizId){
+        try {
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 2)){
+                $this->respond($this->playerService->addPlayerFavorite($user->getId(), $quizId));
+            }
+
+        } catch (\Exception $e) {
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
+    public function deletePlayerFavorite($quizId){
+        try {
+            $user = $this->getLoggedUser($this->checkForJwt());
+            if($user && ($user->getUsertype()->getId() === 2)){
+                $this->respond($this->playerService->deletePlayerFavorite($user->getId(), $quizId));
+            }
+
+        } catch (\Exception $e) {
+            $this->respondWithError(500, $e->getMessage());
+        }
+    }
+
 }
